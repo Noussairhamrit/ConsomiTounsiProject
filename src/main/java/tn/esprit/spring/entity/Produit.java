@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "Produit")
@@ -42,6 +45,11 @@ public class Produit implements Serializable{
 	private Long prixAchat;
 	@Column(name = "Prix_Vente")
 	private Long prixVente;
+	
+	@ManyToOne
+	private SousCategories souscat;
+	
+	
 	public Long getId() {
 		return id;
 	}
