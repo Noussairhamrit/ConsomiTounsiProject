@@ -26,7 +26,7 @@ public class SousCategories implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "SousCat_Id")
-	private Long IdSousCat;
+	private int IdSousCat;
 	@Column(name = "SousCat_nom")
 	private String Snom;
 	@Column(name = "SousCat_desc")
@@ -40,10 +40,10 @@ public class SousCategories implements Serializable{
 	
 	
 	
-	public Long getIdSousCat() {
+	public int getIdSousCat() {
 		return IdSousCat;
 	}
-	public void setIdSousCat(Long idSousCat) {
+	public void setIdSousCat(int idSousCat) {
 		IdSousCat = idSousCat;
 	}
 	public String getSnom() {
@@ -65,7 +65,7 @@ public class SousCategories implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SousCategories(Long idSousCat, String snom, String sdescription) {
+	public SousCategories(int idSousCat, String snom, String sdescription) {
 		super();
 		IdSousCat = idSousCat;
 		Snom = snom;
