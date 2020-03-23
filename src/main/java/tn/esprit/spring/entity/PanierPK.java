@@ -19,19 +19,66 @@ public class PanierPK implements Serializable {
 	private int id_produit;
 	
     private int id;
+    private int quantite;
+    private double prixtotale;
     
-    
-    public PanierPK() {
+   
+
+
+
+
+
+
+
+
+
+	public double getPrixtotale() {
+		return prixtotale;
+	}
+
+
+
+
+
+
+
+
+
+	public void setPrixtotale(double prixtotale) {
+		this.prixtotale = prixtotale;
+	}
+
+
+
+
+
+
+
+
+
+	public PanierPK() {
 		super();
 	}
     
     
-	public PanierPK(int id_commande, int id_produit, int id) {
+    
+    
+    
+    
+
+
+
+	public PanierPK(int id_commande, int id_produit, int id, int quantite) {
 		super();
 		this.id_commande = id_commande;
 		this.id_produit = id_produit;
 		this.id = id;
+		this.quantite = quantite;
 	}
+
+
+
+
 	
 
 
@@ -42,8 +89,16 @@ public class PanierPK implements Serializable {
 		result = prime * result + id;
 		result = prime * result + id_commande;
 		result = prime * result + id_produit;
+		result = prime * result + quantite;
 		return result;
 	}
+
+
+
+
+
+
+
 
 
 	@Override
@@ -61,8 +116,34 @@ public class PanierPK implements Serializable {
 			return false;
 		if (id_produit != other.id_produit)
 			return false;
+		if (quantite != other.quantite)
+			return false;
 		return true;
 	}
+
+
+
+
+
+
+
+
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+
+	
+
+	
+    
+	
 
 
 	public int getId_commande() {

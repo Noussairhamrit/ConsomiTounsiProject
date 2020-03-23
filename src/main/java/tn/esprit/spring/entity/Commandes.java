@@ -3,24 +3,26 @@ package tn.esprit.spring.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import lombok.Data;
+
+
 
 @Entity
 @Table(name="commande")
-@Data
+
 public class Commandes implements Serializable {
 	
 	
@@ -34,10 +36,10 @@ public class Commandes implements Serializable {
 	@Column(name="id_commande")
 	private int id;
 	private Date date_commande;
-	@Embedded
-	Payment_TYPE payment_type;
+	@Enumerated(EnumType.STRING)
+	private Payment_TYPE payment_type;
 	private boolean Payment_state;
-	@OneToOne
+	@OneToOne(mappedBy="commande")
 	private Factures facture;
 	
 	@OneToMany(mappedBy="commande")
@@ -56,6 +58,54 @@ public class Commandes implements Serializable {
 		Payment_state = payment_state;
 		this.facture = facture;
 		this.panier = panier;
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (Payment_state ? 1231 : 1237);
+		result = prime * result + ((date_commande == null) ? 0 : date_commande.hashCode());
+		result = prime * result + ((facture == null) ? 0 : facture.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((panier == null) ? 0 : panier.hashCode());
+		result = prime * result + ((payment_type == null) ? 0 : payment_type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Commandes other = (Commandes) obj;
+		if (Payment_state != other.Payment_state)
+			return false;
+		if (date_commande == null) {
+			if (other.date_commande != null)
+				return false;
+		} else if (!date_commande.equals(other.date_commande))
+			return false;
+		if (facture == null) {
+			if (other.facture != null)
+				return false;
+		} else if (!facture.equals(other.facture))
+			return false;
+		if (id != other.id)
+			return false;
+		if (panier == null) {
+			if (other.panier != null)
+				return false;
+		} else if (!panier.equals(other.panier))
+			return false;
+		if (payment_type != other.payment_type)
+			return false;
+		return true;
 	}
 
 	public int getId() {

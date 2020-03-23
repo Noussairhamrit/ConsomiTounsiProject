@@ -37,6 +37,8 @@ public class Panier implements Serializable {
 	private Produit produit;
 	
 	
+	
+
 
 	public PanierPK getPanierpk() {
 		return panierpk;
