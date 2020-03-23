@@ -18,6 +18,7 @@ public class CommentPubServiceImp implements ICommentPubService {
 	
 	
 	public Long addComment(CommentPub comment) {
+		
 		commentpubRepository.save(comment);
 		return comment.getId();
 
