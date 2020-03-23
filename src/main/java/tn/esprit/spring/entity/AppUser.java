@@ -28,7 +28,7 @@ public class AppUser {
  
     @Column(name = "Enabled", length = 1, nullable = false)
     private boolean enabled;
-    
+     
     private String nom;
     private String prenom;
     private long cin;

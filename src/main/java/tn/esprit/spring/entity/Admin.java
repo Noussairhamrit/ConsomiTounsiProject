@@ -7,3 +7,4 @@ public class Admin extends AppUser {
 	private long Num_Serie_ADMIN;
 
 }
+  
