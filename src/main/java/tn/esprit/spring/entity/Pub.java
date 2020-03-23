@@ -37,10 +37,11 @@ public class Pub implements Serializable {
 	CatPub catPub;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Pub")
 	private Set<CommentPub> commentPub;
+	private Integer rating;
 	public Pub() {
 		
 	}
-	public Pub(Long id, byte[] image, String title, String description, Date date, CatPub catPub) {
+	public Pub(Long id, byte[] image, String title, String description, Date date, CatPub catPub, Integer rating) {
 		super();
 		this.id = id;
 		this.image = image;
@@ -48,6 +49,19 @@ public class Pub implements Serializable {
 		this.description = description;
 		this.date = date;
 		this.catPub = catPub;
+		this.rating = rating;
+	}
+	public Set<CommentPub> getCommentPub() {
+		return commentPub;
+	}
+	public void setCommentPub(Set<CommentPub> commentPub) {
+		this.commentPub = commentPub;
+	}
+	public Integer getRating() {
+		return rating;
+	}
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 	public Long getId() {
 		return id;
