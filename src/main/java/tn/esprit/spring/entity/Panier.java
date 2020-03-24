@@ -24,6 +24,25 @@ public class Panier implements Serializable {
 
 	@EmbeddedId
 	private PanierPK panierpk;
+	
+	private int quantite;
+	private double prix;
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
 
 	// idcommande est a la fois primary key et foreign key
 	@ManyToOne
@@ -67,6 +86,7 @@ public class Panier implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 	
 	
 
