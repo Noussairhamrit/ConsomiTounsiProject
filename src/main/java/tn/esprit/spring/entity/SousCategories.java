@@ -12,8 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
 
 
+@Data
 @Entity
 @Table(name = "SousCat")
 
@@ -60,6 +62,19 @@ public class SousCategories implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public List<Produit> getProduit() {
+		return produit;
+	}
+	public void setProduit(List<Produit> produit) {
+		this.produit = produit;
+	}
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 	public SousCategories() {
 		super();
