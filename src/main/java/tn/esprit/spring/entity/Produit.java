@@ -52,6 +52,9 @@ public class Produit implements Serializable{
 	@ManyToOne
 	private SousCategories souscat;
 	
+	@ManyToOne
+	private Ray ray;
+	
 	
 
 	////////////panier
