@@ -20,7 +20,7 @@ public class Stock implements Serializable{
 	
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id_Stock")
+//	@Column(name = "Id_Stock")
 	private int IdStock;
 	@Column(name = "Name_Stock")
 	private String NameStock;
