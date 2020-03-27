@@ -9,7 +9,7 @@ public class ControllerProduitImp {
 	@Autowired
 	ProduitRepository produitRepository;
 
-	public long ajouterProduit(Produit produit) {
+	public int ajouterProduit(Produit produit) {
 		produitRepository.save(produit);
 		// TODO Auto-generated method stub
 		return produit.getId();

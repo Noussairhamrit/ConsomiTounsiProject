@@ -1,3 +1,4 @@
+
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
@@ -12,10 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
 
 
-@Data
 @Entity
 @Table(name = "SousCat")
 
@@ -28,7 +27,7 @@ public class SousCategories implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "SousCat_Id")
-	private Long IdSousCat;
+	private int IdSousCat;
 	@Column(name = "SousCat_nom")
 	private String Snom;
 	@Column(name = "SousCat_desc")
@@ -42,10 +41,10 @@ public class SousCategories implements Serializable{
 	
 	
 	
-	public Long getIdSousCat() {
+	public int getIdSousCat() {
 		return IdSousCat;
 	}
-	public void setIdSousCat(Long idSousCat) {
+	public void setIdSousCat(int idSousCat) {
 		IdSousCat = idSousCat;
 	}
 	public String getSnom() {
@@ -63,24 +62,11 @@ public class SousCategories implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	public List<Produit> getProduit() {
-		return produit;
-	}
-	public void setProduit(List<Produit> produit) {
-		this.produit = produit;
-	}
-	public Categorie getCategorie() {
-		return categorie;
-	}
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
-	}
 	public SousCategories() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SousCategories(Long idSousCat, String snom, String sdescription) {
+	public SousCategories(int idSousCat, String snom, String sdescription) {
 		super();
 		IdSousCat = idSousCat;
 		Snom = snom;
@@ -94,3 +80,4 @@ public class SousCategories implements Serializable{
 	
 
 }
+
