@@ -37,6 +37,29 @@ public class AppUser {
     private String email;
     
     
+    
+	public AppUser() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	public AppUser(Long userId, String userName, String encrytedPassword, boolean enabled, String nom, String prenom,
+			long cin, String address, long num_tel, String email) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.encrytedPassword = encrytedPassword;
+		this.enabled = enabled;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.address = address;
+		this.num_tel = num_tel;
+		this.email = email;
+	}
+
+
 	public Long getUserId() {
 		return userId;
 	}
@@ -67,6 +90,66 @@ public class AppUser {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+	public long getCin() {
+		return cin;
+	}
+
+
+	public void setCin(long cin) {
+		this.cin = cin;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public long getNum_tel() {
+		return num_tel;
+	}
+
+
+	public void setNum_tel(long num_tel) {
+		this.num_tel = num_tel;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
     
 }

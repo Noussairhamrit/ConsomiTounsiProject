@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import tn.esprit.spring.entity.Commandes;
 import tn.esprit.spring.entity.Factures;
+import tn.esprit.spring.entity.Payment_TYPE;
 
 public interface FactureRepository extends CrudRepository<Factures,Integer>{
 	
@@ -20,8 +21,8 @@ public interface FactureRepository extends CrudRepository<Factures,Integer>{
 	@Query("Select "
 			+ " f from Factures f "
 			+ " join f.commande c "
-			+ " where c.payment_type=:En_ligne ")
-	public List<Factures> getAllfactures_by_PayementType_En_ligne(@Param("En_ligne") String En_ligne);
+			+ " where c.payment_type=:payment_type ")
+	public List<Factures> getAllfactures_by_PayementType_En_ligne( );
 	
 	@Query("Select "
 			+ " f from Factures f "
@@ -32,13 +33,17 @@ public interface FactureRepository extends CrudRepository<Factures,Integer>{
 	@Query("Select "
 			+ " f from Factures f "
 			+ " join f.commande c "
-			+ " where c.Payment_state=:truue")
-	public List<Factures> getAllfactures_by_Payementstate_true(@Param("truue") String truue);
+			+ " where c.Payment_state=:true")
+	public List<Factures> getAllfactures_by_Payementstate_true(@Param("true") String truue);
 	
 	@Query("Select "
 			+ " f from Factures f "
 			+ " join f.commande c "
-			+ " where c.Payment_state=:ff")
-	public List<Factures> getAllfactures_by_Payementstate_false(@Param("ff") String ff);
+			+ " where c.Payment_state=:false")
+	public List<Factures> getAllfactures_by_Payementstate_false(@Param("false") String ff);
+	
+	 @Query("select c.payment_type from Commandes c join c.facture e where e.id=:factureID")
+	    public String  get_payment_type_by_factureID(@Param("factureID")int factureID);
+	    
 
 }

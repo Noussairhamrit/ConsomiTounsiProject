@@ -17,7 +17,7 @@ public class PanierServiceIMP implements IPanierService {
 	@Autowired
 	CommandesRepository commandesRepository;
 
-	@Override
+	/*@Override
 	public int ajouterCommande(Commandes commande) {
 		commandesRepository.save(commande);
 		return commande.getId();
@@ -37,6 +37,6 @@ public class PanierServiceIMP implements IPanierService {
 		
 	
 		
-	}
+	}*/
 
 }

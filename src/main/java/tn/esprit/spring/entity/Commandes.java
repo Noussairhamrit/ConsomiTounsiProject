@@ -11,40 +11,57 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+import tn.esprit.spring.entity.*;
 
 @Entity
-@Table(name="commande")
+@Table(name = "commande")
 
 public class Commandes implements Serializable {
-	
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_commande")
+	@Column(name = "id_commande")
 	private int id;
 	private Date date_commande;
 	@Enumerated(EnumType.STRING)
 	private Payment_TYPE payment_type;
 	private boolean Payment_state;
-	@OneToOne(mappedBy="commande")
+	private double prixtotale;
+	@JsonIgnore
+	@OneToOne(mappedBy = "commande")
 	private Factures facture;
-	
-	@OneToMany(mappedBy="commande")
-	private  List<Panier> panier;
-	
+	@JsonIgnore
+	@OneToMany(mappedBy = "commande")
+	private List<Panier> panier;
+	@JsonIgnore
+	@ManyToOne
+	private Client client;
+
 	public Commandes() {
 		super();
+	}
+
+	public Commandes(Date date_commande, Payment_TYPE payment_type, boolean payment_state, Factures facture,
+			List<Panier> panier, Client client) {
+		super();
+		this.date_commande = date_commande;
+		this.payment_type = payment_type;
+		Payment_state = payment_state;
+		this.facture = facture;
+		this.panier = panier;
+		this.client = client;
 	}
 
 	public Commandes(int id, Date date_commande, Payment_TYPE payment_type, boolean payment_state, Factures facture,
@@ -58,13 +75,12 @@ public class Commandes implements Serializable {
 		this.panier = panier;
 	}
 
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (Payment_state ? 1231 : 1237);
+		result = prime * result + ((client == null) ? 0 : client.hashCode());
 		result = prime * result + ((date_commande == null) ? 0 : date_commande.hashCode());
 		result = prime * result + ((facture == null) ? 0 : facture.hashCode());
 		result = prime * result + id;
@@ -83,6 +99,11 @@ public class Commandes implements Serializable {
 			return false;
 		Commandes other = (Commandes) obj;
 		if (Payment_state != other.Payment_state)
+			return false;
+		if (client == null) {
+			if (other.client != null)
+				return false;
+		} else if (!client.equals(other.client))
 			return false;
 		if (date_commande == null) {
 			if (other.date_commande != null)
@@ -157,5 +178,21 @@ public class Commandes implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public double getPrixtotale() {
+		return prixtotale;
+	}
+
+	public void setPrixtotale(double prixtotale) {
+		this.prixtotale = prixtotale;
+	}
+
 }
