@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Commandes;
-import tn.esprit.spring.entity.Factures;
 import tn.esprit.spring.entity.Panier;
 import tn.esprit.spring.entity.PanierPK;
 import tn.esprit.spring.repository.CommandesRepository;

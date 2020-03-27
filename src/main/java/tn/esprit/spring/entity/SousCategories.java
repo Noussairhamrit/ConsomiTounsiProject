@@ -38,6 +38,9 @@ public class SousCategories implements Serializable{
 	@ManyToOne
 	private Categorie categorie;
 	
+	@ManyToOne
+	private Ray ray_sc;
+	
 	
 	
 	public int getIdSousCat() {
