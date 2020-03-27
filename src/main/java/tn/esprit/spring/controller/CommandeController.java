@@ -32,7 +32,7 @@ public class CommandeController {
 	 @PostMapping("/commande")
 	    public Commandes saveCommandes(@RequestBody CommandeForm commandeForm){
 		 
-		 Client client=new Client();
+		 Client client=new Client(); 
 		
 	        client.setNom(commandeForm.getClient().getNom());
 	        client.setEncrytedPassword(commandeForm.getClient().getEncrytedPassword());
