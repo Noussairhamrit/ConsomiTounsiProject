@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 
@@ -56,6 +58,7 @@ public class Produit implements Serializable{
 	
 
 	////////////panier
+	@JsonIgnore
 	@OneToMany(mappedBy="produit")
 	private  List<Panier> panier;
 	

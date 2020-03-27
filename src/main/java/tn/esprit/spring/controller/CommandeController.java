@@ -28,12 +28,14 @@ public class CommandeController {
 	private ClientRepository clientrepository;
 	@Autowired
 	private PanierRepository panierrepository;
-	
+	// URL : http://localhost:8081/SpringMVC/servlet/commande
 	 @PostMapping("/commande")
 	    public Commandes saveCommandes(@RequestBody CommandeForm commandeForm){
 		 
 		 Client client=new Client();
+		
 	        client.setNom(commandeForm.getClient().getNom());
+	        client.setEncrytedPassword(commandeForm.getClient().getEncrytedPassword());
 	        client.setEmail(commandeForm.getClient().getEmail());
 	        client.setAddress(commandeForm.getClient().getAddress());
 	        client.setNum_tel(commandeForm.getClient().getNum_tel());
@@ -42,11 +44,6 @@ public class CommandeController {
 	        System.out.println(client.getUserId());
 	        
 	        Commandes commande=new Commandes();
-	        commande.setClient(client);
-	        commande.setDate_commande(new Date());
-	        commande.setPayment_state(false);
-	        commande.setPayment_type(null);
-	        commande=commandesrepository.save(commande);
 	        double total=0;
 	        for(CommandeProduct p:commandeForm.getProducts()){
 	        	Panier panier=new Panier();
@@ -58,6 +55,12 @@ public class CommandeController {
 	        	panierrepository.save(panier);
 	        	total+=p.getQuantity()*produit.getPrix();
 	        }
+	        
+	        commande.setClient(client);
+	        commande.setDate_commande(new Date());
+	        commande.setPayment_state(false);
+	        commande.setPayment_type(null);
+	        commande=commandesrepository.save(commande);
 	        commande.setPrixtotale(total);
 	        return commandesrepository.save(commande);
 		 

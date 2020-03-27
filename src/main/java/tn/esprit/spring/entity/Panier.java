@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -45,12 +47,13 @@ public class Panier implements Serializable {
 	}
 
 	// idcommande est a la fois primary key et foreign key
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_commande", referencedColumnName = "id_commande", insertable = false, updatable = false)
 	private Commandes commande;
 
 	// idproduit est a la fois primary key et foreign key
-
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_produit", referencedColumnName = "Prod_Id", insertable = false, updatable = false)
 	private Produit produit;

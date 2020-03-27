@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import tn.esprit.spring.entity.*;
 
 @Entity
@@ -38,12 +40,13 @@ public class Commandes implements Serializable {
 	private Payment_TYPE payment_type;
 	private boolean Payment_state;
 	private double prixtotale;
-
+	@JsonIgnore
 	@OneToOne(mappedBy = "commande")
 	private Factures facture;
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "commande")
 	private List<Panier> panier;
+	@JsonIgnore
 	@ManyToOne
 	private Client client;
 

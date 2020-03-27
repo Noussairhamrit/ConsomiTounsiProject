@@ -24,9 +24,6 @@ public class CommandeForm {
 		this.products = products;
 	}
 	
-	
-	
-
 }
 
 class CommandeProduct{
