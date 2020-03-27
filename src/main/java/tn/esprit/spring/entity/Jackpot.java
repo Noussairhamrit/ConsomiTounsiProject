@@ -1,7 +1,7 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Jackpot")
@@ -23,47 +23,57 @@ public class Jackpot implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "JP_ID")
-	private int jpId;
+	private Long jpId;
 	@Enumerated(EnumType.STRING)
 	JackpotGoal but;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime date_S;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime date_F;
+	@Temporal(TemporalType.DATE)
+	private Date date_S;
+
+	@Temporal(TemporalType.DATE)
+	private Date date_F;
 	@Column(name = "JP_SUM")
 	Long jpSum;
-	
+
 	@OneToOne
 	private Event event;
-	
-	public int getJpId() {
+
+	public Long getJpId() {
 		return jpId;
 	}
-	public void setJpId(int jpId) {
+
+	public void setJpId(Long jpId) {
 		this.jpId = jpId;
 	}
-	public LocalDateTime getDate_S() {
+
+	public Date getDate_S() {
 		return date_S;
 	}
-	public void setDate_S(LocalDateTime date_S) {
+
+	public void setDate_S(Date date_S) {
 		this.date_S = date_S;
 	}
-	public LocalDateTime getDate_F() {
+
+	public Date getDate_F() {
 		return date_F;
 	}
-	public void setDate_F(LocalDateTime date_F) {
+
+	public void setDate_F(Date date_F) {
 		this.date_F = date_F;
 	}
+
 	public Long getJpSum() {
 		return jpSum;
 	}
+
 	public void setJpSum(Long jpSum) {
 		this.jpSum = jpSum;
 	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public Jackpot(int jpId, JackpotGoal but, LocalDateTime date_S, LocalDateTime date_F, Long jpSum, Event event) {
+
+	public Jackpot(Long jpId, JackpotGoal but, Date date_S, Date date_F, Long jpSum, Event event) {
 		super();
 		this.jpId = jpId;
 		this.but = but;
@@ -72,6 +82,18 @@ public class Jackpot implements Serializable {
 		this.jpSum = jpSum;
 		this.event = event;
 	}
+
 	
+
+
+	public Jackpot() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Jackpot [jpId=" + jpId + ", but=" + but + ", date_S=" + date_S + ", date_F=" + date_F + ", jpSum="
+				+ jpSum + ", event=" + event + "]";
+	}
 
 }

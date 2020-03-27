@@ -1,7 +1,7 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,8 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ParEvent")
@@ -23,8 +23,8 @@ public class ParEvent implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "RESERVATION_ID")
 	private int pareventId;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime pareventDate;
+	@Temporal(TemporalType.DATE)
+	private Date pareventDate;
 	@ManyToMany(mappedBy="Reservation", cascade = CascadeType.ALL)
 	private Set<Event> events;
 	
@@ -42,13 +42,13 @@ public class ParEvent implements Serializable {
 
 
 
-	public LocalDateTime getPareventDate() {
+	public Date getPareventDate() {
 		return pareventDate;
 	}
 
 
 
-	public void setPareventDate(LocalDateTime pareventDate) {
+	public void setPareventDate(Date pareventDate) {
 		this.pareventDate = pareventDate;
 	}
 

@@ -1,7 +1,7 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,8 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Event")
@@ -24,13 +24,13 @@ public class Event implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "EVENT_ID")
-	private int eventId;
+	private Long eventId;
 	@Column(name = "EVENT_TITLE")
 	private String eventTitle;
 	@Column(name = "EVENT_TYPE")
 	private String eventTYPE;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime eventDate;
+	@Temporal(TemporalType.DATE)
+	private Date eventDate;
 	@Column(name = "EVENT_PICTURE")
 	private String eventPicture;
 	
@@ -47,11 +47,11 @@ public class Event implements Serializable {
 		this.jackpot = jackpot;
 	}
 
-	public int getEventId() {
+	public Long getEventId() {
 		return eventId;
 	}
 
-	public void setEventId(int eventId) {
+	public void setEventId(Long eventId) {
 		this.eventId = eventId;
 	}
 
@@ -73,11 +73,11 @@ public class Event implements Serializable {
 		this.eventTYPE = eventTYPE;
 	}
 
-	public LocalDateTime getEventDate() {
+	public Date getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(LocalDateTime eventDate) {
+	public void setEventDate(Date eventDate) {
 		this.eventDate = eventDate;
 	}
 
@@ -93,7 +93,7 @@ public class Event implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Event(int eventId, String eventTitle, String eventTYPE, LocalDateTime eventDate, String eventPicture,
+	public Event(Long eventId, String eventTitle, String eventTYPE, Date eventDate, String eventPicture,
 			Jackpot jackpot, Set<ParEvent> reservation) {
 		super();
 		this.eventId = eventId;

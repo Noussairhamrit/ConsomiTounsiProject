@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Event;
-import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.EventRepository;
 @Service
 public class EventServiceImpl implements EventService {
@@ -52,5 +51,9 @@ public Event retrieveEvent(String eventId) {
 	return e;
 	
 }
-	
+//@Override
+//public Event retrieveEventByTitle(String eventTitle) {
+//	return eventRepository.retrieveEventByTitle(eventTitle);
+//}
+
 }

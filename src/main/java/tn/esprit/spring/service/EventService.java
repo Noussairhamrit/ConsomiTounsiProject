@@ -3,7 +3,6 @@ package tn.esprit.spring.service;
 import java.util.List;
 
 import tn.esprit.spring.entity.Event;
-import tn.esprit.spring.entity.User;
 
 public interface EventService {
 
@@ -18,5 +17,9 @@ public interface EventService {
 	
 
 	Event retrieveEvent(String id);
+
+	
+
+//	Event retrieveEventByTitle(String eventTitle);
 
 }

@@ -7,4 +7,9 @@ import tn.esprit.spring.entity.Event;
 @Repository
 public interface EventRepository extends CrudRepository<Event,Long> {
 
+	//Event retrieveEventByTitle(String eventTitle);
+
+	
+
+	//Event retrieveEventByTitle(String eventTitle);
 }
