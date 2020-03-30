@@ -3,8 +3,6 @@ package tn.esprit.spring.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -97,7 +95,7 @@ public class FactureController {
 			
 		}
 	// URL : http://localhost:8081/SpringMVC/servlet/get_payment_type_by_factureID
-	   @GetMapping(value = "get_payment_type_by_factureID/{id}")
+	  @GetMapping(value = "get_payment_type_by_factureID/{id}")
 	   @ResponseBody
 	   public String  get_payment_type_by_factureID(@PathVariable("id")int id_facture) {
 		 return  factureservice.get_payment_type_by_factureID(id_facture);
