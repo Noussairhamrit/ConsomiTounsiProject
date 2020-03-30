@@ -58,6 +58,11 @@ public class Panier implements Serializable {
 	
 
 
+	public Panier() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public PanierPK getPanierpk() {
 		return panierpk;
 	}

@@ -35,10 +35,12 @@ public class Commandes implements Serializable {
 	@Column(name = "id_commande")
 	private int id;
 	private Date date_commande;
-	@Enumerated(EnumType.STRING)
-	private Payment_TYPE payment_type;
-	private boolean Payment_state;
 	private double prixtotale;
+	private String status;
+	private String payment_type;
+	private String Payment_state;
+	
+	
 	@JsonIgnore
 	@OneToOne(mappedBy = "commande")
 	private Factures facture;
@@ -53,79 +55,33 @@ public class Commandes implements Serializable {
 		super();
 	}
 
-	public Commandes(Date date_commande, Payment_TYPE payment_type, boolean payment_state, Factures facture,
-			List<Panier> panier, Client client) {
+	
+
+	public Commandes(Date date_commande, String payment_type, String payment_state, String status, double prixtotale,
+			Factures facture, List<Panier> panier, Client client) {
 		super();
 		this.date_commande = date_commande;
 		this.payment_type = payment_type;
 		Payment_state = payment_state;
+		this.status = status;
+		this.prixtotale = prixtotale;
 		this.facture = facture;
 		this.panier = panier;
 		this.client = client;
 	}
 
-	public Commandes(int id, Date date_commande, Payment_TYPE payment_type, boolean payment_state, Factures facture,
-			List<Panier> panier) {
+
+
+	public Commandes(int id, Date date_commande, double prixtotale, String status) {
 		super();
 		this.id = id;
 		this.date_commande = date_commande;
-		this.payment_type = payment_type;
-		Payment_state = payment_state;
-		this.facture = facture;
-		this.panier = panier;
+		this.prixtotale = prixtotale;
+		this.status = status;
+		
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (Payment_state ? 1231 : 1237);
-		result = prime * result + ((client == null) ? 0 : client.hashCode());
-		result = prime * result + ((date_commande == null) ? 0 : date_commande.hashCode());
-		result = prime * result + ((facture == null) ? 0 : facture.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((panier == null) ? 0 : panier.hashCode());
-		result = prime * result + ((payment_type == null) ? 0 : payment_type.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Commandes other = (Commandes) obj;
-		if (Payment_state != other.Payment_state)
-			return false;
-		if (client == null) {
-			if (other.client != null)
-				return false;
-		} else if (!client.equals(other.client))
-			return false;
-		if (date_commande == null) {
-			if (other.date_commande != null)
-				return false;
-		} else if (!date_commande.equals(other.date_commande))
-			return false;
-		if (facture == null) {
-			if (other.facture != null)
-				return false;
-		} else if (!facture.equals(other.facture))
-			return false;
-		if (id != other.id)
-			return false;
-		if (panier == null) {
-			if (other.panier != null)
-				return false;
-		} else if (!panier.equals(other.panier))
-			return false;
-		if (payment_type != other.payment_type)
-			return false;
-		return true;
-	}
 
 	public int getId() {
 		return id;
@@ -143,20 +99,28 @@ public class Commandes implements Serializable {
 		this.date_commande = date_commande;
 	}
 
-	public Payment_TYPE getPayment_type() {
+	public String getPayment_type() {
 		return payment_type;
 	}
 
-	public void setPayment_type(Payment_TYPE payment_type) {
+	public void setPayment_type(String payment_type) {
 		this.payment_type = payment_type;
 	}
 
-	public boolean isPayment_state() {
+	public String getPayment_state() {
 		return Payment_state;
 	}
 
-	public void setPayment_state(boolean payment_state) {
+	public void setPayment_state(String payment_state) {
 		Payment_state = payment_state;
+	}
+
+	public double getPrixtotale() {
+		return prixtotale;
+	}
+
+	public void setPrixtotale(double prixtotale) {
+		this.prixtotale = prixtotale;
 	}
 
 	public Factures getFacture() {
@@ -175,10 +139,6 @@ public class Commandes implements Serializable {
 		this.panier = panier;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public Client getClient() {
 		return client;
 	}
@@ -186,13 +146,23 @@ public class Commandes implements Serializable {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+	
 
-	public double getPrixtotale() {
-		return prixtotale;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setPrixtotale(double prixtotale) {
-		this.prixtotale = prixtotale;
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
 }
