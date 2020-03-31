@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 
 
+
+
 @Entity 
 @Table(name = "Livraison")
 public class Livraison implements Serializable  {
@@ -25,10 +27,10 @@ public class Livraison implements Serializable  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_livraison")
-	private Long id_livra;
+	private int id_livra;
 	
 	@Column(name = "Frais_Livraison")
-	private Long frais_livra;
+	private int frais_livra;
 	
 	@Column(name = "Dest_Livraison")
 	private String dest_livra;
@@ -36,19 +38,19 @@ public class Livraison implements Serializable  {
 	@Column(name = "Etat_Livraison")
 	private String etat_livra;
 
-	public Long getId_livra() {
+	public int getId_livra() {
 		return id_livra;
 	}
 
-	public void setId_livra(Long id_livra) {
+	public void setId_livra(int id_livra) {
 		this.id_livra = id_livra;
 	}
 
-	public Long getFrais_livra() {
+	public int getFrais_livra() {
 		return frais_livra;
 	}
 
-	public void setFrais_livra(Long frais_livra) {
+	public void setFrais_livra(int frais_livra) {
 		this.frais_livra = frais_livra;
 	}
 
@@ -68,9 +70,16 @@ public class Livraison implements Serializable  {
 		this.etat_livra = etat_livra;
 	}
 
-	public Livraison(Long id_livra, Long frais_livra, String dest_livra, String etat_livra) {
+	public Livraison(int id_livra, int frais_livra, String dest_livra, String etat_livra) {
 		super();
 		this.id_livra = id_livra;
+		this.frais_livra = frais_livra;
+		this.dest_livra = dest_livra;
+		this.etat_livra = etat_livra;
+	}
+
+	public Livraison(int frais_livra, String dest_livra, String etat_livra) {
+		super();
 		this.frais_livra = frais_livra;
 		this.dest_livra = dest_livra;
 		this.etat_livra = etat_livra;
@@ -86,7 +95,9 @@ public class Livraison implements Serializable  {
 				+ ", etat_livra=" + etat_livra + "]";
 	}
 	
-	
+	public void setLivreur(Livreur livreur) {
+		this.livreur= livreur;
+	}
 	
 
 }
