@@ -46,20 +46,20 @@ public class CommandeController {
 		return ResponseEntity.ok().build();
 	}
 	
-	/*@GetMapping("rechercheparcode/{code}")
-	public List<Commande> Commandeparcode(@PathVariable(value = "code") long code) {
+	@GetMapping("rechercheparcode/{code}")
+	public List<Commandes> Commandeparcode(@PathVariable(value = "code") long code) {
 
 		return CommandesService.Commandeparcode(code);
-	}*/
+	}
 	
 	@GetMapping("/recherchetype/{type}")
 	public List<Commandes> CommandeparType(@PathVariable(value = "type") String type) {
 		return CommandesService.CommandeparType(type);
 	}
-	/*@GetMapping("/recherche/{idClient}")
+	@GetMapping("/recherche/{idClient}")
 	public List<Commandes> CommandeparClient(@PathVariable(value = "idClient") int id) {
 		return CommandesService.CommandeparClient(id);
-	}*/
+	}
 	@PutMapping("/payerenligne/{idCommande}")
 	public void PayerEnLigne(@PathVariable(value = "idCommande") int idCommande) {
 		CommandesService.PayerEnLigne(idCommande);

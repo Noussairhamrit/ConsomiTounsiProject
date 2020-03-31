@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -14,6 +16,7 @@ import lombok.Data;
 @Table(name = "App_User", //
         uniqueConstraints = { //
                 @UniqueConstraint(name = "APP_USER_UK", columnNames = "User_Name") })
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class AppUser {
 	@Id
     @GeneratedValue
