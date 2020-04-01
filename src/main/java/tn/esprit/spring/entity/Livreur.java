@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 
 
+
+
 @Entity 
 @Table(name = "Livreur")
 public class Livreur extends AppUser implements Serializable {
@@ -18,7 +20,7 @@ public class Livreur extends AppUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@OneToMany(mappedBy="livreur")
-	private List<Livraison> livraison;
+	private List<Livraison> livraisons;
 	
 	@Column(name = "MOY_TRANS_liv")
 	private String moy_trans_liv;
@@ -32,11 +34,18 @@ public class Livreur extends AppUser implements Serializable {
 	@Column(name = "salaire_liv")
 	private int salaire_liv;
 	
-	public String getMoyen_de_transport() {
+	
+	public String getMoy_trans_liv() {
 		return moy_trans_liv;
 	}
-	public void setMoyen_de_transport(String moy_trans_liv) {
+	public void setMoy_trans_liv(String moy_trans_liv) {
 		this.moy_trans_liv = moy_trans_liv;
+	}
+	public int getSalaire_liv() {
+		return salaire_liv;
+	}
+	public void setSalaire_liv(int salaire_liv) {
+		this.salaire_liv = salaire_liv;
 	}
 	public boolean isDispo_liv() {
 		return dispo_liv;
@@ -50,22 +59,19 @@ public class Livreur extends AppUser implements Serializable {
 	public void setChargeT_liv(int chargeT_liv) {
 		this.chargeT_liv = chargeT_liv;
 	}
-	public int getSalair_liv() {
-		return salaire_liv;
-	}
-	public void setSalair_liv(int salaire_liv) {
-		this.salaire_liv = salaire_liv;
-	}
+	
 	public Livreur() {
 		super();
 	}
 	
-	public Livreur(String moyen_de_transport, boolean dispo_liv, int chargeT_liv, int salair_liv) {
+	
+	
+	public Livreur(String moy_trans_liv, boolean dispo_liv, int chargeT_liv, int salaire_liv) {
 		super();
-		this.moy_trans_liv = moyen_de_transport;
+		this.moy_trans_liv = moy_trans_liv;
 		this.dispo_liv = dispo_liv;
 		this.chargeT_liv = chargeT_liv;
-		this.salaire_liv = salair_liv;
+		this.salaire_liv = salaire_liv;
 	}
 	@Override
 	public String toString() {
@@ -73,6 +79,8 @@ public class Livreur extends AppUser implements Serializable {
 				+ chargeT_liv + ", salaire_liv=" + salaire_liv + "]";
 	}
 	
-	
+	public void setLivraison(List<Livraison> livraisons) {
+		this.livraisons = livraisons;
+	}
 
 }

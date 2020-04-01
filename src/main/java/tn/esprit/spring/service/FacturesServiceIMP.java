@@ -33,12 +33,13 @@ public class FacturesServiceIMP implements IFacturesService{
 
 	@Override
 	public void affecterCommande_A_Facture(int id_facture, int id_commande) {
-		Factures f =factureRepository.findById( id_facture).get();
+		/*Factures f =factureRepository.findById( id_facture).get();
 		Commandes c =commandesRepository.findById(id_commande).get();
 		
 		f.setCommande(c);
 		f.setMontant(c.getPrixtotale());
-		factureRepository.save(f);
+		factureRepository.save(f);*/
+		factureRepository.affecterCommande_A_Facture(id_commande, id_facture);
 		
 	}
 
@@ -48,7 +49,7 @@ public class FacturesServiceIMP implements IFacturesService{
 	}
 
 	@Override
-	public List<Factures> getAllfactures_by_Commande(Commandes cmd) {
+	public List<Factures> getAllfactures_by_Commande(int cmd) {
 		return factureRepository.getAllfactures_by_Commande(cmd);
 	}
 
@@ -56,15 +57,11 @@ public class FacturesServiceIMP implements IFacturesService{
 	
 
 	@Override
-	public List<Factures> getAllfactures_by_Payementstate_true() {
-		String state="true";
-		return factureRepository.getAllfactures_by_Payementstate_true(state);
+	public List<Factures> getAllfactures_by_Payementstate(String payementstate) {
+		
+		return factureRepository.getAllfactures_by_Payementstate(payementstate);
 	}
-	@Override
-	public List<Factures> getAllfactures_by_Payementstate_false() {
-		String state="false";
-		return factureRepository.getAllfactures_by_Payementstate_false(state);
-	}
+	
 
 	@Override
 	public List<Factures> getfactures_by_Datedepart(Date date_dep) {
@@ -87,19 +84,14 @@ public class FacturesServiceIMP implements IFacturesService{
 	}
 
 	@Override
-	public List<Factures> getAllfactures_by_PayementType_En_ligne() {
+	public List<Factures> getAllfactures_by_PayementType(String payementType) {
 	
 		//En_ligne="En_ligne";
-		return factureRepository.getAllfactures_by_PayementType_En_ligne();
+		return factureRepository.getAllfactures_by_PayementType(payementType);
 				
 	}
 
-	@Override
-	public List<Factures> getAllfactures_by_PayementType_Prote_A_Prote() {
-
-		String type_payment="Prote_A_Prote";
-		return factureRepository.getAllfactures_by_PayementType_Prote_A_Prote(type_payment);
-	}
+	
 
 	@Override
 	public String  get_payment_type_by_factureID(int id_facture) {

@@ -25,6 +25,7 @@ public class Panier implements Serializable {
 	
 	private int quantite;
 	private double prix;
+	 private String status;
 
 	public int getQuantite() {
 		return quantite;
@@ -58,6 +59,11 @@ public class Panier implements Serializable {
 	
 
 
+	public Panier() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public PanierPK getPanierpk() {
 		return panierpk;
 	}
@@ -80,6 +86,14 @@ public class Panier implements Serializable {
 
 	public void setProduit(Produit produit) {
 		this.produit = produit;
+	}
+	 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public static long getSerialversionuid() {

@@ -3,8 +3,6 @@ package tn.esprit.spring.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,15 +33,21 @@ public class FactureController {
 		return facture;	
 		}
 	
-	  // URL : http://localhost:8081/SpringMVC/servlet/getfactures_by_ID/1
+	  // URL : http://localhost:8081/SpringMVC/servlet/getAllfactures_by_Commande/1
+	   @GetMapping(value = "getAllfactures_by_Commande/{idcmd}")
+	  
+	   public  List<Factures> getAllfactures_by_Commande(@PathVariable("idcmd")int idcmd) {
+			return factureservice.getAllfactures_by_Commande(idcmd);
+		}
+	   // URL : http://localhost:8081/SpringMVC/servlet/getfactures_by_ID/1
 	   @GetMapping(value = "getfactures_by_ID/{idemp}")
-	   @ResponseBody
+	   
 	   public Optional<Factures> getfactures_by_ID(@PathVariable("idemp")int id_facture) {
 			return factureservice.getfactures_by_ID(id_facture);
 		}
 	// URL : http://localhost:8081/SpringMVC/servlet/affecterCommande_A_Facture
-	   @PostMapping(value = "affecterCommande_A_Facture/{idf}/{idc}")
-	   @ResponseBody
+	   @PutMapping(value = "affecterCommande_A_Facture/{idf}/{idc}")
+	  
 		public void affecterCommande_A_Facture(@PathVariable("idf")int id_facture,@PathVariable("idc")int id_commande){
 		   factureservice.affecterCommande_A_Facture(id_facture, id_commande);
 	   }
@@ -57,48 +61,38 @@ public class FactureController {
 		}
 	// URL : http://localhost:8081/SpringMVC/servlet/getAllfactures
 	   @GetMapping(value = "getAllfactures")
-	   @ResponseBody
+	  
 	   public List<Factures> getAllfactures(){
 		   return factureservice.getAllfactures();
 		   
 	   }
 	// URL : http://localhost:8081/SpringMVC/servlet/supprimerFacture
-	   @DeleteMapping(value = "supprimerFacture")
-	   @ResponseBody
-		public void supprimerFacture(int id_facture){
+	   @DeleteMapping(value = "supprimerFacture/{id_facture}")
+	   
+		public void supprimerFacture(@PathVariable("id_facture")int id_facture){
 		   factureservice.supprimerFacture(id_facture);
 	   }
 	// URL : http://localhost:8081/SpringMVC/servlet/getAllfactures_by_PayementType_En_ligne
-	   @GetMapping(value = "getAllfactures_by_PayementType_En_ligne")
-	   @ResponseBody
-		public List<Factures> getAllfactures_by_PayementType_En_ligne(){
-		   return factureservice.getAllfactures_by_PayementType_En_ligne();
+	   @GetMapping(value = "getAllfactures_by_PayementType/{payementType}")
+	   
+		public List<Factures> getAllfactures_by_PayementType(@PathVariable("payementType")String payementType){
+		   return factureservice.getAllfactures_by_PayementType(payementType);
 		   
 	   }
-	// URL : http://localhost:8081/SpringMVC/servlet/getAllfactures_by_PayementType_Prote_A_Prote
-	   @GetMapping(value = "getAllfactures_by_PayementType_Prote_A_Prote")
-	   @ResponseBody
-	   public List<Factures> getAllfactures_by_PayementType_Prote_A_Prote(){
-		   return factureservice.getAllfactures_by_PayementType_Prote_A_Prote();
-		   
-	   }
-	// URL : http://localhost:8081/SpringMVC/servlet/getAllfactures_by_Payementstate_true
-	   @GetMapping(value = "getAllfactures_by_Payementstate_true")
-	   @ResponseBody
-		public List<Factures> getAllfactures_by_Payementstate_true(){
-		   return factureservice.getAllfactures_by_Payementstate_true();
+	
+	// URL : http://localhost:8081/SpringMVC/servlet/getAllfactures_by_Payementstate
+	   @GetMapping(value = "getAllfactures_by_Payementstate/{payementstate}")
+	   
+		public List<Factures> getAllfactures_by_Payementstate(@PathVariable("payementstate")String payementstate){
+		   return factureservice.getAllfactures_by_Payementstate(payementstate);
 			
 		}
-	// URL : http://localhost:8081/SpringMVC/servlet/getAllfactures_by_Payementstate_false
-	   @GetMapping(value = "getAllfactures_by_Payementstate_false")
-	   @ResponseBody
-		public List<Factures> getAllfactures_by_Payementstate_false(){
-		   return factureservice.getAllfactures_by_Payementstate_false();
-			
-		}
+	
 	// URL : http://localhost:8081/SpringMVC/servlet/get_payment_type_by_factureID
+
 	   @GetMapping(value = "get_payment_type_by_factureID/{id}")
-	   @ResponseBody
+	  
+
 	   public String  get_payment_type_by_factureID(@PathVariable("id")int id_facture) {
 		 return  factureservice.get_payment_type_by_factureID(id_facture);
 		   
