@@ -57,6 +57,9 @@ public class Produit implements Serializable{
 	@ManyToOne
 	private Ray ray;
 	
+	@ManyToOne
+	private Stock stock;
+	
 	
 	
 	
