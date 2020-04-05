@@ -16,42 +16,36 @@ public class Reclamation  implements Serializable  {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@OneToOne
+	@OneToOne(mappedBy="reclamation")
 	private Decision decision;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_Recl")
-	private Long id_recl;
+	private int id_recl;
 	
 	@Column(name = "description_Recl")
-	private String description;
+	private String description_Recl;
 	
-	@Column(name = "type_recl")
-	private String type_recl;
-
-	public Long getId_recl() {
+	
+	public int getId_recl() {
 		return id_recl;
 	}
 
-	public void setId_recl(Long id_recl) {
+	public void setId_recl(int id_recl) {
 		this.id_recl = id_recl;
 	}
 
-	public String getDescription() {
-		return description;
+	
+	
+	
+
+	public String getDescription_Recl() {
+		return description_Recl;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getType_recl() {
-		return type_recl;
-	}
-
-	public void setType_recl(String type_recl) {
-		this.type_recl = type_recl;
+	public void setDescription_Recl(String description_Recl) {
+		this.description_Recl = description_Recl;
 	}
 
 	public static long getSerialversionuid() {
@@ -62,16 +56,21 @@ public class Reclamation  implements Serializable  {
 		super();
 	}
 
-	public Reclamation(Long id_recl, String description, String type_recl) {
+	public Reclamation(int id_recl, String description_Recl) {
 		super();
 		this.id_recl = id_recl;
-		this.description = description;
-		this.type_recl = type_recl;
+		this.description_Recl = description_Recl;
+		
 	}
 
 	@Override
 	public String toString() {
-		return "Reclamation [id_recl=" + id_recl + ", description=" + description + ", type_recl=" + type_recl + "]";
+		return "Reclamation [id_recl=" + id_recl + ", description_Recl=" + description_Recl + "]";
+	}
+
+	public Reclamation(String description_Recl) {
+		super();
+		this.description_Recl = description_Recl;
 	}
 	
 

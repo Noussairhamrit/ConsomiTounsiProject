@@ -44,4 +44,12 @@ public class LivraisonRestController {
 	 public Livraison retriveLivraison(@PathVariable("id_livra")int id_livra){
 		 return iLivraisonService.retriveLivraison(id_livra);
 	 }
+	 
+	// http://localhost:8081/SpringMVC/servlet/affecterLivraisonALivreur
+	   @PutMapping("/affecterLivraisonALivreur/{id_livra}/{userId}") 
+	   @ResponseBody
+		public void  affecterLivraisonALivreur(@PathVariable("id_livra")int id_livra, @PathVariable("userId")Long userId)
+		{
+		   iLivraisonService.affecterLivraisonALivreur(id_livra,userId);
+		}
 }

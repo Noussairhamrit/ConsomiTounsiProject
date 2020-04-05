@@ -41,10 +41,10 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 	public Livraison retriveLivraison(int id_livra){
 		return 	livraisonRepository.findById((id_livra)).orElse(null);
 	}
-	
-	public void affecterLivraisonALivreur(String id_livra,Long userId){
+	@Override
+	public void affecterLivraisonALivreur(int id_livra,Long userId){
 		Livreur livreurManagedEntity = livreurRepository.findById(userId).get();
-		Livraison livraisonManagedEntity = livraisonRepository.findById((int) Long.parseLong(id_livra)).get();
+		Livraison livraisonManagedEntity = livraisonRepository.findById(id_livra).get();
 		
 		livraisonManagedEntity.setLivreur(livreurManagedEntity);
 		livraisonRepository.save(livraisonManagedEntity );

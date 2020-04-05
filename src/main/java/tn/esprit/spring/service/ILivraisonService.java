@@ -10,4 +10,5 @@ public interface ILivraisonService {
 	public void mettreAjourLivraison (int id_livra,String etat_livra);
 	public List<Livraison> retrieveAllLivraisons();
 	public Livraison retriveLivraison(int id_livra);
+	public void affecterLivraisonALivreur(int id_livra,Long userId);
 }
