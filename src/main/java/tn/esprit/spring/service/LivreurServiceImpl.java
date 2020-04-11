@@ -41,12 +41,23 @@ public class LivreurServiceImpl implements ILivreurService {
 	}
 
 	@Override
-	public List<Livreur> retrieveAllLivreurs() {
-		return (List<Livreur>) livreurRepository.findAll();
-	}
+	public List<Livreur> retrieveAllLivreurs(Livreur liv) {
+		if(liv.isDispo_liv()==true){
+			return (List<Livreur>) livreurRepository.findAll();
+	}else 
+		return null;
+		}
+		
 
 	@Override
 	public Livreur retriveLivreur(Long userId) {
 		return livreurRepository.findById(userId).orElse(null);
-	}
+		}
+	//chercher les livreurs disponible
+	/*@Override
+	public List<Livreur> GetLivreurDispo() {
+		List <Livreur> livreurs = livreurRepository.findAll();
+		for(Livre)
+		return livreurRepository.findById(userId).orElse(null);
+		}*/
 }
