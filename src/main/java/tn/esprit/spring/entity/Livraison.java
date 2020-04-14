@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +38,8 @@ public class Livraison implements Serializable  {
 	private String dest_livra;
 	
 	@Column(name = "Etat_Livraison")
-	private String etat_livra;
+	@Enumerated(EnumType.STRING)
+	private Etat_livra etat_livra;
 
 	public int getId_livra() {
 		return id_livra;
@@ -62,15 +65,18 @@ public class Livraison implements Serializable  {
 		this.dest_livra = dest_livra;
 	}
 
-	public String getEtat_livra() {
+	
+	
+
+	public Etat_livra getEtat_livra() {
 		return etat_livra;
 	}
 
-	public void setEtat_livra(String etat_livra) {
-		this.etat_livra = etat_livra;
+	public void setEtat_livra(Etat_livra etat_livra) {
+	 this.etat_livra = etat_livra;
 	}
 
-	public Livraison(int id_livra, int frais_livra, String dest_livra, String etat_livra) {
+	public Livraison(int id_livra, int frais_livra, String dest_livra, Etat_livra etat_livra) {
 		super();
 		this.id_livra = id_livra;
 		this.frais_livra = frais_livra;
@@ -78,7 +84,7 @@ public class Livraison implements Serializable  {
 		this.etat_livra = etat_livra;
 	}
 
-	public Livraison(int frais_livra, String dest_livra, String etat_livra) {
+	public Livraison(int frais_livra, String dest_livra, Etat_livra etat_livra) {
 		super();
 		this.frais_livra = frais_livra;
 		this.dest_livra = dest_livra;

@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.entity.Etat_livra;
 import tn.esprit.spring.entity.Livraison;
+
 import tn.esprit.spring.service.ILivraisonService;
 
 @RestController
@@ -33,10 +35,10 @@ public class LivraisonRestController {
 		 iLivraisonService.deleteLivraison(id_livra);
 	 }
 	// http://localhost:8081/SpringMVC/servlet/mettreAjourLivraison/{id_livra}/{newlivraison}
-	 @PutMapping("/mettreAjourLivraison/{id}/{newetat}") 
+	 @PutMapping("/mettreAjourLivraison/{id}/{idL}/{newetat}") 
 	 @ResponseBody
-	 public void mettreAjourLivraison(@PathVariable("newetat") String etat_livra, @PathVariable("id") int id_livra){
-		 iLivraisonService.mettreAjourLivraison(id_livra, etat_livra);
+	 public void mettreAjourLivraison(@PathVariable("newetat") Etat_livra etat_livra, @PathVariable("id") int id_livra,@PathVariable("idL")Long userId){
+		 iLivraisonService.mettreAjourLivraison(id_livra, etat_livra,userId);
 	 }
 	// http://localhost:8081/SpringMVC/servlet/retriveLivraison
 	 @GetMapping("/retriveLivraison/{id_livra}")
@@ -44,4 +46,13 @@ public class LivraisonRestController {
 	 public Livraison retriveLivraison(@PathVariable("id_livra")int id_livra){
 		 return iLivraisonService.retriveLivraison(id_livra);
 	 }
+	 
+	// http://localhost:8081/SpringMVC/servlet/affecterLivraisonALivreur
+	   @PutMapping("/affecterLivraisonALivreur/{id_livra}/{userId}") 
+	   @ResponseBody
+		public void  affecterLivraisonALivreur(@PathVariable("id_livra")int id_livra, @PathVariable("userId")Long userId)
+		{
+		   
+		   iLivraisonService.affecterLivraisonALivreur(id_livra,userId);
+		}
 }

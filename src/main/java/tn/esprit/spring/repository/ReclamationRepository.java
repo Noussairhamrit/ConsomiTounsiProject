@@ -6,6 +6,6 @@ import tn.esprit.spring.entity.Reclamation;
 
 
 
-public interface ReclamationRepository extends CrudRepository<Reclamation,Long>{
+public interface ReclamationRepository extends CrudRepository<Reclamation,Integer>{
 
 }
