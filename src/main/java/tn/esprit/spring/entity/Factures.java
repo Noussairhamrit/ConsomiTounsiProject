@@ -3,8 +3,10 @@ package tn.esprit.spring.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -24,7 +26,7 @@ public class Factures  implements Serializable{
 	private Date date_de_depart;
 	private String type;
 	@JsonIgnore
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private Commandes commande;
 	
 	public Factures(){

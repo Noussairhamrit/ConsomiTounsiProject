@@ -37,8 +37,34 @@ public class Commandes implements Serializable {
 	private String status;
 	private String payment_type;
 	private String Payment_state;
+	private String poucentage;
+	private double prix_after_remise;
 	
 	
+	public String getPoucentage() {
+		return poucentage;
+	}
+
+
+
+	public void setPoucentage(String poucentage) {
+		this.poucentage = poucentage;
+	}
+
+
+
+	public double getPrix_after_remise() {
+		return prix_after_remise;
+	}
+
+
+
+	public void setPrix_after_remise(double prix_after_remise) {
+		this.prix_after_remise = prix_after_remise;
+	}
+
+
+
 	@JsonIgnore
 	@OneToOne(mappedBy = "commande",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private Factures facture;
@@ -46,7 +72,7 @@ public class Commandes implements Serializable {
 	@OneToMany(mappedBy = "commande",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Panier> panier;
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private Client client;
 
 	public Commandes() {

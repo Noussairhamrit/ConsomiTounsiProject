@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.controller.CommandeForm;
+import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
+import tn.esprit.spring.entity.Factures;
+import tn.esprit.spring.entity.Panier;
 import tn.esprit.spring.repository.ClientRepository;
 import tn.esprit.spring.repository.CommandesRepository;
 import tn.esprit.spring.repository.PanierRepository;
@@ -17,6 +20,12 @@ import tn.esprit.spring.repository.ProduitRepository;
 public class CommandesServiceIMP implements ICommandesService {
 	@Autowired
 	CommandesRepository commandesrepository;
+	@Autowired
+	ClientRepository clientrepository;
+	@Autowired
+	PanierRepository panierrepository;
+	@Autowired
+	FacturesServiceIMP factureservice;
 	
 
 	@Override
@@ -87,5 +96,27 @@ public class CommandesServiceIMP implements ICommandesService {
 		return commandesrepository.getOne(id);
 		 
 	}
+	public void confirmer_commande(int idCommande,long iduser) {
+		List<Panier> p =panierrepository.findPanier_par_commande(idCommande);
+		Commandes c=commandesrepository.getOne(idCommande);
+		Client client = clientrepository.getOne(iduser);
+		c.setStatus("Comfirmer");
+		double a=c.getPrixtotale();
+		long pt = client.getNum_carte_fidelity();
+		long r = Math.round(a / 10);
+		client.setNum_carte_fidelity(pt + r);
+		clientrepository.save(client);
+		commandesrepository.save(c);
+		for(Panier pp :p){
+		pp.setStatus("vendu");
+		panierrepository.save(pp)	;	
+		}
+		Factures facture=new Factures();
+		facture.setDate_de_depart(new Date());
+		int id_facture=factureservice.ajouterFacture(facture);
+		factureservice.affecterCommande_A_Facture(id_facture, idCommande);
+		
+	}
+	
 
 }

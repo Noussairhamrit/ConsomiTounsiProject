@@ -19,6 +19,7 @@ public interface IFacturesService {
 	public List<Factures> getfactures_by_Datedepart(Date date_dep);
 	public void modifier_type_facture(String type,int id_facture);
 	public String  get_payment_type_by_factureID(int id_facture);	
+	public void facturepdf (int id_facture) ;
 	
 	
 

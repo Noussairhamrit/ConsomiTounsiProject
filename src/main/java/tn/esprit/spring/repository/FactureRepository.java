@@ -29,7 +29,7 @@ public interface FactureRepository extends JpaRepository<Factures,Integer>{
 	
 	 @Query("select c.payment_type from Commandes c join c.facture e where e.id=:factureID")
 	    public String  get_payment_type_by_factureID(@Param("factureID")int factureID);
-	 ////na9it il prix totale n7otou fil montant
+	
 		@Query(value = "UPDATE Factures c set c.commande_id_commande=?1  where c.id_facture=?2", nativeQuery = true)
 		@Modifying
 		@Transactional

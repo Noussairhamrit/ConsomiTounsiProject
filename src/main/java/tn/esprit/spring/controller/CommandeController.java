@@ -69,5 +69,9 @@ public class CommandeController {
 	public void PayerPorteaPorte(@PathVariable(value = "idCommande") int idCommande) {
 		CommandesService.PayerPorteaPorte(idCommande);
 	}
+	@PostMapping("/confirmer/{idCommande}/{iduser}")
+	public void confirmer_commande(@PathVariable(value ="idCommande")int idCommande,@PathVariable(value ="iduser")long iduser){
+		CommandesService.confirmer_commande(idCommande, iduser);
+	}
 	
 }

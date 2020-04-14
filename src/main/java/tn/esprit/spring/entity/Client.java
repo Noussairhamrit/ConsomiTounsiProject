@@ -5,10 +5,21 @@ import javax.persistence.Entity;
 @Entity
 public class Client extends AppUser {
 	private long num_carte_fidelity ;
+	private String interet;
 
 	public Client() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public String getInteret() {
+		return interet;
+	}
+
+
+	public void setInteret(String interet) {
+		this.interet = interet;
 	}
 
 

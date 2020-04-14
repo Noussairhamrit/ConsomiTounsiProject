@@ -3,6 +3,9 @@ package tn.esprit.spring.entity;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Embeddable
 public class PanierPK implements Serializable {
@@ -14,8 +17,8 @@ public class PanierPK implements Serializable {
 
 	private int id_commande;
 	private int id_produit;
-
-	private int id;
+	
+	
 	
 
 
@@ -49,15 +52,7 @@ public class PanierPK implements Serializable {
 
 
 
-	public int getId() {
-		return id;
-	}
-
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 
 

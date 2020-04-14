@@ -56,7 +56,8 @@ public class Produit implements Serializable{
 	
 	@ManyToOne
 	private Ray ray;
-	
+	@ManyToOne
+	private Stock stock;
 	
 	
 	
@@ -85,6 +86,29 @@ public class Produit implements Serializable{
 		this.prixVente = prixVente;
 		this.souscat = souscat;
 		this.panier = panier;
+	}
+	
+
+	public Produit(int id, String nom, long prix, String description, long quantite, long poid, long barreCode,
+			String img, long prixAchat, int prixVente, SousCategories souscat) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prix = prix;
+		Description = description;
+		this.quantite = quantite;
+		this.poid = poid;
+		this.barreCode = barreCode;
+		this.img = img;
+		this.prixAchat = prixAchat;
+		this.prixVente = prixVente;
+		this.souscat = souscat;
+	}
+	
+
+	public Produit(int id) {
+		super();
+		this.id = id;
 	}
 
 	public int getId() {
@@ -186,6 +210,15 @@ public class Produit implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "Produit [id=" + id + ", nom=" + nom + ", prix=" + prix + ", Description=" + Description + ", quantite="
+				+ quantite + ", poid=" + poid + ", barreCode=" + barreCode + ", img=" + img + ", prixAchat=" + prixAchat
+				+ ", prixVente=" + prixVente + ", souscat=" + souscat + ", ray=" + ray + ", stock=" + stock
+				+ ", panier=" + panier + "]";
+	}
+	
 
 	
 	

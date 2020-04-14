@@ -97,5 +97,10 @@ public class FactureController {
 		 return  factureservice.get_payment_type_by_factureID(id_facture);
 		   
 	   }
+	   @GetMapping("/afficherPDF/{id}")
+	   public void facturepdf (@PathVariable("id") int id) {
+		   
+		   factureservice.facturepdf(id);
+	   }
 
 }

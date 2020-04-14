@@ -37,5 +37,8 @@ public interface CommandesRepository extends JpaRepository<Commandes, Integer> {
 
 	@Query(value = "SELECT NEW tn.esprit.spring.entity.Commandes(c.id,c.date_commande,c.prixtotale,c.status)FROM Panier l join  l.commande c join l.produit p WHERE p.barreCode=:code")
 	public List<Commandes> Commandeparcode(@Param("code") long code);
+	
+	@Query(value = "SELECT * FROM commande WHERE client_user_id=?1 and status='en cours'", nativeQuery = true)
+	public Commandes CommandeencoursparClient(long iduser);
 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import tn.esprit.spring.entity.Panier;
 import tn.esprit.spring.entity.lignecommandeproduit;
 import tn.esprit.spring.service.PanierServiceIMP;
@@ -39,11 +40,27 @@ public class PanierController {
 	
 		return panierservice.panierParIdclient(id);
 	}
-	@PostMapping("/ajouter_to_panier/{idprod}/{iduser}")
-	public List<lignecommandeproduit> addProduit_To_Panier(@PathVariable(value = "idprod")int idprod
-			,@PathVariable(value = "iduser") long iduser
-			, @Valid @RequestBody Panier pp){
-	return	panierservice.addProduit_To_Panier(idprod, iduser,pp);
+	@GetMapping("b/{idUser}")
+	public List<lignecommandeproduit> panierParIdclient_confirmer(@PathVariable(value = "idUser") long id) {
+	
+		return panierservice.panierParIdclient_confirmer(id);
+	}
+	@PostMapping("/ajouter/{idprod}/{iduser}")
+	public List<lignecommandeproduit> AjouterLigne (@PathVariable(value = "idprod") int idprod,@PathVariable(value = "iduser") Long iduser,
+			@Valid @RequestBody Panier lc) {
+	
+		panierservice.AjouterAuPanier(idprod, iduser, lc);
+		
+		return panierservice.panierParIdclient(iduser);
+	}
+	@GetMapping("findAllPanier")
+	public List<Panier> findAll(){
+		return panierservice.findAll();
+	}
+	@GetMapping("findAllPanier_par_cmd/{idCommande}")
+	public List <Panier> findPanier_par_commande(@PathVariable(value = "idCommande") int idCommande){
+		
+		return panierservice.findPanier_par_commande(idCommande);
 	}
 
 	 
