@@ -14,7 +14,7 @@ class ConsomiTounsiApplicationTests {
 EventService es;
 	@Test
 	void contextLoads() {
-		es.retrieveEvent("2");
+		//es.retrieveEvent("2");
 	}
 
 }
