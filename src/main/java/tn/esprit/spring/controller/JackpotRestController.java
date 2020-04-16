@@ -45,14 +45,14 @@ public class JackpotRestController {
 	// http://localhost:8081/SpringMVC/servlet/remove-event/{jackpot-id}
 	@DeleteMapping("/delete-jackpot/{jackpot-id}")
 	@ResponseBody
-	public void deleteJackpot(@PathVariable("jackpot-id") String jpId) {
+	public void deleteJackpot(@PathVariable("jackpot-id") int jpId) {
 		js.deleteJackpot(jpId);
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/retrieve-jackpot/{jackpot-id}
 	@GetMapping("/retrieve-jackpot/{jackpot-id}")
 	@ResponseBody
-	public Jackpot retrieveJackpot(@PathVariable("jackpot-id") String jpId) {
+	public Jackpot retrieveJackpot(@PathVariable("jackpot-id") int jpId) {
 		return js.retrieveJackpot(jpId);
 	}
 

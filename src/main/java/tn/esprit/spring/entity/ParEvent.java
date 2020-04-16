@@ -2,7 +2,8 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,11 +26,39 @@ public class ParEvent implements Serializable {
 	private int pareventId;
 	@Temporal(TemporalType.DATE)
 	private Date pareventDate;
+	@Column(name = "PAREVENT_NAME")
+	private String parname;
+	@Column(name = "PAREVENT_MAIL")
+	private String parmail;
 	@ManyToMany(mappedBy="Reservation", cascade = CascadeType.ALL)
-	private Set<Event> events;
+	private List<Event> events;
 	
 	
 	
+	public String getParname() {
+		return parname;
+	}
+
+
+
+	public void setParname(String parname) {
+		this.parname = parname;
+	}
+
+
+
+	public String getParmail() {
+		return parmail;
+	}
+
+
+
+	public void setParmail(String parmail) {
+		this.parmail = parmail;
+	}
+
+
+
 	public int getPareventId() {
 		return pareventId;
 	}
@@ -54,13 +83,13 @@ public class ParEvent implements Serializable {
 
 
 
-	public Set<Event> getEvents() {
+	public List<Event> getEvents() {
 		return events;
 	}
 
 
 
-	public void setEvents(Set<Event> events) {
+	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
 
@@ -69,6 +98,36 @@ public class ParEvent implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+
+	public ParEvent(int pareventId, Date pareventDate, String parname, String parmail, List<Event> events) {
+		super();
+		this.pareventId = pareventId;
+		this.pareventDate = pareventDate;
+		this.parname = parname;
+		this.parmail = parmail;
+		this.events = events;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ParEvent [pareventId=" + pareventId + ", pareventDate=" + pareventDate + ", parname=" + parname
+				+ ", parmail=" + parmail + ", events=" + events + "]";
+	}
+
+
+
+	public ParEvent() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	
 
 
 

@@ -10,9 +10,9 @@ public interface JackpotService {
 
 	Jackpot updateJackpot(Jackpot j);
 
-	void deleteJackpot(String jpId);
+	void deleteJackpot(int jpId);
 
-	Jackpot retrieveJackpot(String jpId);
+	Jackpot retrieveJackpot(int jpId);
 
 	List<Jackpot> retrieveAllJackpots();
 

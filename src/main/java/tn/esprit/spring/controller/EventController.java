@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import tn.esprit.spring.entity.Event;
-import tn.esprit.spring.entity.User;
 import tn.esprit.spring.service.EventServiceImpl;
 
 

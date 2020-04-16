@@ -2,7 +2,8 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,7 +25,7 @@ public class Event implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "EVENT_ID")
-	private Long eventId;
+	private Integer eventId;
 	@Column(name = "EVENT_TITLE")
 	private String eventTitle;
 	@Column(name = "EVENT_TYPE")
@@ -38,7 +39,10 @@ public class Event implements Serializable {
 	private Jackpot jackpot;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<ParEvent> Reservation;
+	private List<ParEvent> Reservation;
+	
+	
+	
 	public Jackpot getJackpot() {
 		return jackpot;
 	}
@@ -47,11 +51,13 @@ public class Event implements Serializable {
 		this.jackpot = jackpot;
 	}
 
-	public Long getEventId() {
+
+
+	public Integer getEventId() {
 		return eventId;
 	}
 
-	public void setEventId(Long eventId) {
+	public void setEventId(Integer eventId) {
 		this.eventId = eventId;
 	}
 
@@ -93,8 +99,8 @@ public class Event implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Event(Long eventId, String eventTitle, String eventTYPE, Date eventDate, String eventPicture,
-			Jackpot jackpot, Set<ParEvent> reservation) {
+	public Event(Integer eventId, String eventTitle, String eventTYPE, Date eventDate, String eventPicture,
+			Jackpot jackpot, List<ParEvent> reservation) {
 		super();
 		this.eventId = eventId;
 		this.eventTitle = eventTitle;
@@ -113,6 +119,14 @@ public class Event implements Serializable {
 		return "Event [eventId=" + eventId + ", eventTitle=" + eventTitle + ", eventTYPE=" + eventTYPE + ", eventDate="
 				+ eventDate + ", eventPicture=" + eventPicture + ", jackpot=" + jackpot + ", Reservation=" + Reservation
 				+ "]";
+	}
+
+	public List<ParEvent> getReservation() {
+		return Reservation;
+	}
+
+	public void setReservation(List<ParEvent> reservation) {
+		Reservation = reservation;
 	}
 
 }

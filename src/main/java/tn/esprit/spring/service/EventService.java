@@ -12,11 +12,17 @@ public interface EventService {
 
 	Event updateEvent(Event e);
 
-	void deleteEvent(String id);
+	void deleteEvent(int id);
 
 	
 
-	Event retrieveEvent(String id);
+	Event retrieveEvent(int string);
+
+	List<Event> EventByTitle(int eventTitle);
+
+//	public void affecterEventAJackpot(int eventId, int jpId);
+//	public void desaffecterEventDJackpot(int eventId, int jpId);
+
 
 	
 

@@ -7,9 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.entity.Event;
+
 import tn.esprit.spring.entity.Jackpot;
-import tn.esprit.spring.repository.EventRepository;
+
 import tn.esprit.spring.repository.JackpotRepository;
 
 @Service
@@ -42,15 +42,15 @@ public class JackpotServiceImpl implements JackpotService {
 	}
 
 	@Override
-	public void deleteJackpot(String jpId) {
-		jackpotRepository.deleteById(Long.parseLong(jpId));
+	public void deleteJackpot(int jpId) {
+		jackpotRepository.deleteById(jpId);
 
 	}
 
 	@Override
-	public Jackpot retrieveJackpot(String jpId) {
+	public Jackpot retrieveJackpot(int jpId) {
 		Jackpot j;
-		j = jackpotRepository.findById(Long.parseLong(jpId)).orElse(null);
+		j = jackpotRepository.findById(jpId).get();
 		return j;
 	}
 

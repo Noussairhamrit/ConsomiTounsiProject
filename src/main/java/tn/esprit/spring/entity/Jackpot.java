@@ -2,6 +2,7 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ public class Jackpot implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "JP_ID")
-	private Long jpId;
+	private int jpId;
 	@Enumerated(EnumType.STRING)
 	JackpotGoal but;
 	@Temporal(TemporalType.DATE)
@@ -37,11 +38,11 @@ public class Jackpot implements Serializable {
 	@OneToOne
 	private Event event;
 
-	public Long getJpId() {
+	public int getJpId() {
 		return jpId;
 	}
 
-	public void setJpId(Long jpId) {
+	public void setJpId(int jpId) {
 		this.jpId = jpId;
 	}
 
@@ -73,7 +74,7 @@ public class Jackpot implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Jackpot(Long jpId, JackpotGoal but, Date date_S, Date date_F, Long jpSum, Event event) {
+	public Jackpot(int jpId, JackpotGoal but, Date date_S, Date date_F, Long jpSum, Event event) {
 		super();
 		this.jpId = jpId;
 		this.but = but;
@@ -85,6 +86,24 @@ public class Jackpot implements Serializable {
 
 	
 
+
+	public JackpotGoal getBut() {
+		return but;
+	}
+
+	public void setBut(JackpotGoal but) {
+		this.but = but;
+	}
+
+	
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
 
 	public Jackpot() {
 		super();

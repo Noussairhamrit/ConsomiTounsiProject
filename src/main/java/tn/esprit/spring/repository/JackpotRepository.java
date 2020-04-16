@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import tn.esprit.spring.entity.Jackpot;
 @Repository
-public interface JackpotRepository extends CrudRepository<Jackpot, Long> {
+public interface JackpotRepository extends CrudRepository<Jackpot, Integer> {
 
 }
