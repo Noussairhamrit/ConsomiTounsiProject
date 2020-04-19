@@ -56,7 +56,9 @@ public class ClientController {
 	  }
 	  @GetMapping(value = "produit_gangant/{nbpt}")
 	  public Produit produit_gangant(@PathVariable ("nbpt")int nbpt) throws MailException, MessagingException{
-		return  client_service.produit_gangant(nbpt);
+	
+			return  client_service.produit_gangant(nbpt);
+	
 	  }
 	  @RequestMapping("/sendmail")
 	  public String sendmail(){
