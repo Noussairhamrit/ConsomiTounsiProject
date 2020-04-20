@@ -23,12 +23,13 @@ public class StockServiceImpl implements IStockSerivce{
 		stockRepository.deleteById(IdStock);
 	}
 	
-//	@Override
-//	public void UpdateStock(int IdStock,String etat) {
-//		Stock stock = stockRepository.findById(IdStock).get();
-//		//stock.setEtat_livra(etat_livra);
-//		stockRepository.save(stock);
-//	}
+	@Override
+	public void UpdateStock(int IdStock,String NameStock, String QuantityStock) {
+		Stock stock = stockRepository.findById(IdStock).get();
+		stock.setNameStock(NameStock);
+		stock.setQuantityStock(QuantityStock);
+		stockRepository.save(stock);
+	}
 
 	
 

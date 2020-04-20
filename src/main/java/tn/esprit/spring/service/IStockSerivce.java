@@ -6,7 +6,7 @@ public interface IStockSerivce {
 	
 	public int ajouterStock(Stock stock);
 	public void deleteStock(int IdStock);
-//	public void UpdateStock(int IdStock,String etat);
+	public void UpdateStock(int IdStock,String NameStock, String QuantityStock);
 	
 	
 
