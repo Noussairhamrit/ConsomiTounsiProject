@@ -6,7 +6,47 @@
 	<ui:define name="content">
 		<!-- BEGIN : TP1 JSF Introduction Login -->
 		<h:panelGroup>
+			</h:panelGroup>
+		<h:panelGroup columns="2">
+			<h:form>
+				<h:dataTable value="#{AdminController.commandes}" var="commande"
+					border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="date_commande" />
+						</f:facet>
+						<h:outputText value="#{commande.date_commande}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="status" />
+						</f:facet>
+						<h:outputText value="#{commande.status}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="payment_type" />
+						</f:facet>
+						<h:outputText value="#{commande.payment_type}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Payment_state" />
+						</f:facet>
+						<h:outputText value="#{commande.Payment_state}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="prixtotale" />
+						</f:facet>
+						<h:outputText value="#{commande.prixtotale}" />
+					</h:column>
+							
+					
+				</h:dataTable>
+			</h:form>
+	
 			
-		</h:panelGroup>
+		
 	</ui:define>
 </ui:composition>
