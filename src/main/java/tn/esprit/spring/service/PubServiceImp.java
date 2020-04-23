@@ -1,15 +1,15 @@
 package tn.esprit.spring.service;
 
-import java.util.List
-;
+import java.util.List;
+
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
 import tn.esprit.spring.entity.Pub;
 
 import tn.esprit.spring.repository.PubRepository;
@@ -33,8 +33,9 @@ return pubs;
 }
 
 public Long addPub(Pub pub) {
+	pub.setRating(1);
+	pub.setViews(1);
 	pubRepository.save(pub);
-	pub.setRating(0);
 	return pub.getId();
 
 }
@@ -52,6 +53,27 @@ public void mettreAjourRatingByPubId(Integer rating, Long PubId ) {
 	pubRepository.save(pub);
 
 }
+public Pub getPubById(Long pubId) {
+	Pub pub = pubRepository.findById(pubId).get();
+	pub.setViews((pub.getViews())+1);
+	pubRepository.save(pub);
+	return pub;
+}
 
+
+public List<Pub> TopViewsJPQL() {
+	return pubRepository.TopViewsJPQL();
+}
+
+@Override
+public void deletePubsWithNoInteractionJPQL() {
+	pubRepository.deletePubsWithNoInteractionJPQL();
+	
+}
+@Scheduled(cron = "0/15 * * * * *")
+public void deleteAutoJPQL(){
+	pubRepository.deleteAutoJPQL();
+	System.out.println("done");
+}
 
 }

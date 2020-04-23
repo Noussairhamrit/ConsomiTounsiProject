@@ -29,9 +29,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
+			<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.8</version>
@@ -55,6 +53,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+	
 	</dependencies>
 
 	<build>

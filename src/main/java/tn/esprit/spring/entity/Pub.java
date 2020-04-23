@@ -2,6 +2,7 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 
+
 import java.util.Date;
 import java.util.Set;
 
@@ -10,10 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -35,13 +36,17 @@ public class Pub implements Serializable {
 	private String description;
 	private Date date;
 	CatPub catPub;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Pub")
 	private Set<CommentPub> commentPub;
 	private Integer rating;
+	private Integer views;
 	public Pub() {
 		
 	}
-	public Pub(Long id, byte[] image, String title, String description, Date date, CatPub catPub, Integer rating) {
+
+	public Pub(Long id, byte[] image, String title, String description, Date date, CatPub catPub,
+			Set<CommentPub> commentPub, Integer rating, Integer views) {
 		super();
 		this.id = id;
 		this.image = image;
@@ -49,8 +54,11 @@ public class Pub implements Serializable {
 		this.description = description;
 		this.date = date;
 		this.catPub = catPub;
+		this.commentPub = commentPub;
 		this.rating = rating;
+		this.views = views;
 	}
+
 	public Set<CommentPub> getCommentPub() {
 		return commentPub;
 	}
@@ -98,6 +106,12 @@ public class Pub implements Serializable {
 	}
 	public void setCatPub(CatPub catPub) {
 		this.catPub = catPub;
+	}
+	public Integer getViews() {
+		return views;
+	}
+	public void setViews(Integer views) {
+		this.views = views;
 	}
 	
 	 

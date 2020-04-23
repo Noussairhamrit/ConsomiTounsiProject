@@ -1,18 +1,19 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
+
+
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="commentPub")
 public class CommentPub implements Serializable {
@@ -28,17 +29,24 @@ public class CommentPub implements Serializable {
 	private Date date;
 	private Integer likes ; 
 	private Integer dislike ;
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	Pub Pub;
+
+	
+	
 	public CommentPub() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
-	public CommentPub(Long id, String description, Date date) {
+	public CommentPub(Long id, String description, Date date, Integer likes, Integer dislike,
+			tn.esprit.spring.entity.Pub pub) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.date = date;
+		this.likes = likes;
+		this.dislike = dislike;
+		Pub = pub;
 	}
 	public Long getId() {
 		return id;
@@ -72,16 +80,7 @@ public class CommentPub implements Serializable {
 	public void setDislike(Integer dislike) {
 		this.dislike = dislike;
 	}
-	public CommentPub(Long id, String description, Date date, Integer likes, Integer dislike,
-			tn.esprit.spring.entity.Pub pub) {
-		super();
-		this.id = id;
-		this.description = description;
-		this.date = date;
-		this.likes = likes;
-		this.dislike = dislike;
-		Pub = pub;
-	}
+
 	public Integer getLikes() {
 		return likes;
 	}
