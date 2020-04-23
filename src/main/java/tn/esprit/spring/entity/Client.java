@@ -14,7 +14,7 @@ public class Client extends AppUser {
 
 
 	public String getInteret() {
-		return interet;
+		 return interet;
 	}
 
 
