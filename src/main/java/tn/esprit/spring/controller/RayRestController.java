@@ -19,14 +19,14 @@ public class RayRestController {
 	// http://localhost:8081/SpringMVC/servlet/ajouterRay
 	@PostMapping("/ajouterRay")
 	@ResponseBody
-	public Ray ajouterStock(@RequestBody Ray ray) {
+	public Ray ajouterRay(@RequestBody Ray ray) {
 		iRayService.ajouterRay(ray);
 		return ray;
 	}
 	
 	
-	// http://localhost:8081/SpringMVC/servlet/deleteRay/{RAYID}
-	 @DeleteMapping("/deleteRay/{RAYID}") 
+	// http://localhost:8081/SpringMVC/servlet/deleteRay/{RayId}
+	 @DeleteMapping("/deleteRay/{RayId}") 
 	 @ResponseBody
 	public void deleteRay(@PathVariable("RayId")int RayId){
 		 iRayService.deleteRay(RayId);
