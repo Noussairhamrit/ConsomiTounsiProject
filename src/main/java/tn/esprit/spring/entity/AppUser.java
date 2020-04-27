@@ -21,23 +21,23 @@ public class AppUser {
 	@Id
     @GeneratedValue
     @Column(name = "User_Id", nullable = false)
-    private Long userId;
+	protected Long userId;
  
     @Column(name = "User_Name", length = 36, nullable = false)
-    private String userName;
+	protected String userName;
  
     @Column(name = "Encryted_Password", length = 128, nullable = false)
-    private String encrytedPassword;
+	protected String encrytedPassword;
  
     @Column(name = "Enabled", length = 1, nullable = false)
-    private boolean enabled;
+	protected boolean enabled;
      
-    private String nom;
-    private String prenom;
-    private long cin;
-    private String address;
-    private long num_tel;
-    private String email;
+    protected String nom;
+    protected String prenom;
+    protected long cin;
+    protected String address;
+    protected long num_tel;
+    protected String email;
     
     
     

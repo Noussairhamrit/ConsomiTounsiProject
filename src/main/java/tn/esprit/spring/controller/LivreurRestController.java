@@ -1,6 +1,9 @@
 package tn.esprit.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.service.ILivreurService;
 
+@CrossOrigin("*")
 @RestController
 public class LivreurRestController {
 	@Autowired
@@ -37,21 +41,40 @@ public class LivreurRestController {
 	// http://localhost:8081/SpringMVC/servlet/mettreAjourLivreurBydispo/{userId}
 	@PutMapping("/mettreAjourLivreurBydispo/{userId}/{newd}")
 	@ResponseBody
-	public void mettreAjourLivreurBydispo(@PathVariable("newd") boolean dispo_liv, @PathVariable("userId") Long userId) {
+	public void mettreAjourLivreurBydispo(@PathVariable("newd") boolean dispo_liv,
+			@PathVariable("userId") Long userId) {
 		iLivreurService.mettreAjourLivreurBydispo(userId, dispo_liv);
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/mettreAjourLivreurBycharge/{userId}
 	@PutMapping("/mettreAjourLivreurBycharge/{userId}/{newc}")
 	@ResponseBody
-	public void mettreAjourLivreurBycharge(@PathVariable("userId") Long userId,@PathVariable("newc") int chargeT_liv) {
-		iLivreurService.mettreAjourLivreurBycharge(userId,chargeT_liv);
+	public void mettreAjourLivreurBycharge(@PathVariable("userId") Long userId, @PathVariable("newc") int chargeT_liv) {
+		iLivreurService.mettreAjourLivreurBycharge(userId, chargeT_liv);
 	}
-	
+
 	// http://localhost:8081/SpringMVC/servlet/retriveLivreur
-		 @GetMapping("/retriveLivreur/{userId}")
-		 @ResponseBody
-		 public Livreur retriveLivreur(@PathVariable("userId")Long userId){
-			 return iLivreurService.retriveLivreur(userId);
-}
+	@GetMapping("/retriveLivreur/{userId}")
+	@ResponseBody
+	public Livreur retriveLivreur(@PathVariable("userId") Long userId) {
+		return iLivreurService.retriveLivreur(userId);
+	}
+	/*
+	 * // http://localhost:8081/SpringMVC/servlet/getAllEmployeNamesJPQL
+	 * 
+	 * @GetMapping(value = "retrieveAllLivreurs")
+	 * 
+	 * @ResponseBody public List<Livreur> retrieveAllLivreurs (){
+	 * 
+	 * return iLivreurService.retrieveAllLivreurs(); }
+	 */
+
+	// http://localhost:8081/SpringMVC/servlet/getAlllivreurs
+	@GetMapping("/getAlllivreurs")
+	@ResponseBody
+	public List<Livreur> getAlllivreurs() {
+		return iLivreurService.getAlllivreurs();
+	}
+
+
 }

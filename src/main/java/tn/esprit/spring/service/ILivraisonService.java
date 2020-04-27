@@ -12,4 +12,5 @@ public interface ILivraisonService {
 	public List<Livraison> retrieveAllLivraisons();
 	public Livraison retriveLivraison(int id_livra);
 	public void affecterLivraisonALivreur(int id_livra,Long userId);
+	public List<Livraison> afficherleslivraison(Long userId);
 }

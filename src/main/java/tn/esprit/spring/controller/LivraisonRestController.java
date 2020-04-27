@@ -1,5 +1,7 @@
 package tn.esprit.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,5 +56,13 @@ public class LivraisonRestController {
 		{
 		   
 		   iLivraisonService.affecterLivraisonALivreur(id_livra,userId);
+		}
+	   
+
+		// http://localhost:8081/SpringMVC/servlet/afficherleslivraison
+		@GetMapping("/afficherleslivraison/{userId}")
+		@ResponseBody
+		public List<Livraison> afficherleslivraison(@PathVariable("userId") Long userId) {
+		    return iLivraisonService.afficherleslivraison(userId);
 		}
 }

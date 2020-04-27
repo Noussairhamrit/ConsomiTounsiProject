@@ -82,5 +82,18 @@ public class Livreur extends AppUser implements Serializable {
 	public void setLivraison(List<Livraison> livraisons) {
 		this.livraisons = livraisons;
 	}
-
+	public Livreur(Long userId, String userName, String encrytedPassword, boolean enabled, String nom, String prenom,
+			long cin, String address, long num_tel, String email) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.encrytedPassword = encrytedPassword;
+		this.enabled = enabled;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.address = address;
+		this.num_tel = num_tel;
+		this.email = email;
+	}
 }

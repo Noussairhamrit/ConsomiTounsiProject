@@ -40,14 +40,15 @@ public class LivreurServiceImpl implements ILivreurService {
 		livreurRepository.save(livreur);
 	}
 
-	@Override
-	public List<Livreur> retrieveAllLivreurs(Livreur liv) {
-		if(liv.isDispo_liv()==true){
+	/*@Override
+	public List<Livreur> retrieveAllLivreurs() {
+		//Livreur liv = livreurRepository.findById(userId).get();
+		if(livreurRepository.findById().get().isDispo_liv()==true){
 			return (List<Livreur>) livreurRepository.findAll();
 	}else 
 		return null;
 		}
-		
+		*/
 
 	@Override
 	public Livreur retriveLivreur(Long userId) {
@@ -60,4 +61,11 @@ public class LivreurServiceImpl implements ILivreurService {
 		for(Livre)
 		return livreurRepository.findById(userId).orElse(null);
 		}*/
+	
+	@Override
+	public List<Livreur> getAlllivreurs() {
+		return livreurRepository.getAlllivreurs();
+	}
+	
+	
 }

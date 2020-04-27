@@ -68,5 +68,8 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 		
 		livraisonRepository.save(livraisonManagedEntity );
 	}
-		
+	@Override
+	public List<Livraison> afficherleslivraison(Long userId) {
+		return livraisonRepository.afficherleslivraison(userId);
+	}
 }

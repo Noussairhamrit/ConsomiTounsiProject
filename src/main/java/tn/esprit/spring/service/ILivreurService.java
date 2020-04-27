@@ -9,8 +9,9 @@ public interface ILivreurService {
 	public void deleteLivreur(Long userId);
 	public void mettreAjourLivreurBydispo(Long userId,boolean dispo_liv);
 	public void mettreAjourLivreurBycharge(Long userId,int chargeT_liv);
-	public List<Livreur> retrieveAllLivreurs(Livreur liv);
+	//public List<Livreur> retrieveAllLivreurs();
 	public Livreur retriveLivreur(Long userId);
 	//public List<Livreur> GetLivreurDispo();
-
+	public List<Livreur> getAlllivreurs();
+	
 }
