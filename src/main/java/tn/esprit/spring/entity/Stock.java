@@ -1,6 +1,7 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,7 +26,11 @@ public class Stock implements Serializable{
 	@Column(name = "Name_Stock")
 	private String NameStock;
 	@Column(name = "Quantity_Stock")
-	private String QuantityStock;
+	private int QuantityStock;
+	@Column(name = "Fournisseur")
+	private String Fournisseur;
+	@Column(name= "Entry_Date")
+	private Date Entry_Date;
 	
 	@OneToMany(mappedBy="stock")
 	private List<Produit> produit;
@@ -46,11 +51,11 @@ public class Stock implements Serializable{
 		NameStock = nameStock;
 	}
 
-	public String getQuantityStock() {
+	public int getQuantityStock() {
 		return QuantityStock;
 	}
 
-	public void setQuantityStock(String quantityStock) {
+	public void setQuantityStock(int quantityStock) {
 		QuantityStock = quantityStock;
 	}
 
@@ -65,6 +70,24 @@ public class Stock implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public String getFournisseur() {
+		return Fournisseur;
+	}
+
+	public void setFournisseur(String fournisseur) {
+		Fournisseur = fournisseur;
+	}
+
+	public Date getEntry_Date() {
+		return Entry_Date;
+	}
+
+	public void setEntry_Date(Date entry_Date) {
+		Entry_Date = entry_Date;
+	}
+	
+	
 	
 	
 

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="publication")
@@ -32,12 +34,17 @@ public class Pub implements Serializable {
 	private String description;
 	private Date date;
 	CatPub catPub;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Pub")
 	private Set<CommentPub> commentPub;
+	private Integer rating;
+	private Integer views;
 	public Pub() {
 		
 	}
-	public Pub(Long id, byte[] image, String title, String description, Date date, CatPub catPub) {
+
+	public Pub(Long id, byte[] image, String title, String description, Date date, CatPub catPub,
+			Set<CommentPub> commentPub, Integer rating, Integer views) {
 		super();
 		this.id = id;
 		this.image = image;
@@ -45,6 +52,22 @@ public class Pub implements Serializable {
 		this.description = description;
 		this.date = date;
 		this.catPub = catPub;
+		this.commentPub = commentPub;
+		this.rating = rating;
+		this.views = views;
+	}
+
+	public Set<CommentPub> getCommentPub() {
+		return commentPub;
+	}
+	public void setCommentPub(Set<CommentPub> commentPub) {
+		this.commentPub = commentPub;
+	}
+	public Integer getRating() {
+		return rating;
+	}
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 	public Long getId() {
 		return id;
@@ -81,6 +104,12 @@ public class Pub implements Serializable {
 	}
 	public void setCatPub(CatPub catPub) {
 		this.catPub = catPub;
+	}
+	public Integer getViews() {
+		return views;
+	}
+	public void setViews(Integer views) {
+		this.views = views;
 	}
 	
 	 

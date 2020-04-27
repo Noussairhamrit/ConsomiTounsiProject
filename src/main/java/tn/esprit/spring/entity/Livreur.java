@@ -97,3 +97,4 @@ public class Livreur extends AppUser implements Serializable {
 		this.email = email;
 	}
 }
+
