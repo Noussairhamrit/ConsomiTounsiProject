@@ -3,11 +3,15 @@ package tn.esprit.spring.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Factures  implements Serializable{
@@ -17,17 +21,18 @@ public class Factures  implements Serializable{
 	@GeneratedValue
 	@Column(name="id_facture")
 	private int id;
-	private int montant;
+	private double montant;
 	
 	private Date date_de_depart;
 	private String type;
-	@OneToOne
+	@JsonIgnore
+	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private Commandes commande;
 	
 	public Factures(){
 		super();
 	}
-	public Factures(int id, int montant, Date date_de_depart, String type, Commandes commande) {
+	public Factures(int id, double montant, Date date_de_depart, String type, Commandes commande) {
 		super();
 		this.id = id;
 		this.montant = montant;
@@ -35,17 +40,14 @@ public class Factures  implements Serializable{
 		this.type = type;
 		this.commande = commande;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((commande == null) ? 0 : commande.hashCode());
-		result = prime * result + ((date_de_depart == null) ? 0 : date_de_depart.hashCode());
-		result = prime * result + id;
-		result = prime * result + montant;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
+	
+	public Factures(int id, double montant, String type) {
+		super();
+		this.id = id;
+		this.montant = montant;
+		this.type = type;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,10 +84,10 @@ public class Factures  implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getMontant() {
+	public double getMontant() {
 		return montant;
 	}
-	public void setMontant(int montant) {
+	public void setMontant(double montant) {
 		this.montant = montant;
 	}
 	public Date getDate_de_depart() {

@@ -17,8 +17,8 @@ public class PanierPK implements Serializable {
 
 	private int id_commande;
 	private int id_produit;
-
-	private int id;
+	
+	
 	
 
 
@@ -52,15 +52,7 @@ public class PanierPK implements Serializable {
 
 
 
-	public int getId() {
-		return id;
-	}
-
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 
 

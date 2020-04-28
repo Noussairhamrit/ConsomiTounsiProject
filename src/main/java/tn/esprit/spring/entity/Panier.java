@@ -2,14 +2,17 @@ package tn.esprit.spring.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -22,11 +25,14 @@ public class Panier implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private PanierPK panierpk;
-	
+	//@EmbeddedId
+	//private PanierPK panierpk;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private int quantite;
 	private double prix;
+	 private String status;
 
 	public int getQuantite() {
 		return quantite;
@@ -45,26 +51,37 @@ public class Panier implements Serializable {
 	}
 
 	// idcommande est a la fois primary key et foreign key
-	@ManyToOne
-	@JoinColumn(name = "id_commande", referencedColumnName = "id_commande", insertable = false, updatable = false)
+	@JsonIgnore
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_commande", referencedColumnName = "id_commande")
 	private Commandes commande;
 
 	// idproduit est a la fois primary key et foreign key
-
-	@ManyToOne
-	@JoinColumn(name = "id_produit", referencedColumnName = "Prod_Id", insertable = false, updatable = false)
+	@JsonIgnore
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_produit", referencedColumnName = "Prod_Id")
 	private Produit produit;
 	
 	
 	
 
 
-	public PanierPK getPanierpk() {
-		return panierpk;
+	public Panier() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+	
 
-	public void setPanierpk(PanierPK panierpk) {
-		this.panierpk = panierpk;
+
+
+	public Panier(int id, int quantite, double prix, String status, Commandes commande, Produit produit) {
+		super();
+		this.id = id;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.status = status;
+		this.commande = commande;
+		this.produit = produit;
 	}
 
 	public Commandes getCommande() {
@@ -81,6 +98,14 @@ public class Panier implements Serializable {
 
 	public void setProduit(Produit produit) {
 		this.produit = produit;
+	}
+	 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public static long getSerialversionuid() {
