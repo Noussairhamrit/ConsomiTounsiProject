@@ -1,20 +1,30 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.Data;
 
 
+@Data
 @Entity
 @Table(name = "Produit")
-
+@JsonIgnoreProperties
 public class Produit implements Serializable{
 
 	/**
@@ -24,101 +34,105 @@ public class Produit implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(name = "Prod_Id")
-	private Long id;
+	private int id;
 	@Column(name = "Prod_nom")
 	private String nom;
 	@Column(name = "Prod_Prix")
-	private Long prix;
+	private long prix;
 	@Column(name = "Prod_Desc")
 	private String Description;
 	@Column(name = "Prod_Qount")
-	private Long quantite;
+	private long quantite;
 	@Column(name = "Prod_Poid")
-	private Long poid;
+	private long poid;
 	@Column(name = "Barre_code")
-	private Long barreCode;
-	@Column(name = "image")
+	private long barreCode;
 	private String img;
 	@Column(name = "Prix_Achat")
-	private Long prixAchat;
+	private long prixAchat;
 	@Column(name = "Prix_Vente")
-	private Long prixVente;
+	private int prixVente;
+	
+	
+	
+	/////Actor
+	@JsonIgnore
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private StoreManger gerant;
 	
 	@ManyToOne
+	@JsonIgnore
 	private SousCategories souscat;
 	
+	////////ImageProduit
 	
-	public Long getId() {
-		return id;
+	@OneToMany(mappedBy="Idproduit",cascade=CascadeType.ALL)
+	@JsonIgnore
+	private Set<ImageProduit> Images;
+	
+	
+
+	////////////panier
+	@OneToMany(mappedBy="produit")
+	private  List<Panier> panier;
+	
+	public Produit() {
+		super();
 	}
-	public void setId(Long id) {
+
+
+
+	public Produit(int id, String nom, long prix, String description, long quantite, long poid, long barreCode,
+			long prixAchat, int prixVente, SousCategories souscat, Set<ImageProduit> images) {
+		super();
 		this.id = id;
-	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
 		this.nom = nom;
-	}
-	public Long getPrix() {
-		return prix;
-	}
-	public void setPrix(Long prix) {
 		this.prix = prix;
-	}
-	public String getDescription() {
-		return Description;
-	}
-	public void setDescription(String description) {
 		Description = description;
-	}
-	public Long getQuantite() {
-		return quantite;
-	}
-	public void setQuantite(Long quantite) {
 		this.quantite = quantite;
-	}
-	public Long getPoid() {
-		return poid;
-	}
-	public void setPoid(Long poid) {
 		this.poid = poid;
-	}
-	public Long getBarreCode() {
-		return barreCode;
-	}
-	public void setBarreCode(Long barreCode) {
 		this.barreCode = barreCode;
+		this.prixAchat = prixAchat;
+		this.prixVente = prixVente;
+		this.souscat = souscat;
+		Images = images;
 	}
+	
+
+
+
+
+
+
+
+
+	public Set<ImageProduit> getImages() {
+		return Images;
+	}
+
+
+
+	public void setImages(Set<ImageProduit> images) {
+		Images = images;
+	}
+
+
+
 	public String getImg() {
 		return img;
 	}
+
+
+
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public Long getPrixAchat() {
-		return prixAchat;
-	}
-	public void setPrixAchat(Long prixAchat) {
-		this.prixAchat = prixAchat;
-	}
-	public Long getPrixVente() {
-		return prixVente;
-	}
-	public void setPrixVente(Long prixVente) {
-		this.prixVente = prixVente;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	public Produit() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Produit(Long id, String nom, Long prix, String description, Long quantite, Long poid, Long barreCode,
-			String img, Long prixAchat, Long prixVente) {
+
+
+
+	public Produit(int id, String nom, long prix, String description, long quantite, long poid, long barreCode,
+			long prixAchat, int prixVente, SousCategories souscat) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -127,16 +141,161 @@ public class Produit implements Serializable{
 		this.quantite = quantite;
 		this.poid = poid;
 		this.barreCode = barreCode;
-		this.img = img;
 		this.prixAchat = prixAchat;
 		this.prixVente = prixVente;
+		this.souscat = souscat;
 	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public long getPrix() {
+		return prix;
+	}
+
+	public void setPrix(long prix) {
+		this.prix = prix;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
+	}
+
+	public long getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(long quantite) {
+		this.quantite = quantite;
+	}
+
+	public long getPoid() {
+		return poid;
+	}
+
+	public void setPoid(long poid) {
+		this.poid = poid;
+	}
+
+	public long getBarreCode() {
+		return barreCode;
+	}
+
+	public void setBarreCode(long barreCode) {
+		this.barreCode = barreCode;
+	}
+
+	
+
+	public long getPrixAchat() {
+		return prixAchat;
+	}
+
+	public void setPrixAchat(long prixAchat) {
+		this.prixAchat = prixAchat;
+	}
+
+	public int getPrixVente() {
+		return prixVente;
+	}
+
+	public void setPrixVente(int prixVente) {
+		this.prixVente = prixVente;
+	}
+
+	public SousCategories getSouscat() {
+		return souscat;
+	}
+
+	public void setSouscat(SousCategories souscat) {
+		this.souscat = souscat;
+	}
+
+	public List<Panier> getPanier() {
+		return panier;
+	}
+
+	public void setPanier(List<Panier> panier) {
+		this.panier = panier;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+
+	public StoreManger getGerant() {
+		return gerant;
+	}
+
+	public void setGerant(StoreManger gerant) {
+		this.gerant = gerant;
+	}
+	
+	
+
+//	public Set<ImageProduit> getImages() {
+//		return Images;
+//	}
+//
+//	public void setImages(Set<ImageProduit> images) {
+//		Images = images;
+//	}
+
+	
+
+	public Boolean BarcodeIsvalid(long barreCode){
+		long c =10000000000L;
+		long b=barreCode/c;
+		if(b==619){
+			return true;
+		}
+		return false;
+	}
+
+	public Produit(String nom, long prix, String description, long quantite, long poid, long barreCode, long prixAchat,
+			int prixVente, Set<ImageProduit> images) {
+		super();
+		this.nom = nom;
+		this.prix = prix;
+		Description = description;
+		this.quantite = quantite;
+		this.poid = poid;
+		this.barreCode = barreCode;
+		this.prixAchat = prixAchat;
+		this.prixVente = prixVente;
+		Images = images;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Produit [id=" + id + ", nom=" + nom + ", prix=" + prix + ", Description=" + Description + ", quantite="
 				+ quantite + ", poid=" + poid + ", barreCode=" + barreCode + ", img=" + img + ", prixAchat=" + prixAchat
-				+ ", prixVente=" + prixVente + "]";
+				+ ", prixVente=" + prixVente + ", souscat=" + souscat + ", Images=" + Images + "]";
 	}
+	
+	
 	
 	
 
