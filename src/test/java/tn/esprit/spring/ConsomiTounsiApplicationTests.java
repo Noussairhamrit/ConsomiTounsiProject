@@ -1,13 +1,5 @@
 package tn.esprit.spring;
 
-
-
-
-
-
-
-
-
 import org.junit.Test;
 
 
@@ -24,6 +16,7 @@ import tn.esprit.spring.entity.SousCategories;
 import tn.esprit.spring.service.CategorieService;
 import tn.esprit.spring.service.ProduitService;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ConsomiTounsiApplicationTests {
@@ -33,7 +26,7 @@ public class ConsomiTounsiApplicationTests {
 	@Autowired
 	CategorieService cat;
 
-	@Test
+@Test
 	public void contextLoads() {
 		Produit p= new Produit("bahr",1450L,"djou",60L,500L,6197894556L,1400L,1500, null);
 	//	Produit t= new Produit("camera", 890L, "une bonne camera", 54L, 4L, 7894565230145L, 948L, 789, "img");
@@ -44,6 +37,7 @@ public class ConsomiTounsiApplicationTests {
 		//cat.affectSousCatToCat(1L, 1L);;
 		//pr.affecterProduitASCategorie(1, 2L);
 		//pr.ajouterProduit(p);
-	}
 
+
+}
 }

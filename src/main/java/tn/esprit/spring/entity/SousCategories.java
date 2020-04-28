@@ -15,9 +15,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Data;
 
-@Data
+
+
 @Entity
 @Table(name = "SousCat")
 @JsonIgnoreProperties
@@ -46,7 +46,8 @@ public class SousCategories implements Serializable{
 	private Categorie categorie;
 	
 	
-	
+	@ManyToOne
+	private Ray ray_sc;
 	
 	
 	public Long getIdSousCat() {

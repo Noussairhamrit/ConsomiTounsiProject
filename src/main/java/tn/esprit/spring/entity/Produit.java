@@ -18,10 +18,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Data;
 
 
-@Data
+
+
 @Entity
 @Table(name = "Produit")
 @JsonIgnoreProperties
@@ -70,6 +70,13 @@ public class Produit implements Serializable{
 	@OneToMany(mappedBy="Idproduit",cascade=CascadeType.ALL)
 	@JsonIgnore
 	private Set<ImageProduit> Images;
+	
+	
+	@ManyToOne
+	private Ray ray;
+	
+	@ManyToOne
+	private Stock stock;
 	
 	
 
@@ -300,3 +307,7 @@ public class Produit implements Serializable{
 	
 
 }
+
+
+	
+

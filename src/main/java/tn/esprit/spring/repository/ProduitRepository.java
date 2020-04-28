@@ -31,5 +31,4 @@ public interface ProduitRepository extends JpaRepository<Produit,Integer>{
 	    
 	    @Query("SELECT count(*) FROM Produit")
 	    public int countemp();
-
 }
