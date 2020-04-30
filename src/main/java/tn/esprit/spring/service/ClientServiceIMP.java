@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entity.Admin;
 import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Produit;
 import tn.esprit.spring.repository.ClientRepository;
@@ -30,6 +31,10 @@ public class ClientServiceIMP {
 	@Autowired
 	public ClientServiceIMP(JavaMailSender javaMailSender) {
 		this.javaMailSender = javaMailSender;
+	}
+	public Client authenticateClient(String login, String password) {
+
+		return clientrepository.getClientByUser_nameAndPassword(login, password);
 	}
 
 	public List<Client> findOne() {

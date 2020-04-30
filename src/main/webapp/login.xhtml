@@ -1,16 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/template/template.xhtml">
-	<ui:param name="page_name" value="Connexion" />
-	<ui:define name="menu">
-		<h:form id="form">
+	xmlns:f="http://java.sun.com/jsf/core"
+
+xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>#{page_name}</title>
+  <meta charset="utf-8" />
+
+    <title>Sign In</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900" rel="stylesheet" type="text/css" />
+    
+    <link href="../SpringMVC/resources/css/animate.css"  rel="stylesheet" />
+    <!-- Custom Stylesheet -->
+    <link  href="../SpringMVC/resources/css/style.css"  rel="stylesheet"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<h:form id="form">
 			<b>Connexion</b>
+		
 			<h:panelGrid columns="2">
+			<h:outputText class="selected" value="Login (Email)" />
+				<h:inputText  id="username" value="#{AdminController.login}" />
+				<h:outputText value="Mot de passe" />
+				<h:inputSecret value="#{AdminController.password}" />
+				<h:commandButton id="btn" value="Connexion"
+					action="#{AdminController.doLogin()}" />
+				<h:message for="btn" />
 				
 			</h:panelGrid>
 		</h:form>
-	</ui:define>
-</ui:composition>
+		
+</body>
+</html>
