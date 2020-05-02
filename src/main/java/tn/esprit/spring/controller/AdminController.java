@@ -22,7 +22,7 @@ import tn.esprit.spring.service.CommandesServiceIMP;
 @Scope(value = "session")
 @Controller(value = "AdminController")
 @ELBeanName(value = "AdminController")
-@Join(path = "/log", to = "/login.jsf")
+@Join(path = "/log", to = "/LoginAdmin.jsf")
 
 public class AdminController {
 	@Autowired
@@ -43,13 +43,25 @@ public class AdminController {
 	private List<Commandes>commandes;
 	private Admin authenticatedAdmin;
 	private Client authenticatedClient;
-	private Client c;
+	private long userId;
+				  
+	//private Client c;
 	private String login;
 	private String password;
 	private Boolean loggedIn;
 	private String nom;
 	private String prenom;
 	
+	
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
 	public String doLogin() {
 		String navigateTo = "null";
 		 authenticatedAdmin = AdminService.authenticate(login, password);
@@ -59,7 +71,7 @@ public class AdminController {
 			loggedIn = true;
 		}
 		else if (authenticatedClient != null ) {
-			navigateTo = "/template/index.xhtml?faces-redirect=true";
+			navigateTo = "/template/index.jsf?faces-redirect=true";
 			loggedIn = true;
 		}
 		else {
@@ -75,6 +87,30 @@ public class AdminController {
 		
 	}
 	
+	public Client getAuthenticatedClient() {
+		return authenticatedClient;
+	}
+
+	public void setAuthenticatedClient(Client authenticatedClient) {
+		this.authenticatedClient = authenticatedClient;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
 	public Admin getAuthenticatedAdmin() {
 		return authenticatedAdmin;
 	}

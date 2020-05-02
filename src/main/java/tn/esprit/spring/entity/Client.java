@@ -23,6 +23,14 @@ public class Client extends AppUser {
 	}
 
 
+	public Client(Long userId, String userName, String encrytedPassword, boolean enabled, String nom, String prenom,
+			long cin, String address, long num_tel, String email, long num_carte_fidelity, String interet) {
+		super(userId, userName, encrytedPassword, enabled, nom, prenom, cin, address, num_tel, email);
+		this.num_carte_fidelity = num_carte_fidelity;
+		this.interet = interet;
+	}
+
+
 	public Client(long num_carte_fidelity,Long userId, String userName, String encrytedPassword, boolean enabled, String nom, String prenom,
 			long cin, String address, long num_tel, String email) {
 		super(userId,userName,encrytedPassword, enabled,nom,prenom,cin, address,num_tel,email);
