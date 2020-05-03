@@ -1,17 +1,18 @@
 package tn.esprit.spring.service;
 
 import java.util.Date;
-
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.entity.*;
+import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
 import tn.esprit.spring.entity.Panier;
-import tn.esprit.spring.entity.PanierPK;
+import tn.esprit.spring.entity.Produit;
+import tn.esprit.spring.entity.lignecommandeproduit;
 import tn.esprit.spring.repository.ClientRepository;
 import tn.esprit.spring.repository.CommandesRepository;
 import tn.esprit.spring.repository.PanierRepository;
@@ -179,6 +180,27 @@ public class PanierServiceIMP implements IPanierService {
 	}
 	public List <Panier> findPanier_par_commande(int idCommande){
 		return panierRepository.findPanier_par_commande(idCommande);
-	}
+	}	 
+	@Transactional
+	public void supprimerpanier(int panierId){
+
+	    panierRepository.deleteById(panierId);
+	
+		 	}
+	@Transactional
+	public void update_after_remove(int panierId){
+			Panier lc = panierRepository.getOne(panierId);
+		System.out.println("mm   "+lc);
+		Commandes c=commandesRepository.findById(lc.getCommande().getId()).get();
+		System.out.println("kk   "+c);
+	
+		double a=c.getPrixtotale()-(lc.getQuantite()*lc.getPrix());
+		c.setPrixtotale(a);
+		
+		commandesRepository.save(c);
+		remise(c.getClient().getUserId());
+		supprimerpanier(panierId);
+		
+	} 
 
 }

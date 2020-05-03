@@ -4,451 +4,501 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:ez="http://java.sun.com/jsf/composite/spinner"
 	template="/template/template.xhtml">
-<!-- Basic -->
-<ui:param name="cart" value="Accueil" />
+	<!-- Basic -->
+	<ui:param name="cart" value="Accueil" />
 	<ui:define name="cart">
-<head>
+		<head>
 
-	<meta charset="utf-8" />
+<meta charset="utf-8" />
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<!-- Mobile Metas -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Mobile Metas -->
 
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!-- Site Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Site Metas -->
 
-	<title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+<title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
 
-	<meta name="keywords" content="" />
+<meta name="keywords" content="" />
 
-	<meta name="description" content="" />
+<meta name="description" content="" />
 
-	<meta name="author" content="" />
-	<!-- Site Icons -->
-	<link rel="shortcut icon" href="../temp1/images/favicon.ico" type="/image/x-icon" />
-	<link rel="apple-touch-icon" href="../temp1/images/apple-touch-icon.png" />
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="../temp1/css/bootstrap.min.css" />
-	<!-- Site CSS -->
-	<link rel="stylesheet" href="../temp1/css/style.css" />
-	<!-- Responsive CSS -->
-	<link rel="stylesheet" href="../temp1/css/responsive.css" />
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="../temp1/css/custom.css" />
-	<!--[if lt IE 9]>
+<meta name="author" content="" />
+<!-- Site Icons -->
+<link rel="shortcut icon" href="../temp1/images/favicon.ico"
+	type="/image/x-icon" />
+<link rel="apple-touch-icon" href="../temp1/images/apple-touch-icon.png" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../temp1/css/bootstrap.min.css" />
+<!-- Site CSS -->
+<link rel="stylesheet" href="../temp1/css/style.css" />
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="../temp1/css/responsive.css" />
+<!-- Custom CSS -->
+<link rel="stylesheet" href="../temp1/css/custom.css" />
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
+		</head>
 
-<h:body>
-	
-	<!-- Start Main Top -->
-	
-	<!-- End Top Search -->
-	<!-- Start All Title Box -->
+		<h:body>
 
-	<div class="all-title-box">
+			<!-- Start Main Top -->
 
-		<div class="container">
+			<!-- End Top Search -->
+			<!-- Start All Title Box -->
 
-			<div class="row">
+			<div class="all-title-box">
 
-				<div class="col-lg-12">
+				<div class="container">
 
-					<h2>Cart</h2>
+					<div class="row">
 
-					<ul class="breadcrumb">
+						<div class="col-lg-12">
 
-						<li class="breadcrumb-item"><a href="#">Shop</a></li>
+							<h2>Cart</h2>
 
-						<li class="breadcrumb-item active">Cart</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End All Title Box -->
-	<!-- Start Cart  -->
+							<ul class="breadcrumb">
 
-	<div class="cart-box-main">
+								<li class="breadcrumb-item"><a href="#">Shop</a></li>
 
-		<div class="container">
-
-			<div class="row">
-
-				<div class="col-lg-12">
-
-					<div class="table-main table-responsive">
-
-						<table class="table"  >
-						<h:dataTable value="#{PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}"
-						 var="panier"
-		                                               border="1">
-							<thead>
-
-								<tr>
-
-									<th>Images</th>
-
-									<th>Product Name</th>
-
-									<th>Price</th>
-
-									<th>Quantity</th>
-
-									<th>Total</th>
-
-									<th>Remove</th>
-								</tr>
-							</thead>
-
-							<tbody>
-
-								<tr>
-
-									<td class="thumbnail-img"><a href="#"> <img
-											class="img-fluid" src="../temp1/images/img-pro-01.jpg" alt="" />
-									</a></td>
-
-									<td class="name-pr"><a href="#"> <h:outputText value="#{panier.nomProduit}" /> </a></td>
-
-									<td class="price-pr">
-
-										<p>	<h:column>
-			<f:facet name="header">
-				<h:outputText value="Prenom" />
-			</f:facet>
-			<h:outputText value="#{panier.price}" />
-		</h:column></p>
-									</td>
-
-									<td class="quantity-box"><input type="number" size="4"
-										value="1" min="0" step="1" class="c-input-text qty text" /></td>
-
-									<td class="total-pr">
-
-										<p>$ 80.0</p>
-									</td>
-
-									<td class="remove-pr"><a href="#"> <i
-											class="fas fa-times" />
-									</a></td>
-								</tr>
-
-								<tr>
-
-									<td class="thumbnail-img"><a href="#"> <img
-											class="img-fluid" src="../temp1/images/img-pro-02.jpg" alt="" />
-									</a></td>
-
-									<td class="name-pr"><a href="#"> Lorem ipsum dolor sit
-											amet </a></td>
-
-									<td class="price-pr">
-
-										<p>$ 60.0</p>
-									</td>
-
-									<td class="quantity-box"><input type="number" size="4"
-										value="1" min="0" step="1" class="c-input-text qty text" /></td>
-
-									<td class="total-pr">
-
-										<p>$ 80.0</p>
-									</td>
-
-									<td class="remove-pr"><a href="#"> <i
-											class="fas fa-times" />
-									</a></td>
-								</tr>
-
-								<tr>
-
-									<td class="thumbnail-img"><a href="#"> <img
-											class="img-fluid" src="../temp1/images/img-pro-03.jpg" alt="" />
-									</a></td>
-
-									<td class="name-pr"><a href="#"> Lorem ipsum dolor sit
-											amet </a></td>
-
-									<td class="price-pr">
-
-										<p>$ 30.0</p>
-									</td>
-
-									<td class="quantity-box"><input type="number" size="4"
-										value="1" min="0" step="1" class="c-input-text qty text" /></td>
-
-									<td class="total-pr">
-
-										<p>$ 80.0</p>
-									</td>
-
-									<td class="remove-pr"><a href="#"> <i
-											class="fas fa-times" />
-									</a></td>
-								</tr>
-							</tbody>
-							</h:dataTable>
-						</table>
+								<li class="breadcrumb-item active">Cart</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
+			<!-- End All Title Box -->
+			<!-- Start Cart  -->
 
-			<div class="row my-5">
+			<div class="cart-box-main">
 
-				<div class="col-lg-6 col-sm-6">
+				<div class="container">
 
-					<div class="coupon-box">
+					<div class="row">
 
-						<div class="input-group input-group-sm">
-							<input class="form-control" placeholder="Enter your coupon code"
-								aria-label="Coupon code" type="text" />
+						<div class="col-lg-12">
 
-							<div class="input-group-append">
-								<button class="btn btn-theme" type="button">Apply
-									Coupon</button>
+							<div class="table-main table-responsive">
+
+								<table class="table">
+								<h:form>
+									<h:dataTable class="table"
+										value="#{PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}"
+										var="panier" border="1">
+										<thead>
+
+											<tr>
+
+												<th>Images</th>
+
+												<th>Product Name</th>
+
+												<th>Price</th>
+
+												<th>Quantity</th>
+
+												<th>Total</th>
+
+												<th>Remove</th>
+											</tr>
+										</thead>
+
+										<tbody>
+
+											<tr>
+
+												<td class="thumbnail-img"><h:column>
+														<f:facet name="header">
+															<h:outputText value="Images" />
+														</f:facet>
+														<a href="#"> <h:outputText class="name-pr" />
+
+														</a>
+													</h:column></td>
+
+												<td class="name-pr"><h:column>
+														<f:facet name="header">
+															<h:outputText value="Product Name" />
+														</f:facet>
+														<a href="#"> <h:outputText class="name-pr"
+																value="#{panier.nomProduit}" />
+
+														</a>
+													</h:column></td>
+
+												<td class="price-pr">
+
+													<p>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Price" />
+															</f:facet>
+															<h:outputText value="#{panier.price}" class="price-pr" />
+														</h:column>
+													</p>
+												</td>
+
+												<td class="quantity-box"><input type="number" size="4"
+													value="1" min="0" step="1" class="c-input-text qty text" />
+													<h:column>
+														<f:facet name="header">
+															<h:outputText value="Quantity" />
+														</f:facet>
+														<!-- 															<h:outputText type="number" class="c-input-text qty text"  value="#{panier.quantity}"   /> -->
+														<p:spinner  id="minMax" value="#{panier.quantity}"  min="0" max="100"
+															class="ui-spinner-input ui-inputfield ui-state-default ui-corner-all ui-state-filled"
+															 />
+													</h:column></td>
+												<td class="total-pr">
+
+													<p>
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Total" />
+															</f:facet>
+															<h:outputText value="#{panier.total}" class="price-pr" />
+														</h:column>
+													</p>
+												</td>	
+												
+												<td class="remove-pr">
+											
+													<h:column>
+															<f:facet name="header">
+																<h:outputText value="Remove" />
+															</f:facet>
+															<h:commandButton
+																action="#{PanierController.supprimerPanier(panier.id)}"
+																value="X" />
+														</h:column>
+															
+												
+												</td>
+											
+											</tr>
+
+											<tr>
+
+												<td class="thumbnail-img"><a href="#"> <img
+														class="img-fluid" src="../temp1/images/img-pro-02.jpg"
+														alt="" />
+												</a></td>
+
+												<td class="name-pr"><a href="#"> Lorem ipsum dolor
+														sit amet </a></td>
+
+												<td class="price-pr">
+
+													<p>$ 60.0</p>
+												</td>
+
+												<td class="quantity-box"><input type="number" size="4"
+													value="1" min="0" step="1" class="c-input-text qty text" /></td>
+
+												<td class="total-pr">
+
+													<p>$ 80.0</p>
+												</td>
+
+												<td class="remove-pr"><a href="#"> <i
+														class="fas fa-times" />
+												</a></td>
+											</tr>
+
+											<tr>
+
+												<td class="thumbnail-img"><a href="#"> <img
+														class="img-fluid" src="../temp1/images/img-pro-03.jpg"
+														alt="" />
+												</a></td>
+
+												<td class="name-pr"><a href="#"> Lorem ipsum dolor
+														sit amet </a></td>
+
+												<td class="price-pr">
+
+													<p>$ 30.0</p>
+												</td>
+
+												<td class="quantity-box"><input type="number" size="4"
+													value="1" min="0" step="1" class="c-input-text qty text" /></td>
+
+												<td class="total-pr">
+
+													<p>$ 80.0</p>
+												</td>
+
+												<td class="remove-pr"><a href="#"> <i
+														class="fas fa-times" />
+												</a></td>
+											</tr>
+										</tbody>
+									</h:dataTable>
+										</h:form>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="row my-5">
+
+						<div class="col-lg-6 col-sm-6">
+
+							<div class="coupon-box">
+
+								<div class="input-group input-group-sm">
+									<input class="form-control"
+										placeholder="Enter your coupon code" aria-label="Coupon code"
+										type="text" />
+
+									<div class="input-group-append">
+										<button class="btn btn-theme" type="button">Apply
+											Coupon</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-sm-6">
+
+							<div class="update-box">
+								<input value="Update Cart" type="submit" />
+							</div>
+						</div>
+					</div>
+
+					<div class="row my-5">
+
+						<div class="col-lg-8 col-sm-12" />
+
+						<div class="col-lg-4 col-sm-12">
+
+							<div class="order-box">
+
+								<h3>Order summary</h3>
+
+								<div class="d-flex">
+
+									<h4>Sub Total</h4>
+
+									<div class="ml-auto font-weight-bold">$ 130</div>
+								</div>
+
+								<div class="d-flex">
+
+									<h4>Discount</h4>
+
+									<div class="ml-auto font-weight-bold">$ 40</div>
+								</div>
+
+								<hr class="my-1" />
+
+								<div class="d-flex">
+
+									<h4>Coupon Discount</h4>
+
+									<div class="ml-auto font-weight-bold">$ 10</div>
+								</div>
+
+								<div class="d-flex">
+
+									<h4>Tax</h4>
+
+									<div class="ml-auto font-weight-bold">$ 2</div>
+								</div>
+
+								<div class="d-flex">
+
+									<h4>Shipping Cost</h4>
+
+									<div class="ml-auto font-weight-bold">Free</div>
+								</div>
+
+								<hr />
+
+								<div class="d-flex gr-total">
+
+									<h5>Grand Total</h5>
+
+									<div class="ml-auto h5">$ 388</div>
+								</div>
+
+								<hr />
+							</div>
+						</div>
+
+						<div class="col-12 d-flex shopping-box">
+							<a href="../template/checkout.xhtml"
+								class="ml-auto btn hvr-hover">Checkout</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Cart -->
+			<!-- Start Instagram Feed  -->
+
+			<div class="instagram-box">
+
+				<div class="main-instagram owl-carousel owl-theme">
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-01.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-02.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-03.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-04.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-05.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-06.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-07.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-08.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-09.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-05.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-6 col-sm-6">
-
-					<div class="update-box">
-						<input value="Update Cart" type="submit" />
-					</div>
-				</div>
 			</div>
+			<!-- End Instagram Feed  -->
+			<!-- Start Footer  -->
 
-			<div class="row my-5">
+			<!-- End Footer  -->
+			<!-- Start copyright  -->
 
-				<div class="col-lg-8 col-sm-12" />
 
-				<div class="col-lg-4 col-sm-12">
+			<!-- End copyright  -->
+			<a href="#" id="back-to-top" title="Back to top"
+				style="display: none;">↑</a>
+			<!-- ALL JS FILES -->
 
-					<div class="order-box">
+			<script src="../temp1/js/jquery-3.2.1.min.js"></script>
 
-						<h3>Order summary</h3>
+			<script src="../temp1/js/popper.min.js"></script>
 
-						<div class="d-flex">
+			<script src="../temp1/js/bootstrap.min.js"></script>
+			<!-- ALL PLUGINS -->
 
-							<h4>Sub Total</h4>
+			<script src="../temp1/js/jquery.superslides.min.js"></script>
 
-							<div class="ml-auto font-weight-bold">$ 130</div>
-						</div>
+			<script src="../temp1/js/bootstrap-select.js"></script>
 
-						<div class="d-flex">
+			<script src="../temp1/js/inewsticker.js"></script>
 
-							<h4>Discount</h4>
+			<script src="../temp1/js/bootsnav.js."></script>
 
-							<div class="ml-auto font-weight-bold">$ 40</div>
-						</div>
+			<script src="../temp1/js/images-loded.min.js"></script>
 
-						<hr class="my-1" />
+			<script src="../temp1/js/isotope.min.js"></script>
 
-						<div class="d-flex">
+			<script src="../temp1/js/owl.carousel.min.js"></script>
 
-							<h4>Coupon Discount</h4>
+			<script src="../temp1/js/baguetteBox.min.js"></script>
 
-							<div class="ml-auto font-weight-bold">$ 10</div>
-						</div>
+			<script src="../temp1/js/form-validator.min.js"></script>
 
-						<div class="d-flex">
+			<script src="../temp1/js/contact-form-script.js"></script>
+			<script src="../temp1/js/jquery-ui.js"></script>
+			<script src="../temp1/js/jquery.nicescroll.min.js"></script>
 
-							<h4>Tax</h4>
-
-							<div class="ml-auto font-weight-bold">$ 2</div>
-						</div>
-
-						<div class="d-flex">
-
-							<h4>Shipping Cost</h4>
-
-							<div class="ml-auto font-weight-bold">Free</div>
-						</div>
-
-						<hr />
-
-						<div class="d-flex gr-total">
-
-							<h5>Grand Total</h5>
-
-							<div class="ml-auto h5">$ 388</div>
-						</div>
-
-						<hr />
-					</div>
-				</div>
-
-				<div class="col-12 d-flex shopping-box">
-					<a href="../template/checkout.xhtml" class="ml-auto btn hvr-hover">Checkout</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Cart -->
-	<!-- Start Instagram Feed  -->
-
-	<div class="instagram-box">
-
-		<div class="main-instagram owl-carousel owl-theme">
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-01.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-02.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-03.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-04.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-05.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-06.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-07.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-08.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-09.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-05.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Instagram Feed  -->
-	<!-- Start Footer  -->
-	
-	<!-- End Footer  -->
-	<!-- Start copyright  -->
-
-
-	<!-- End copyright  -->
-	<a href="#" id="back-to-top" title="Back to top" style="display: none;">↑</a>
-	<!-- ALL JS FILES -->
-
-	<script src="../temp1/js/jquery-3.2.1.min.js"></script>
-
-	<script src="../temp1/js/popper.min.js"></script>
-
-	<script src="../temp1/js/bootstrap.min.js"></script>
-	<!-- ALL PLUGINS -->
-
-	<script src="../temp1/js/jquery.superslides.min.js"></script>
-
-	<script src="../temp1/js/bootstrap-select.js"></script>
-
-	<script src="../temp1/js/inewsticker.js"></script>
-
-	<script src="../temp1/js/bootsnav.js."></script>
-
-	<script src="../temp1/js/images-loded.min.js"></script>
-
-	<script src="../temp1/js/isotope.min.js"></script>
-
-	<script src="../temp1/js/owl.carousel.min.js"></script>
-
-	<script src="../temp1/js/baguetteBox.min.js"></script>
-
-	<script src="../temp1/js/form-validator.min.js"></script>
-
-	<script src="../temp1/js/contact-form-script.js"></script>
-		<script src="../temp1/js/jquery-ui.js"></script>
-    <script src="../temp1/js/jquery.nicescroll.min.js"></script>
-
-	<script src="../temp1/js/custom.js"></script>
-	</h:body>
+			<script src="../temp1/js/custom.js"></script>
+		</h:body>
 	</ui:define>
-	</ui:composition>
-	
+</ui:composition>

@@ -52,13 +52,13 @@ public class Panier implements Serializable {
 
 	// idcommande est a la fois primary key et foreign key
 	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "id_commande", referencedColumnName = "id_commande")
 	private Commandes commande;
 
 	// idproduit est a la fois primary key et foreign key
 	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "id_produit", referencedColumnName = "Prod_Id")
 	private Produit produit;
 	
@@ -68,7 +68,7 @@ public class Panier implements Serializable {
 
 	public Panier() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 

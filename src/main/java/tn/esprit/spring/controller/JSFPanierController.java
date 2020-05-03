@@ -20,55 +20,61 @@ import tn.esprit.spring.service.PanierServiceIMP;
 @Controller(value = "PanierController")
 @ELBeanName(value = "PanierController")
 public class JSFPanierController {
-	@Autowired 
+	@Autowired
 	PanierServiceIMP panierservice;
 	@Autowired
 	CommandesServiceIMP CommandesService;
 	@Autowired
 	ClientServiceIMP clientservice;
 	private Panier panier;
+	private int id;
 	private Commandes commande;
 	private Client client;
 	private int quantity;
 	private double price;
 	private double total;
-	 private String status;
-	 private String nomProduit;
-	 
-	 private List<lignecommandeproduit> listpanier;
-	 
-	 
-	 public List<lignecommandeproduit> panierParIdclient( long id) {
-			
-		 listpanier= panierservice.panierParIdclient(id);
-		 return listpanier;
-		}
+	private String status;
+	private String nomProduit;
 
+	private List<lignecommandeproduit> listpanier;
+
+	public List<lignecommandeproduit> panierParIdclient(long id) {
+
+		listpanier = panierservice.panierParIdclient(id);
+		return listpanier;
+	}
+
+	public void supprimerPanier(int id) {
+		panierservice.supprimerpanier(id);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Panier getPanier() {
 		return panier;
 	}
 
-
 	public void setPanier(Panier panier) {
 		this.panier = panier;
 	}
-
 
 	public Commandes getCommande() {
 		return commande;
 	}
 
-
 	public void setCommande(Commandes commande) {
 		this.commande = commande;
 	}
 
-
 	public Client getClient() {
 		return client;
 	}
-
 
 	public void setClient(Client client) {
 		this.client = client;
@@ -78,60 +84,48 @@ public class JSFPanierController {
 		return quantity;
 	}
 
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
 
 	public double getPrice() {
 		return price;
 	}
 
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
 
 	public double getTotal() {
 		return total;
 	}
 
-
 	public void setTotal(double total) {
 		this.total = total;
 	}
-
 
 	public String getNomProduit() {
 		return nomProduit;
 	}
 
-
 	public void setNomProduit(String nomProduit) {
 		this.nomProduit = nomProduit;
 	}
-
 
 	public String getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 
 	public List<lignecommandeproduit> getListpanier() {
 		return listpanier;
 	}
 
-
 	public void setListpanier(List<lignecommandeproduit> listpanier) {
 		this.listpanier = listpanier;
 	}
-	 
 
 }

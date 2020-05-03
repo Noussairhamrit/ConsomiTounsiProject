@@ -3,8 +3,11 @@ package tn.esprit.spring.controller;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
+import org.hibernate.annotations.OnDelete;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,6 +64,14 @@ public class PanierController {
 	public List <Panier> findPanier_par_commande(@PathVariable(value = "idCommande") int idCommande){
 		
 		return panierservice.findPanier_par_commande(idCommande);
+	}
+	@DeleteMapping("supprimerPanier/{idpanier}")
+	public void supprimePanier(@PathVariable("idpanier")int idpanier){
+		panierservice.supprimerpanier(idpanier);
+	}
+	@PostMapping("updatePanier/{idpanier}")
+	public void update_after_remove(@PathVariable("idpanier")int idpanier){
+		panierservice.update_after_remove(idpanier);
 	}
 
 	 

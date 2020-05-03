@@ -81,7 +81,7 @@ public class Produit implements Serializable{
 	
 
 	////////////panier
-	@OneToMany(mappedBy="produit")
+	@OneToMany(mappedBy="produit" ,cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private  List<Panier> panier;
 	
 	public Produit() {

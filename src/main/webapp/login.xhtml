@@ -33,9 +33,11 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">
-				<h:outputText value="Prenom" />
+				<h:outputText value="quantity" />
 			</f:facet>
-			<h:outputText value="#{panier.quantity}" />
+			<p:spinner  id="minMax" value="#{panier.quantity}"  min="0" max="100" />
+						
+															
 		</h:column>
 		<h:column>
 			<f:facet name="header">
