@@ -71,12 +71,19 @@ public class ProduitServiceImp implements ProduitService {
 		return produit.getId();
 	}
 	public void deleteProduitById(int produitId)
+
 	{
 		Produit produit = produitRepository.findById(produitId).get();
-		
-
-	produitRepository.delete(produit);
-	
+		produitRepository.delete(produit);
+//		if (produitRepository.existsById(produitId)) {
+//	
+//			produitRepository.delete(produitRepository.getOne(produitId));
+//	
+//			return true;
+//		}
+//		else {
+//			throw new IllegalArgumentException("Invalid Bar Code, Product do not exist");
+//		}	
 	}
 	
 	public List<Produit> getAllProduits() {
@@ -116,16 +123,17 @@ public class ProduitServiceImp implements ProduitService {
 		return produitRepository.countemp();
 	}
 	
-	public Produit AjoutProduit(String ProduitJson,long iduser, long scatId, List<MultipartFile> file)
+	public Produit AjoutProduit(String ProduitJson, long scatId, List<MultipartFile> file)
 			throws JsonMappingException, JsonProcessingException, IOException { 
 		Produit prod= objectMapper.readValue(ProduitJson, Produit.class);
 		SousCategories Scat = sousCatRep.findById(scatId).get();  
-		StoreManger gerant = gerantRep.getOne(iduser);
+		//StoreManger gerant = gerantRep.getOne(iduser);
 //		if (!prod.BarcodeIsvalid(prod.getBarreCode())) {
 //			return null;
 //		}
-		prod.setGerant(gerant);
+		//prod.setGerant(gerant);
 		prod.setSouscat(Scat);
+	
 		produitRepository.save(prod);
 		for (MultipartFile i : file) {
 			String fileName = fileStorageServiceImpl.storeFile(i);
@@ -156,6 +164,33 @@ public class ProduitServiceImp implements ProduitService {
 
 	public Iterable<Produit> findAll() {
 		return produitRepository.findAll();
+	}
+
+
+
+	public Produit updateProduct(Produit product, Long barCode) {
+		Produit p=product;
+		p=produitRepository.save(product);
+		return 	p;
+	}
+
+
+	
+	public Produit getOne(int id) {
+		return produitRepository.getOne(id);
+	}
+
+
+	
+	public Long getProductBybarCode(int idprod) {
+		Produit produitManagedEntity = produitRepository.findById(idprod).get();
+		return produitManagedEntity.getBarreCode();
+	}
+
+
+	
+	public boolean existsById(int id) {
+		return produitRepository.existsById(id);
 	}
 	
 

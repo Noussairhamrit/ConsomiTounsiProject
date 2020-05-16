@@ -13,7 +13,7 @@ import tn.esprit.spring.entity.Produit;
 public interface ProduitService {
 	
 	public int ajouterProduit(Produit produit);
-	public Produit AjoutProduit(String ProduitJson,long iduser, long scatId, List<MultipartFile> file) throws JsonMappingException, JsonProcessingException, IOException;
+	public Produit AjoutProduit(String ProduitJson, long scatId, List<MultipartFile> file) throws JsonMappingException, JsonProcessingException, IOException;
 	public void deleteProduitById(int produitId);
 	public List<Produit> getAllProduits();
 	public String chercherNomProduitById(int produitId);
@@ -25,5 +25,9 @@ public interface ProduitService {
 	public List<Produit> findProduitBySCategorie(long scatId);
 	//public List<Produit> findProduitCategorie(long catId);
 	public Iterable<Produit> findAll();
+	public Produit updateProduct(Produit product,Long barCode);
+	public Produit getOne(int id);
+	public Long getProductBybarCode(int idprod);
+	public boolean existsById(int id);
 
 }

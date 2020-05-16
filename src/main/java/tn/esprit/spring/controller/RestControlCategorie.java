@@ -35,7 +35,7 @@ public class RestControlCategorie {
 	}
 		
 		
-		// Ajouter SousCategorie : http://localhost:8081/SpringMVC/servlet/addSousCat
+		// Ajouter SousCategorie : http://localhost:8081/SpringMVC/addSousCat
 				//{"IdSousCat":6,"snom":"t_Shirt","sdescription":"Couleur noir"}
 
 	    @PostMapping("/addSousCat")

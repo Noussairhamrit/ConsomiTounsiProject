@@ -2,6 +2,7 @@ package tn.esprit.spring.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,9 +58,9 @@ public class PubliciteServiceImp implements PubliciteSercice {
 		publicite.setDateStart(p.getDateStart());
 		
 		publicite.setName(p.getName());
-		publicite.setTarget(p.getTarget());
-		
-		publicite.setView(p.getView());
+//		publicite.setTarget(p.getTarget());
+//		
+//		publicite.setView(p.getView());
 		
 		publiciteRep.save(publicite);
 		
@@ -88,6 +89,12 @@ public class PubliciteServiceImp implements PubliciteSercice {
 		return publiciteRep.save(pub);
 
 	}
+
+
+
+//	public Optional<Publicite> getpubById(Long id) {
+//		return publiciteRep.findById(id);
+//	}
 
 
 	

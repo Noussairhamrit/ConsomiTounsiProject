@@ -2,6 +2,7 @@ package tn.esprit.spring.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +18,6 @@ public interface PubliciteSercice {
 	public List<Publicite> getAllPublicites();
 	public void modifierPublicite(Publicite p, int pubId);
 	public Publicite AjoutPub(String ProduitJson,MultipartFile file)throws JsonMappingException, JsonProcessingException,IOException;
-	
+	//Optional<Publicite> getpubById(Long id);
 
 }
