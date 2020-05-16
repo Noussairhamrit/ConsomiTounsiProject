@@ -70,7 +70,7 @@ public void deletePubsWithNoInteractionJPQL() {
 	pubRepository.deletePubsWithNoInteractionJPQL();
 	
 }
-@Scheduled(cron = "0/15 * * * * *")
+// @Scheduled(cron = "0/15 * * * * *")
 public void deleteAutoJPQL(){
 	pubRepository.deleteAutoJPQL();
 	System.out.println("done");

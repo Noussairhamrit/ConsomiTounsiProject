@@ -71,7 +71,19 @@ private String name ;
 		this.price = price;
 		this.total = total;
 		
+		
 	}
+	
+	public lignecommandeproduit(int id, String nomProduit,int quantity, long price,long total) {
+		super();
+		this.nomProduit = nomProduit;
+		this.quantity = quantity;
+		this.price = price;
+		this.total = total;
+		this.id = id;
+		
+	}
+	
 	
 
 	public lignecommandeproduit(LocalDate date, float montant) {
