@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -121,20 +123,20 @@ public class FacturesServiceIMP implements IFacturesService{
 		 return factureRepository.get_payment_type_by_factureID(id_facture);
 	}
 	
-	
+	@Transactional
 	public void facturepdf (int id_facture){
 		try {
 			Factures f=factureRepository.getOne(id_facture);
-			List<lignecommandeproduit>commandes = panierRepository.panier_confirmer_ParIdclient(f.getCommande().getClient().getUserId());
+			List<lignecommandeproduit>commandes = panierRepository.panier_confirmer1_ParIdclient(f.getCommande().getClient().getUserId(), f.getCommande().getId());
 			System.out.println("/////////"+commandes);
-		String file_name="C:\\Users\\ASUS\\Desktop\\facture_pdf\\my_facture"+f.getId()+".pdf";
+		String file_name="C:\\Users\\nouss\\OneDrive\\Bureau\\facture_pdf\\my_facture"+f.getId()+".pdf";
 		Document document=new Document(PageSize.A4,15,15,45,30);
 		
 			PdfWriter.getInstance(document, new FileOutputStream(file_name));
 	
 	 document.open();
 	 ////////////////
-	 Image img=Image.getInstance("C:\\Users\\ASUS\\Desktop\\facture_pdf\\logo5.jpg");
+	 Image img=Image.getInstance("C:\\Users\\nouss\\OneDrive\\Bureau\\facture_pdf\\logo5.jpg");
 	 img.setAlignment(Element.ALIGN_RIGHT);
 	 img.setIndentationLeft(10);
 	 img.setIndentationRight(10);

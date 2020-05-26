@@ -3,23 +3,34 @@ package tn.esprit.spring.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import tn.esprit.spring.entity.Admin;
+import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
+import tn.esprit.spring.service.AdminService;
+import tn.esprit.spring.service.ClientServiceIMP;
 import tn.esprit.spring.service.CommandesServiceIMP;
 
 @Scope(value = "session")
 @Controller(value = "AdminController")
 @ELBeanName(value = "AdminController")
-@Join(path = "/login", to = "/login.jsf")
+@Join(path = "/log", to = "/cnx.jsf")
 
 public class AdminController {
 	@Autowired
 	CommandesServiceIMP CommandesService;
+	@Autowired
+	AdminService AdminService;
+	@Autowired
+	ClientServiceIMP clientservice;
 	
 	private Date date_commande;
 	private double prixtotale;
@@ -30,13 +41,108 @@ public class AdminController {
 	private double prix_after_remise;
 	private Commandes commande;
 	private List<Commandes>commandes;
+	private Admin authenticatedAdmin;
+	private Client authenticatedClient;
+	private long userId;
+				  
+	//private Client c;
+	private String login;
+	private String password;
+	private Boolean loggedIn;
+	private String nom;
+	private String prenom;
 	
+	
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public String doLogin() {
+		String navigateTo = "null";
+		 authenticatedAdmin = AdminService.authenticate(login, password);
+		 authenticatedClient=clientservice.authenticateClient(login, password);
+		if (authenticatedAdmin != null ) {
+			navigateTo = "/template/indexTemp.xhtml?faces-redirect=true";
+			loggedIn = true;
+		}
+		else if (authenticatedClient != null ) {
+			navigateTo = "/template/index.jsf?faces-redirect=true";
+			loggedIn = true;
+		}
+		else {
+			FacesMessage facesMessage = new FacesMessage(
+					"Login Failed: please check your username/password and try again.");
+			FacesContext.getCurrentInstance().addMessage("form:btn", facesMessage);
+		}
+		return navigateTo;
+	}
 	
 	public List<Commandes> getAllCommande() {
 		return CommandesService.get_all_commandes();
 		
 	}
 	
+	public Client getAuthenticatedClient() {
+		return authenticatedClient;
+	}
+
+	public void setAuthenticatedClient(Client authenticatedClient) {
+		this.authenticatedClient = authenticatedClient;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public Admin getAuthenticatedAdmin() {
+		return authenticatedAdmin;
+	}
+
+	public void setAuthenticatedAdmin(Admin authenticatedAdmin) {
+		this.authenticatedAdmin = authenticatedAdmin;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Boolean getLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(Boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+
 	public Date getDate_commande() {
 		return date_commande;
 	}

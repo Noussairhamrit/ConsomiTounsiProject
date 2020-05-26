@@ -14,8 +14,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
 
 
+@Data
 @Entity
 @Table(name = "Categories")
 
@@ -35,12 +39,20 @@ public class Categorie implements Serializable{
 	@Column(name = "Cat_desc")
 	private String description;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="categorie", 
 			cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, 
 			fetch=FetchType.EAGER)
 	private List<SousCategories> souscategories = new ArrayList<>();
 	
+	
+	
+	public List<SousCategories> getSouscategories() {
+		return souscategories;
+	}
+	public void setSouscategories(List<SousCategories> souscategories) {
+		this.souscategories = souscategories;
+	}
 	public Long getIdCat() {
 		return IdCat;
 	}
@@ -66,15 +78,21 @@ public class Categorie implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Categorie(Long idCat, String nom, String description) {
-		super();
-		IdCat = idCat;
-		this.nom = nom;
-		this.description = description;
-	}
-	@Override
+	
+	
 	public String toString() {
 		return "Categorie [IdCat=" + IdCat + ", nom=" + nom + ", description=" + description + "]";
+	}
+	public Categorie(String nom, String description, List<SousCategories> souscategories) {
+		super();
+		this.nom = nom;
+		this.description = description;
+		this.souscategories = souscategories;
+	}
+	public Categorie(String nom, String description) {
+		super();
+		this.nom = nom;
+		this.description = description;
 	}
 	
 	

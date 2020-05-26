@@ -55,8 +55,10 @@
 
 						<div class="profile_info">
 							<span>Welcome,</span>
+							
 
-							<h2>John Doe</h2>
+						<h:outputText
+					value="#{AdminController.authenticatedAdmin.prenom} #{AdminController.authenticatedAdmin.nom}" />
 						</div>
 
 						<div class="clearfix" />

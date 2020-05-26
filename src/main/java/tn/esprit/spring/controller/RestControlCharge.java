@@ -49,7 +49,8 @@ public class RestControlCharge {
 	@PostMapping("/paymentintent")
 	// @PreAuthorize("hasRole('USER')")
 	public String payment(@RequestBody ChargeRequest chargeRequest) throws StripeException {
-		return stripeService.paymentIntent(chargeRequest);
+		return stripeService.paymentIntent(chargeRequest); 
+		
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/confirm/{id}
@@ -59,5 +60,12 @@ public class RestControlCharge {
 		PaymentIntent paymentIntent = stripeService.confirm(id);
 		String paymentStr = paymentIntent.toJson();
 		return new ResponseEntity<String>(paymentStr, HttpStatus.OK);
+	}
+	//////              1/4242424242424242/11/2026/123
+	@PostMapping("/pay/{idc}/{id}/{carta}/{expMonth}/{expYear}/{cvc}")
+	public void Pay(@PathVariable("idc") int idc,@PathVariable("id") long id, @PathVariable("carta") String carta,
+			@PathVariable("expMonth") int expMonth, @PathVariable("expYear") int expYear,
+			@PathVariable("cvc") String cvc) throws AuthenticationException, InvalidRequestException, CardException, StripeException{
+		stripeService.Pay(idc,id,carta,expMonth,expYear,cvc);
 	}
 }

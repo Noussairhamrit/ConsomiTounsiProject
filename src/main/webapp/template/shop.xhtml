@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<h:html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
 <!-- Basic -->
-<h:head>
+<ui:param name="shop" value="Accueil" />
+	<ui:define name="shop">
+<head>
 
 	<meta charset="utf-8" />
 
@@ -37,10 +40,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</h:head>
+</head>
 
 <h:body>
 	<!-- Start Main Top -->
+
 
 	<div class="main-top">
 
@@ -325,6 +329,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- End Top Search -->
 	<!-- Start All Title Box -->
 
@@ -1316,121 +1321,7 @@
 	</div>
 	<!-- End Instagram Feed  -->
 	<!-- Start Footer  -->
-	<h:footer>
-
-	<div class="footer-main">
-
-		<div class="container">
-
-			<div class="row">
-
-				<div class="col-lg-4 col-md-12 col-sm-12">
-
-					<div class="footer-widget">
-
-						<h4>About ThewayShop</h4>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-						<ul>
-
-							<li><a href="#"><i class="fab fa-facebook"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-twitter"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-linkedin"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-google-plus"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fa fa-rss" aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-pinterest-p"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-whatsapp"
-									aria-hidden="true" /></a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-12 col-sm-12">
-
-					<div class="footer-link">
-
-						<h4>Information</h4>
-
-						<ul>
-
-							<li><a href="#">About Us</a></li>
-
-							<li><a href="#">Customer Service</a></li>
-
-							<li><a href="#">Our Sitemap</a></li>
-
-							<li><a href="#">Terms &amp; Conditions</a></li>
-
-							<li><a href="#">Privacy Policy</a></li>
-
-							<li><a href="#">Delivery Information</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-12 col-sm-12">
-
-					<div class="footer-link-contact">
-
-						<h4>Contact Us</h4>
-
-						<ul>
-
-							<li>
-
-								<p>
-									<i class="fas fa-map-marker-alt" />Address: Michael I. Days
-									3756 <br />Preston Street Wichita,<br /> KS 67213
-								</p>
-							</li>
-
-							<li>
-
-								<p>
-									<i class="fas fa-phone-square" />Phone: <a
-										href="tel:+1-888705770">+1-888 705 770</a>
-								</p>
-							</li>
-
-							<li>
-
-								<p>
-									<i class="fas fa-envelope" />Email: <a
-										href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a>
-								</p>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</h:footer>
-	<!-- End Footer  -->
-	<!-- Start copyright  -->
-
-	<div class="footer-copyright">
-
-		<p class="footer-company">
-			All Rights Reserved. © 2018 <a href="#">ThewayShop</a> Design By : <a
-				href="https://html.design/">html design</a>
-		</p>
-	</div>
+	
 	<!-- End copyright  -->
 	<a href="#" id="back-to-top" title="Back to top" style="display: none;">↑</a>
 	<!-- ALL JS FILES -->
@@ -1465,7 +1356,10 @@
 	<script src="../temp1/js/form-validator.min.js"></script>
 
 	<script src="../temp1/js/contact-form-script.js"></script>
+		<script src="../temp1/js/jquery-ui.js"></script>
+    <script src="../temp1/js/jquery.nicescroll.min.js"></script>
 
 	<script src="../temp1/js/custom.js"></script>
 	</h:body>
-	</h:html>
+	</ui:define>
+	</ui:composition>

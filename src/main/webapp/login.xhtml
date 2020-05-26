@@ -1,16 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/template/template.xhtml">
-	<ui:param name="page_name" value="Connexion" />
-	<ui:define name="menu">
-		<h:form id="form">
-			<b>Connexion</b>
-			<h:panelGrid columns="2">
-				
-			</h:panelGrid>
-		</h:form>
-	</ui:define>
-</ui:composition>
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>#{page_name}</title>
+<meta charset="utf-8" />
+
+<title>Sign In</title>
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900"
+	rel="stylesheet" type="text/css" />
+
+<link href="../SpringMVC/resources/css/animate.css" rel="stylesheet" />
+<!-- Custom Stylesheet -->
+<link href="../SpringMVC/resources/css/style.css" rel="stylesheet" />
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<!-- 	<h:dataTable value="#{PanierController.panierParIdclient(1)}" -->
+<!-- 		var="panier" border="1"> -->
+<!-- 		<h:column> -->
+<!-- 			<f:facet name="header"> -->
+<!-- 				<h:outputText value="Login (Email)" /> -->
+<!-- 			</f:facet> -->
+<!-- 			<h:outputText value="#{panier.nomProduit}" /> -->
+<!-- 		</h:column> -->
+<!-- 		<h:column> -->
+<!-- 			<f:facet name="header"> -->
+<!-- 				<h:outputText value="quantity" /> -->
+<!-- 			</f:facet> -->
+<!-- 			<p:spinner id="minMax" value="#{panier.quantity}" min="0" max="100" /> -->
+
+
+<!-- 		</h:column> -->
+<!-- 		<h:column> -->
+<!-- 			<f:facet name="header"> -->
+<!-- 				<h:outputText value="Prenom" /> -->
+<!-- 			</f:facet> -->
+<!-- 			<h:outputText value="#{panier.price}" /> -->
+<!-- 		</h:column> -->
+<!-- 		<h:column> -->
+<!-- 			<f:facet name="header"> -->
+<!-- 				<h:outputText value="Prenom" /> -->
+<!-- 			</f:facet> -->
+<!-- 			<h:outputText value="#{panier.total}" /> -->
+<!-- 		</h:column> -->
+
+
+<!-- 	</h:dataTable> -->
+
+
+
+
+
+
+
+<!-- 	<h:form id="form"> -->
+<!-- 		<p:dataView var="panier" -->
+<!-- 			value="#{PanierController.panierParIdclient(1)}" -->
+<!-- 			gridIcon="pi pi-th-large" listIcon="pi pi-bars"> -->
+
+<!-- 			<p:dataViewGridItem> -->
+<!-- 				<p:panel header="#{panier.nomProduit}" style="text-align:center"> -->
+<!-- 					<h:panelGrid columns="1" style="width:100%"> -->
+<!-- 						                    <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>  -->
+
+<!-- 						<h:outputText value="#{panier.nomProduit}" /> -->
+
+<!-- 						<p:commandLink update=":form:carDetail" -->
+<!-- 							oncomplete="PF('carDialog').show()" title="View Detail"> -->
+<!-- 							<h:outputText styleClass="ui-icon pi pi-search" -->
+<!-- 								style="margin:0 auto;" /> -->
+<!-- 							                        <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" /> -->
+<!-- 						</p:commandLink> -->
+<!-- 					</h:panelGrid> -->
+<!-- 				</p:panel> -->
+<!-- 			</p:dataViewGridItem> -->
+
+<!-- 			<p:dataViewListItem> -->
+<!-- 				<h:panelGrid columns="3" style="width:100%" -->
+<!-- 					columnClasses="logo,detail"> -->
+<!-- 					                <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />  -->
+
+<!-- 					<p:outputPanel> -->
+<!-- 						<h:panelGrid columns="2" cellpadding="5"> -->
+<!-- 							<h:outputText value="Idd:" /> -->
+<!-- 							<h:outputText value="#{panier.nomProduit}" -->
+<!-- 								style="font-weight: bold" /> -->
+
+<!-- 							<h:outputText value="Year:" /> -->
+<!-- 							<h:outputText value="#{panier.nomProduit}" -->
+<!-- 								style="font-weight: bold" /> -->
+
+<!-- 							<h:outputText value="Color:" /> -->
+<!-- 							<h:outputText value="#{panier.nomProduit}" -->
+<!-- 								style="font-weight: bold" /> -->
+<!-- 						</h:panelGrid> -->
+<!-- 					</p:outputPanel> -->
+
+<!-- 					<p:commandLink update=":form:carDetail" -->
+<!-- 						oncomplete="PF('carDialog').show()" title="View Detail"> -->
+<!-- 						<h:outputText styleClass="ui-icon pi pi-search" -->
+<!-- 							style="margin:0 auto;" /> -->
+<!-- 						                    <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" /> -->
+<!-- 					</p:commandLink> -->
+<!-- 				</h:panelGrid> -->
+<!-- 			</p:dataViewListItem> -->
+<!-- 		</p:dataView> -->
+
+<!-- 		<p:dialog header="Car Info" widgetVar="carDialog" modal="true" -->
+<!-- 			showEffect="fade" hideEffect="fade" resizable="false"> -->
+<!-- 			<p:outputPanel id="carDetail" style="text-align:center;"> -->
+<!-- 				<p:panelGrid columns="2" -->
+<!-- 					rendered="#{not empty dataGridView.selectedCar}" -->
+<!-- 					columnClasses="label,value"> -->
+<!-- 					<f:facet name="header"> -->
+<!-- 						                    <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/>  -->
+<!-- 					</f:facet> -->
+
+<!-- 					<h:outputText value="Id:" /> -->
+<!-- 					<h:outputText value="#{panier.nomProduit}" /> -->
+
+<!-- 					<h:outputText value="Yearr" /> -->
+<!-- 					<h:outputText value="#{panier.nomProduit}" /> -->
+
+<!-- 					<h:outputText value="Color:" /> -->
+<!-- 					<h:outputText value="#{panier.nomProduit}" /> -->
+
+<!-- 					<h:outputText value="Price" /> -->
+<!-- 					<h:outputText value="$#{panier.nomProduit}" /> -->
+<!-- 				</p:panelGrid> -->
+<!-- 			</p:outputPanel> -->
+<!-- 		</p:dialog> -->
+<!-- 	</h:form> -->
+<!-- 	<h:form> -->
+<!-- 		<p:messages showDetail="true" /> -->
+<!-- 		<p:captcha label="Captcha" /> -->
+<!-- 		<br /> -->
+<!-- 		<p:commandButton value="Check" action="#{captchaView.submit()}" -->
+<!-- 			ajax="false" icon="pi pi-check" /> -->
+<!-- 	</h:form> -->
+<center>
+	<img src="../SpringMVC/resources/images/facture.png" alt="" />
+</center>
+</body>
+</html>

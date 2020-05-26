@@ -1,831 +1,575 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<h:html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<!-- Basic -->
-<h:head>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ez="http://java.sun.com/jsf/composite/spinner"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/template/template.xhtml">
+	<!-- Basic -->
+	<ui:param name="cart" value="Accueil" />
+	<ui:define name="cart">
+		<head>
 
-	<meta charset="utf-8" />
+<meta charset="utf-8" />
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<!-- Mobile Metas -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Mobile Metas -->
 
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!-- Site Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Site Metas -->
 
-	<title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+<title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
 
-	<meta name="keywords" content="" />
+<meta name="keywords" content="" />
 
-	<meta name="description" content="" />
+<meta name="description" content="" />
 
-	<meta name="author" content="" />
-	<!-- Site Icons -->
-	<link rel="shortcut icon" href="../temp1/images/favicon.ico" type="/image/x-icon" />
-	<link rel="apple-touch-icon" href="../temp1/images/apple-touch-icon.png" />
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="../temp1/css/bootstrap.min.css" />
-	<!-- Site CSS -->
-	<link rel="stylesheet" href="../temp1/css/style.css" />
-	<!-- Responsive CSS -->
-	<link rel="stylesheet" href="../temp1/css/responsive.css" />
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="../temp1/css/custom.css" />
-	<!--[if lt IE 9]>
+<meta name="author" content="" />
+<!-- Site Icons -->
+<link rel="shortcut icon" href="../temp1/images/favicon.ico"
+	type="/image/x-icon" />
+<link rel="apple-touch-icon" href="../temp1/images/apple-touch-icon.png" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../temp1/css/bootstrap.min.css" />
+<!-- Site CSS -->
+<link rel="stylesheet" href="../temp1/css/style.css" />
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="../temp1/css/responsive.css" />
+<!-- Custom CSS -->
+<link rel="stylesheet" href="../temp1/css/custom.css" />
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</h:head>
+		</head>
 
-<h:body>
-	<!-- Start Main Top -->
+		<h:body>
+			<!-- 		<c:if test="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).id==0}"> -->
+			<!-- 										        il n'ya pas une commande en cours -->
+			<!-- 										        	        </c:if> -->
 
-	<div class="main-top">
+			<!--                                        <c:if test="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).id!=0}"> -->
 
-		<div class="container-fluid">
+			<!-- Start Main Top -->
 
-			<div class="row">
+			<!-- End Top Search -->
+			<!-- Start All Title Box -->
+		
+			<div class="all-title-box">
 
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="container">
 
-					<div class="text-slid-box">
+					<div class="row">
 
-						<div id="offer-box" class="carouselTicker">
+						<div class="col-lg-12">
 
-							<ul class="offer-box">
+							<h2>Cart</h2>
 
-								<li><i class="fab fa-opencart" /> Off 10%! Shop Now Man</li>
+							<ul class="breadcrumb">
 
+								<li class="breadcrumb-item"><a href="#">Shop</a></li>
+
+								<li class="breadcrumb-item active">Cart</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-					<div class="custom-select-box">
-						<select id="basic" class="selectpicker show-tick form-control"
-							data-placeholder="$ USD">
-
-							<option>¥ JPY</option>
-
-							<option>$ USD</option>
-
-							<option>€ EUR</option>
-						</select>
-					</div>
-
-					<div class="right-phone-box">
-
-						<p>
-							Call US :- <a href="#"> +11 900 800 100</a>
-						</p>
-					</div>
-
-					<div class="our-link">
-
-						<ul>
-
-							<li><a href="#">My Account</a></li>
-
-							<li><a href="#">Our location</a></li>
-
-							<li><a href="#">Contact Us</a></li>
-						</ul>
+			</div>
+			<!-- End All Title Box -->
+			<!-- Start Cart  -->
+				<br></br>
+			<br></br>
+			<h:panelGroup
+				rendered="#{empty PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}">
+				<div class="container-fluid bg-white">
+					<div class="container py-5">
+						<div class="img-vide text-center">
+							<a href="../template/index.jsf"><img
+								src="https://www.ajipressing.ma/images/panier-vide.png" /></a>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Main Top -->
-	<!-- Start Main Top -->
-	<h:header class="main-header"> <!-- Start Navigation --> <nav
-		class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+			</h:panelGroup>
+				<h:panelGroup rendered="#{not empty PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}">
 
-	<div class="container">
-		<!-- Start Header Navigation -->
+			<div class="cart-box-main">
 
-		<div class="navbar-header">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbar-menu" aria-controls="navbars-rs-food"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fa fa-bars" />
-			</button>
-			<a class="navbar-brand" href="../template/index.xhtml"><img
-				src="../temp1/images/logo1.png" class="logo" alt="" /></a>
-		</div>
-		<!-- End Header Navigation -->
-		<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="container">
 
-		<div class="collapse navbar-collapse" id="navbar-menu">
+					<div class="row">
 
-			<ul class="nav navbar-nav ml-auto" data-in="fadeInDown"
-				data-out="fadeOutUp">
+						<div class="col-lg-12">
 
-				<li class="nav-item active"><a class="nav-link"
-					href="../template/index.xhtml">Home</a></li>
+							<div class="table-main table-responsive">
 
-				<li class="nav-item"><a class="nav-link" href="../template/about.xhtml">About
-						Us</a></li>
+								<table class="table">
+									<h:form>
+										<h:dataTable class="table"
+											value="#{PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}"
+											var="panier" border="1">
+											<thead>
 
-				<li class="dropdown megamenu-fw"><a href="#"
-					class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Product</a>
+												<tr>
 
-					<ul class="dropdown-menu megamenu-content" role="menu">
+													<th>Images</th>
 
-						<li>
+													<th>Product Name</th>
 
-							<div class="row">
+													<th>Price</th>
 
-								<div class="col-menu col-md-3">
+													<th>Quantity</th>
 
-									<h6 class="title">Top</h6>
+													<th>Total</th>
 
-									<div class="content">
+													<th>Remove</th>
+												</tr>
+											</thead>
 
-										<ul class="menu-col">
+											<tbody>
 
-											<li><a href="../template/shop.xhtml">Jackets</a></li>
+												<tr>
 
-											<li><a href="../template/shop.xhtml">Shirts</a></li>
+													<td class="thumbnail-img"><h:column>
+															<f:facet name="header">
+																<h:outputText value="Images" />
+															</f:facet>
+															<a href="#"> <h:outputText class="name-pr" />
 
-											<li><a href="../template/shop.xhtml">Sweaters &amp; Cardigans</a></li>
+															</a>
+														</h:column></td>
 
-											<li><a href="../template/shop.xhtml">T-shirts</a></li>
-										</ul>
+													<td class="name-pr"><h:column>
+															<f:facet name="header">
+																<h:outputText value="Product Name" />
+															</f:facet>
+															<a href="#"> <h:outputText class="name-pr"
+																	value="#{panier.nomProduit}" />
+
+															</a>
+														</h:column></td>
+
+													<td class="price-pr">
+
+														<p>
+															<h:column>
+																<f:facet name="header">
+																	<h:outputText value="Price" />
+																</f:facet>
+																<h:outputText value="#{panier.price}" class="price-pr" />
+															</h:column>
+														</p>
+													</td>
+
+													<td class="quantity-box"><input type="number" size="4"
+														value="1" min="0" step="1" class="c-input-text qty text" />
+														<h:column>
+															<f:facet name="header">
+																<h:outputText value="Quantity" />
+															</f:facet>
+															<h:inputText id="aa" type="number"
+																class="c-input-text qty text" value="#{panier.quantity}" />
+															<!-- 															<p:spinner id="minMax" value="#{panier.quantity}" min="0" -->
+															<!-- 																max="100" -->
+															<!-- 																class="ui-spinner-input ui-inputfield ui-state-default ui-corner-all ui-state-filled" /> -->
+														</h:column></td>
+													<td class="total-pr">
+
+														<p>
+															<h:column>
+																<f:facet name="header">
+																	<h:outputText value="Total" />
+																</f:facet>
+																<h:outputText value="#{panier.total}" class="price-pr" />
+															</h:column>
+														</p>
+													</td>
+
+													<td class="remove-pr"><h:column>
+															<div class="update-box">
+																<f:facet name="header">
+																	<h:outputText value="Remove" />
+																</f:facet>
+																<h:commandButton class="btn btn-theme"
+																	action="#{PanierController.update_after_remove(panier.id,AdminController.authenticatedClient.userId)}"
+																	value="X" />
+															</div>
+														</h:column></td>
+
+													<td class="remove-pr"><h:column>
+															<div class="update-box">
+																<f:facet name="header">
+																	<h:outputText value="Update" />
+																</f:facet>
+
+
+																<h:commandButton class="btn btn-theme"
+																	action="#{PanierController.updateLigne(panier.id,panier.quantity,AdminController.authenticatedClient.userId)}"
+																	value="update" />
+															</div>
+														</h:column></td>
+
+
+												</tr>
+
+												<tr>
+
+													<td class="thumbnail-img"><a href="#"> <img
+															class="img-fluid" src="../temp1/images/img-pro-02.jpg"
+															alt="" />
+													</a></td>
+
+													<td class="name-pr"><a href="#"> Lorem ipsum dolor
+															sit amet </a></td>
+
+													<td class="price-pr">
+
+														<p>$ 60.0</p>
+													</td>
+
+													<td class="quantity-box"><input type="number" size="4"
+														value="1" min="0" step="1" class="c-input-text qty text" /></td>
+
+													<td class="total-pr">
+
+														<p>$ 80.0</p>
+													</td>
+
+													<td class="remove-pr"><a href="#"> <i
+															class="fas fa-times" />
+													</a></td>
+												</tr>
+
+												<tr>
+
+													<td class="thumbnail-img"><a href="#"> <img
+															class="img-fluid" src="../temp1/images/img-pro-03.jpg"
+															alt="" />
+													</a></td>
+
+													<td class="name-pr"><a href="#"> Lorem ipsum dolor
+															sit amet </a></td>
+
+													<td class="price-pr">
+
+														<p>$ 30.0</p>
+													</td>
+
+													<td class="quantity-box"><input type="number" size="4"
+														value="1" min="0" step="1" class="c-input-text qty text" /></td>
+
+													<td class="total-pr">
+
+														<p>$ 80.0</p>
+													</td>
+
+													<td class="remove-pr"><a href="#"> <i
+															class="fas fa-times" />
+													</a></td>
+												</tr>
+											</tbody>
+										</h:dataTable>
+									</h:form>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="row my-5">
+
+						<div class="col-lg-6 col-sm-6">
+
+							<div class="coupon-box">
+
+								<div class="input-group input-group-sm">
+									<input class="form-control"
+										placeholder="Enter your coupon code" aria-label="Coupon code"
+										type="text" />
+
+									<div class="input-group-append">
+										<button class="btn btn-theme" type="button">Apply
+											Coupon</button>
 									</div>
 								</div>
-								<!-- end col-3 -->
+							</div>
+						</div>
 
-								<div class="col-menu col-md-3">
+						<div class="col-lg-6 col-sm-6">
 
-									<h6 class="title">Bottom</h6>
+							<div class="update-box">
+								<!-- 								<input value="Update Cart" type="submit" /> -->
 
-									<div class="content">
+								<h:commandButton class="btn btn-theme"
+									action="#{PanierController.updateLigne(panier.id,panier.quantity,AdminController.authenticatedClient.userId)}"
+									value="update" />
 
-										<ul class="menu-col">
+							</div>
+						</div>
+					</div>
+					<h:form>
+						<!-- 					<f:metadata   > -->
+						<!-- 							  <f:viewParam id="id" value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId)}" -->
+						<!-- 							var="cmd"  /> -->
+						<!-- 						<h:dataTable -->
+						<!-- 							value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId)}" -->
+						<!-- 							var="commande"  > -->
+						<div class="row my-5">
 
-											<li><a href="../shop.xhtml">Swimwear</a></li>
+							<div class="col-lg-8 col-sm-12" />
 
-											<li><a href="../shop.xhtml">Skirts</a></li>
+							<div class="col-lg-4 col-sm-12">
 
-											<li><a href="../shop.xhtml">Jeans</a></li>
+								<div class="order-box">
 
-											<li><a href="../shop.xhtml">Trousers</a></li>
-										</ul>
+									<h3>Order summary</h3>
+
+									<div class="d-flex">
+
+										<h4>Sub Total</h4>
+
+
+
+										<div class="ml-auto font-weight-bold">
+
+
+											<h:outputText
+												value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).prixtotale} DT" />
+										</div>
+									</div>
+
+									<div class="d-flex">
+
+										<h4>Discount</h4>
+
+										<div class="ml-auto font-weight-bold">
+											<h:outputText
+												value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).poucentage}" />
+										</div>
 									</div>
 								</div>
-								<!-- end col-3 -->
 
-								<div class="col-menu col-md-3">
+								<hr class="my-1" />
 
-									<h6 class="title">Clothing</h6>
+								<div class="d-flex">
 
-									<div class="content">
+									<h4>Accumulated Point</h4>
 
-										<ul class="menu-col">
+									<div class="ml-auto font-weight-bold">
 
-											<li><a href="../shop.xhtml">Top Wear</a></li>
-
-											<li><a href="../shop.xhtml">Party wear</a></li>
-
-											<li><a href="../shop.xhtml">Bottom Wear</a></li>
-
-											<li><a href="../shop.xhtml">Indian Wear</a></li>
-										</ul>
+										<h:outputText
+											value="#{CommandeController.pt_merci(CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).id)}" />
 									</div>
 								</div>
 
-								<div class="col-menu col-md-3">
+								<!-- 								<div class="d-flex"> -->
 
-									<h6 class="title">Accessories</h6>
+								<!-- 									<h4>Tax</h4> -->
 
-									<div class="content">
+								<!-- 									<div class="ml-auto font-weight-bold">$ 2</div> -->
+								<!-- 								</div> -->
 
-										<ul class="menu-col">
+								<div class="d-flex">
 
-											<li><a href="../shop.xhtml">Bags</a></li>
+									<h4>Shipping Cost</h4>
 
-											<li><a href="../shop.xhtml">Sunglasses</a></li>
+									<div class="ml-auto font-weight-bold">Free</div>
+								</div>
 
-											<li><a href="../shop.xhtml">Fragrances</a></li>
+								<hr />
 
-											<li><a href="../shop.xhtml">Wallets</a></li>
-										</ul>
+								<div class="d-flex gr-total">
+
+									<h5>Grand Total</h5>
+
+									<div class="ml-auto h5">
+										<h:outputText
+											value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).prix_after_remise} DT" />
+
 									</div>
 								</div>
-								<!-- end col-3 -->
-							</div> <!-- end row -->
-						</li>
-					</ul></li>
 
-				<li class="dropdown"><a href="#"
-					class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-
-					<ul class="dropdown-menu">
-
-						<li><a href="../template/cart.xhtml">Cart</a></li>
-
-						<li><a href="../template/checkout.xhtml">Checkout</a></li>
-
-						<li><a href="../template/my-account.xhtml">My Account</a></li>
-
-						<li><a href="../template/wishlist.xhtml">Wishlist</a></li>
-
-						<li><a href="../template/shop-detail.xhtml">Shop Detail</a></li>
-					</ul></li>
-
-				<li class="nav-item"><a class="nav-link" href="../template/service.xhtml">Our
-						Service</a></li>
-
-				<li class="nav-item"><a class="nav-link" href="../template/contact-us.xhtml">Contact
-						Us</a></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-		<!-- Start Atribute Navigation -->
-
-		<div class="attr-nav">
-
-			<ul>
-
-				<li class="search"><a href="#"><i class="fa fa-search" /></a></li>
-
-				<li class="side-menu"><a href="#"> <i
-						class="fa fa-shopping-bag" /> <span class="badge">3</span>
-				</a></li>
-			</ul>
-		</div>
-		<!-- End Atribute Navigation -->
-	</div>
-	<!-- Start Side Menu -->
-
-	<div class="side">
-		<a href="#" class="close-side"><i class="fa fa-times" /></a>
-
-		<li class="cart-box">
-
-			<ul class="cart-list">
-
-				<li><a href="#" class="photo"><img
-						src="../temp1/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-
-					<h6>
-						<a href="#">Delica omtantur </a>
-					</h6>
-
-					<p>
-						1x - <span class="price">$80.00</span>
-					</p></li>
-
-				<li><a href="#" class="photo"><img
-						src="../temp1/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-
-					<h6>
-						<a href="#">Omnes ocurreret</a>
-					</h6>
-
-					<p>
-						1x - <span class="price">$60.00</span>
-					</p></li>
-
-				<li><a href="#" class="photo"><img
-						src="../temp1/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-
-					<h6>
-						<a href="#">Agam facilisis</a>
-					</h6>
-
-					<p>
-						1x - <span class="price">$40.00</span>
-					</p></li>
-
-				<li class="total"><a href="#"
-					class="btn btn-default hvr-hover btn-cart">VIEW CART</a> <span
-					class="float-right"><strong>Total</strong>: $180.00</span></li>
-			</ul>
-		</li>
-	</div>
-	<!-- End Side Menu --> </nav> <!-- End Navigation --> 
-	</h:header>
-	<!-- End Main Top -->
-	<!-- Start Top Search -->
-
-	<div class="top-search">
-
-		<div class="container">
-
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-search" /></span> <input
-					type="text" class="form-control" placeholder="Search" /> <span
-					class="input-group-addon close-search"><i
-					class="fa fa-times" /></span>
-			</div>
-		</div>
-	</div>
-	<!-- End Top Search -->
-	<!-- Start All Title Box -->
-
-	<div class="all-title-box">
-
-		<div class="container">
-
-			<div class="row">
-
-				<div class="col-lg-12">
-
-					<h2>Cart</h2>
-
-					<ul class="breadcrumb">
-
-						<li class="breadcrumb-item"><a href="#">Shop</a></li>
-
-						<li class="breadcrumb-item active">Cart</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End All Title Box -->
-	<!-- Start Cart  -->
-
-	<div class="cart-box-main">
-
-		<div class="container">
-
-			<div class="row">
-
-				<div class="col-lg-12">
-
-					<div class="table-main table-responsive">
-
-						<table class="table">
-							<thead>
-
-								<tr>
-
-									<th>Images</th>
-
-									<th>Product Name</th>
-
-									<th>Price</th>
-
-									<th>Quantity</th>
-
-									<th>Total</th>
-
-									<th>Remove</th>
-								</tr>
-							</thead>
-
-							<tbody>
-
-								<tr>
-
-									<td class="thumbnail-img"><a href="#"> <img
-											class="img-fluid" src="../temp1/images/img-pro-01.jpg" alt="" />
-									</a></td>
-
-									<td class="name-pr"><a href="#"> Lorem ipsum dolor sit
-											amet </a></td>
-
-									<td class="price-pr">
-
-										<p>$ 80.0</p>
-									</td>
-
-									<td class="quantity-box"><input type="number" size="4"
-										value="1" min="0" step="1" class="c-input-text qty text" /></td>
-
-									<td class="total-pr">
-
-										<p>$ 80.0</p>
-									</td>
-
-									<td class="remove-pr"><a href="#"> <i
-											class="fas fa-times" />
-									</a></td>
-								</tr>
-
-								<tr>
-
-									<td class="thumbnail-img"><a href="#"> <img
-											class="img-fluid" src="../temp1/images/img-pro-02.jpg" alt="" />
-									</a></td>
-
-									<td class="name-pr"><a href="#"> Lorem ipsum dolor sit
-											amet </a></td>
-
-									<td class="price-pr">
-
-										<p>$ 60.0</p>
-									</td>
-
-									<td class="quantity-box"><input type="number" size="4"
-										value="1" min="0" step="1" class="c-input-text qty text" /></td>
-
-									<td class="total-pr">
-
-										<p>$ 80.0</p>
-									</td>
-
-									<td class="remove-pr"><a href="#"> <i
-											class="fas fa-times" />
-									</a></td>
-								</tr>
-
-								<tr>
-
-									<td class="thumbnail-img"><a href="#"> <img
-											class="img-fluid" src="../temp1/images/img-pro-03.jpg" alt="" />
-									</a></td>
-
-									<td class="name-pr"><a href="#"> Lorem ipsum dolor sit
-											amet </a></td>
-
-									<td class="price-pr">
-
-										<p>$ 30.0</p>
-									</td>
-
-									<td class="quantity-box"><input type="number" size="4"
-										value="1" min="0" step="1" class="c-input-text qty text" /></td>
-
-									<td class="total-pr">
-
-										<p>$ 80.0</p>
-									</td>
-
-									<td class="remove-pr"><a href="#"> <i
-											class="fas fa-times" />
-									</a></td>
-								</tr>
-							</tbody>
-						</table>
+								<hr />
+
+								<div class="shipping -mrxxl -mbm">Frais de livraison non
+									inclus pour le moment</div>
+
+							</div>
+						</div>
+						<!-- 						</h:dataTable> -->
+						<!-- 						</f:metadata> -->
+					</h:form>
+					<div class="col-12 d-flex shopping-box">
+						<a href="../template/shop.jsf" class="ml-auto btn hvr-hover">Poursuivre
+							vos achats</a> <a href="../template/checkout.jsf"
+							class="ml-auto btn hvr-hover">Finaliser votre commande</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="row my-5">
+			<!-- End Cart -->
+			<!-- Start Instagram Feed  -->
 
-				<div class="col-lg-6 col-sm-6">
+			<div class="instagram-box">
 
-					<div class="coupon-box">
+				<div class="main-instagram owl-carousel owl-theme">
 
-						<div class="input-group input-group-sm">
-							<input class="form-control" placeholder="Enter your coupon code"
-								aria-label="Coupon code" type="text" />
+					<div class="item">
 
-							<div class="input-group-append">
-								<button class="btn btn-theme" type="button">Apply
-									Coupon</button>
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-01.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-02.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-03.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-04.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-05.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-06.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-07.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-08.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-09.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="item">
+
+						<div class="ins-inner-box">
+							<img src="../temp1/images/instagram-img-05.jpg" alt="" />
+
+							<div class="hov-in">
+								<a href="#"><i class="fab fa-instagram" /></a>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-6 col-sm-6">
-
-					<div class="update-box">
-						<input value="Update Cart" type="submit" />
-					</div>
-				</div>
 			</div>
+			<!-- End Instagram Feed  -->
+			<!-- Start Footer  -->
 
-			<div class="row my-5">
+			<!-- End Footer  -->
+			<!-- Start copyright  -->
 
-				<div class="col-lg-8 col-sm-12" />
 
-				<div class="col-lg-4 col-sm-12">
+			<!-- End copyright  -->
+			<a href="#" id="back-to-top" title="Back to top"
+				style="display: none;">↑</a>
+			<!-- ALL JS FILES -->
 
-					<div class="order-box">
+			<script src="../temp1/js/jquery-3.2.1.min.js"></script>
 
-						<h3>Order summary</h3>
+			<script src="../temp1/js/popper.min.js"></script>
 
-						<div class="d-flex">
+			<script src="../temp1/js/bootstrap.min.js"></script>
+			<!-- ALL PLUGINS -->
 
-							<h4>Sub Total</h4>
+			<script src="../temp1/js/jquery.superslides.min.js"></script>
 
-							<div class="ml-auto font-weight-bold">$ 130</div>
-						</div>
+			<script src="../temp1/js/bootstrap-select.js"></script>
 
-						<div class="d-flex">
+			<script src="../temp1/js/inewsticker.js"></script>
 
-							<h4>Discount</h4>
+			<script src="../temp1/js/bootsnav.js."></script>
 
-							<div class="ml-auto font-weight-bold">$ 40</div>
-						</div>
+			<script src="../temp1/js/images-loded.min.js"></script>
 
-						<hr class="my-1" />
+			<script src="../temp1/js/isotope.min.js"></script>
 
-						<div class="d-flex">
+			<script src="../temp1/js/owl.carousel.min.js"></script>
 
-							<h4>Coupon Discount</h4>
+			<script src="../temp1/js/baguetteBox.min.js"></script>
 
-							<div class="ml-auto font-weight-bold">$ 10</div>
-						</div>
+			<script src="../temp1/js/form-validator.min.js"></script>
 
-						<div class="d-flex">
+			<script src="../temp1/js/contact-form-script.js"></script>
+			<script src="../temp1/js/jquery-ui.js"></script>
+			<script src="../temp1/js/jquery.nicescroll.min.js"></script>
 
-							<h4>Tax</h4>
-
-							<div class="ml-auto font-weight-bold">$ 2</div>
-						</div>
-
-						<div class="d-flex">
-
-							<h4>Shipping Cost</h4>
-
-							<div class="ml-auto font-weight-bold">Free</div>
-						</div>
-
-						<hr />
-
-						<div class="d-flex gr-total">
-
-							<h5>Grand Total</h5>
-
-							<div class="ml-auto h5">$ 388</div>
-						</div>
-
-						<hr />
-					</div>
-				</div>
-
-				<div class="col-12 d-flex shopping-box">
-					<a href="../template/checkout.xhtml" class="ml-auto btn hvr-hover">Checkout</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Cart -->
-	<!-- Start Instagram Feed  -->
-
-	<div class="instagram-box">
-
-		<div class="main-instagram owl-carousel owl-theme">
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-01.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-02.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-03.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-04.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-05.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-06.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-07.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-08.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-09.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="item">
-
-				<div class="ins-inner-box">
-					<img src="../temp1/images/instagram-img-05.jpg" alt="" />
-
-					<div class="hov-in">
-						<a href="#"><i class="fab fa-instagram" /></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Instagram Feed  -->
-	<!-- Start Footer  -->
-	<h:footer>
-
-	<div class="footer-main">
-
-		<div class="container">
-
-			<div class="row">
-
-				<div class="col-lg-4 col-md-12 col-sm-12">
-
-					<div class="footer-widget">
-
-						<h4>About ThewayShop</h4>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-						<ul>
-
-							<li><a href="#"><i class="fab fa-facebook"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-twitter"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-linkedin"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-google-plus"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fa fa-rss" aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-pinterest-p"
-									aria-hidden="true" /></a></li>
-
-							<li><a href="#"><i class="fab fa-whatsapp"
-									aria-hidden="true" /></a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-12 col-sm-12">
-
-					<div class="footer-link">
-
-						<h4>Information</h4>
-
-						<ul>
-
-							<li><a href="#">About Us</a></li>
-
-							<li><a href="#">Customer Service</a></li>
-
-							<li><a href="#">Our Sitemap</a></li>
-
-							<li><a href="#">Terms &amp; Conditions</a></li>
-
-							<li><a href="#">Privacy Policy</a></li>
-
-							<li><a href="#">Delivery Information</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-12 col-sm-12">
-
-					<div class="footer-link-contact">
-
-						<h4>Contact Us</h4>
-
-						<ul>
-
-							<li>
-
-								<p>
-									<i class="fas fa-map-marker-alt" />Address: Michael I. Days
-									3756 <br />Preston Street Wichita,<br /> KS 67213
-								</p>
-							</li>
-
-							<li>
-
-								<p>
-									<i class="fas fa-phone-square" />Phone: <a
-										href="tel:+1-888705770">+1-888 705 770</a>
-								</p>
-							</li>
-
-							<li>
-
-								<p>
-									<i class="fas fa-envelope" />Email: <a
-										href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a>
-								</p>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</h:footer>
-	<!-- End Footer  -->
-	<!-- Start copyright  -->
-
-	<div class="footer-copyright">
-
-		<p class="footer-company">
-			All Rights Reserved. © 2018 <a href="#">ThewayShop</a> Design By : <a
-				href="https://html.design/">html design</a>
-		</p>
-	</div>
-	<!-- End copyright  -->
-	<a href="#" id="back-to-top" title="Back to top" style="display: none;">↑</a>
-	<!-- ALL JS FILES -->
-
-	<script src="../temp1/js/jquery-3.2.1.min.js"></script>
-
-	<script src="../temp1/js/popper.min.js"></script>
-
-	<script src="../temp1/js/bootstrap.min.js"></script>
-	<!-- ALL PLUGINS -->
-
-	<script src="../temp1/js/jquery.superslides.min.js"></script>
-
-	<script src="../temp1/js/bootstrap-select.js"></script>
-
-	<script src="../temp1/js/inewsticker.js"></script>
-
-	<script src="../temp1/js/bootsnav.js."></script>
-
-	<script src="../temp1/js/images-loded.min.js"></script>
-
-	<script src="../temp1/js/isotope.min.js"></script>
-
-	<script src="../temp1/js/owl.carousel.min.js"></script>
-
-	<script src="../temp1/js/baguetteBox.min.js"></script>
-
-	<script src="../temp1/js/form-validator.min.js"></script>
-
-	<script src="../temp1/js/contact-form-script.js"></script>
-
-	<script src="../temp1/js/custom.js"></script>
-	</h:body>
-	</h:html>
+			<script src="../temp1/js/custom.js"></script>
+			<!-- 			 </c:if> -->
+			</h:panelGroup>
+		</h:body>
+	</ui:define>
+</ui:composition>
