@@ -376,8 +376,8 @@
          padding-bottom: 13px !important;
     }
      nav.navbar.navbar-mobile ul.nav ul.dropdown-menu .col-menu ul.menu-col li a{
-         padding-top: 13px !important;
-         padding-bottom: 13px !important;
+         padding-top: 50px !important;
+         padding-bottom: 50px !important;
     }
     /* Navbar Full ------*/
      nav.navbar-full .navbar-brand{

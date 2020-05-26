@@ -9,7 +9,7 @@
   position: relative;
   top: 0;
   left: 0;
-  overflow-y: auto;
+  overflow-y: auto;nav
   -webkit-overflow-scrolling: touch;
   height: 100%;
 }
