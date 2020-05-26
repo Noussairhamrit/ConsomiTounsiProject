@@ -22,7 +22,7 @@ import tn.esprit.spring.service.CommandesServiceIMP;
 @Scope(value = "session")
 @Controller(value = "AdminController")
 @ELBeanName(value = "AdminController")
-@Join(path = "/log", to = "/LoginAdmin.jsf")
+@Join(path = "/log", to = "/cnx.jsf")
 
 public class AdminController {
 	@Autowired

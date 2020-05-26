@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,13 +27,18 @@ import tn.esprit.spring.entity.*;
 
 
 import tn.esprit.spring.repository.ClientRepository;
+import tn.esprit.spring.repository.CommandesRepository;
 
 
 @Service
 public class StripeService {
 
 	@Autowired
+	CommandesRepository CommandesRepository;
+	@Autowired
 	ClientRepository userRepository;
+	@Autowired
+	CommandesServiceIMP CommandesService;
 	
 	@Value("${stripe.keys.secret}")
 	private String secretKey;
@@ -136,7 +142,40 @@ public class StripeService {
 		paymentIntent.confirm(params);
 		return paymentIntent;
 	}
-	
-
+//	public void payment_all(long idUser, String carta, String expMonth, String expYear, String cvc){
+//		String a=createStripeCustomer(idUser);
+//		String b=createCustumorStripe(a,carta,expMonth,expMonth,expYear,cvc);
+//		
+//		
+//	}
+	@Transactional
+	public Factures Pay(int idCommande,long iduser,String carta, int expMonth, int expYear, String cvc) throws AuthenticationException, InvalidRequestException, CardException, StripeException{
+		Commandes order =CommandesRepository.CommandeencoursparClient(iduser);
+		
+			if(order.getStatus().contentEquals("en cours")){
+				Map<String, Object> params = new HashMap<>();
+		        Map<String, Object> tokenParams = new HashMap<>();
+		        Map<String, Object> cardParams = new HashMap<>();
+		        Stripe.apiKey = "sk_test_UHZrLj1j6biRBfKOjmm8YFN400Q29LPaWs";
+		        cardParams.put("number", carta);
+		        cardParams.put("exp_month", expMonth);
+		        cardParams.put("exp_year", expYear);
+		        cardParams.put("cvc", cvc);
+		        int nMontant= (int) order.getPrix_after_remise()*100;
+		        tokenParams.put("card", cardParams);
+		        Token token =Token.create(tokenParams);
+		      //  System.out.println(token.getCard().getId());
+		        if (token.getId()!=null){
+		        params.put("amount", nMontant);
+		        params.put("description", "test de stipe");
+		        params.put("currency", "eur");
+		        params.put("source", token.getId());
+		        Charge charge = Charge.create(params);
+		        }
+		        }
+		Factures f=	CommandesService.confirmer_commande(idCommande, iduser);
+		return f;
+		
+	}
 	
 }

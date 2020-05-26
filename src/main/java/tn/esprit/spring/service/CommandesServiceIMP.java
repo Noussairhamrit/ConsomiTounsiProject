@@ -96,7 +96,7 @@ public class CommandesServiceIMP implements ICommandesService {
 		return commandesrepository.getOne(id);
 		 
 	}
-	public void confirmer_commande(int idCommande,long iduser) {
+	public Factures confirmer_commande(int idCommande,long iduser) {
 		List<Panier> p =panierrepository.findPanier_par_commande(idCommande);
 		Commandes c=commandesrepository.getOne(idCommande);
 		Client client = clientrepository.getOne(iduser);
@@ -115,8 +115,21 @@ public class CommandesServiceIMP implements ICommandesService {
 		facture.setDate_de_depart(new Date());
 		int id_facture=factureservice.ajouterFacture(facture);
 		factureservice.affecterCommande_A_Facture(id_facture, idCommande);
+		return facture;
 		
 	}
+	public Commandes commande_en_cour_Idclient(long idclient){
+		return commandesrepository.CommandeencoursparClient(idclient);
+	}
+	public long pt_merci(int idCommande){
 	
+		Commandes c=commandesrepository.getOne(idCommande);
+		
+		
+		double a=c.getPrixtotale();
+
+		long r = Math.round(a / 10);
+		return r;
+	}
 
 }

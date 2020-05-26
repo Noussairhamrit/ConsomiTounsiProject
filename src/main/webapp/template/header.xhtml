@@ -221,7 +221,7 @@
 
 							<li><a href="../template/cart.jsf">Cart</a></li>
 
-							<li><a href="../template/checkout.jsf">Checkout</a></li>
+<!-- 							<li><a href="../template/checkout.jsf">Checkout</a></li> -->
 
 							<li><a href="../template/my-account.jsf">My Account</a></li>
 
@@ -247,7 +247,10 @@
 					<li class="search"><a href="#"><i class="fa fa-search" /></a></li>
 
 					<li class="side-menu"><a href="../template/cart.jsf"> <i
-							class="fa fa-shopping-bag" /> <span class="badge">3</span>
+							class="fa fa-shopping-bag" /> 
+							<span class="badge">
+							<h:outputText value="#{PanierController.numProduitPanier(AdminController.authenticatedClient.userId)}"></h:outputText>
+							</span>
 					</a></li>
 				</ul>
 			</div>

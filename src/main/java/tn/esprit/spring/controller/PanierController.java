@@ -65,13 +65,13 @@ public class PanierController {
 		
 		return panierservice.findPanier_par_commande(idCommande);
 	}
-	@DeleteMapping("supprimerPanier/{idpanier}")
-	public void supprimePanier(@PathVariable("idpanier")int idpanier){
-		panierservice.supprimerpanier(idpanier);
+	@DeleteMapping("supprimerPanier/{idpanier}/{iduser}")
+	public void supprimePanier(@PathVariable("idpanier")int idpanier,@PathVariable("iduser")int iduser){
+		panierservice.supprimerpanier(idpanier,iduser);
 	}
-	@PostMapping("updatePanier/{idpanier}")
-	public void update_after_remove(@PathVariable("idpanier")int idpanier){
-		panierservice.update_after_remove(idpanier);
+	@PostMapping("updatePanier/{idpanier}/{iduser}")
+	public void update_after_remove(@PathVariable("idpanier")int idpanier,@PathVariable("iduser")int iduser){
+		panierservice.update_after_remove(idpanier,iduser);
 	}
 
 	 

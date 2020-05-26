@@ -72,7 +72,7 @@ public class Commandes implements Serializable {
 	@OneToMany(mappedBy = "commande",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Panier> panier;
 	@JsonIgnore
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Client client;
 
 	public Commandes() {

@@ -24,7 +24,9 @@ public interface PanierRepository extends JpaRepository<Panier , Integer> {
 	public Panier findPanier(int idProduit,Long idClient);
 	@Query(value = "SELECT * FROM Panier l JOIN commande c on l.id_commande=c.id_commande  WHERE  c.client_user_id=?1 ", nativeQuery = true)
 	public List<Panier> findPanier_by_id_client(Long idClient);
-	
-	
+	@Query(value = "SELECT COUNT(*) from Panier l JOIN commande c on l.id_commande=c.id_commande WHERE c.client_user_id=?1 and c.status='en cours' ", nativeQuery = true)
+	public int numProduitPanier(Long iduser);
+	@Query(value = "SELECT  NEW tn.esprit.spring.entity.lignecommandeproduit(p.nom,l.quantite,p.prix,l.quantite*p.prix) FROM Panier l join l.commande c  join l.produit p   WHERE c.client.id=:idc and c.id=:idf and c.status='Comfirmer'")
+	public List<lignecommandeproduit> panier_confirmer1_ParIdclient(@Param("idc")long i,@Param("idf")int j);
 
 }
