@@ -49,7 +49,8 @@ public class RestControlCharge {
 	@PostMapping("/paymentintent")
 	// @PreAuthorize("hasRole('USER')")
 	public String payment(@RequestBody ChargeRequest chargeRequest) throws StripeException {
-		return stripeService.paymentIntent(chargeRequest);
+		return stripeService.paymentIntent(chargeRequest); 
+		
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/confirm/{id}
