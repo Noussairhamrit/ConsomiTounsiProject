@@ -93,12 +93,22 @@ public class RestControlProduit {
 			
 		}
 	    
+	 // URL : http://localhost:8081/SpringMVC/servlet/getProductBybarCode/1
+	    @GetMapping(value = "getProductBybarCode/{code}")
+	    @ResponseBody
+	    public Long getProductBybarCode(@PathVariable("code")int idProd) {
+			return produitser.getProductBybarCode(idProd);
+		}
+	    
+	    
 	 // URL : http://localhost:8081/SpringMVC/servlet/chercherNomProduitById/1
 	    @GetMapping(value = "chercherNomProduitById/{nom}")
 	    @ResponseBody
 	    public String chercherNomProduitById(@PathVariable("nom")int produitId) {
 			return produitser.chercherNomProduitById(produitId);
 		}
+	    
+	    
 	    
 	 // Mise a jour quantite  : http://localhost:8081/SpringMVC/servlet/MiseAjourQuantite/7/newquant
 		@PutMapping(value = "/MiseAjourQuantite/{id}/{newquant}") 
@@ -124,14 +134,14 @@ public class RestControlProduit {
 		}
 	    
 	    
-	 // http://localhost:8081/SpringMVC/servlet/produit/ajoutProduit/1
-		//{"id":6,"prix":50,"Description":"tres bonne sensibilite ","quantite":98,"poid":1,"barcode":6190000001001,"prixAchat":780,"prixVente":897}
-		@PostMapping(value ="/ajoutProduit/{scatid}/{gerantId}")
-		public Produit AjouterProduit(@PathVariable(value = "scatid") Long scatId,@PathVariable(value = "gerantId") long iduser,
+	 // http://localhost:8081/SpringMVC/produit/ajoutProduit/1/1
+		//{"nom":"taekouando","prix":50,"description":"original ","quantite":80,"poid":10,"barcode":6190000001001,"prixAchat":780,"prixVente":897}
+		@PostMapping(value ="/ajoutProduit/{scatid}")
+		public Produit AjouterProduit(@PathVariable(value = "scatid") Long scatId,
 				@RequestParam(value = "produit", required = true) String ProduitJson,
 				@RequestParam(required = true, value = AppConstants.EMPLOYEE_FILE_PARAM) List<MultipartFile> file)
 				throws JsonParseException, JsonMappingException, IOException {
-			return produitser.AjoutProduit(ProduitJson,iduser, scatId, file);
+			return produitser.AjoutProduit(ProduitJson, scatId, file);
 		}
 		
 		//http://localhost:8081/SpringMVC/servlet/findPBS/1
@@ -183,7 +193,19 @@ public class RestControlProduit {
 			return new AppResponse(AppConstants.SUCCESS_CODE, AppConstants.SUCCESS_MSG);
 		}
 		
-
+        
+		
+		@PutMapping(value = "/manage/updateProduct/{barCode}") 
+		@ResponseBody
+		public Produit updateProduct(@PathVariable("barCode") Long barCode,@RequestBody Produit product) {
+			Produit p= product;
+			 p.getBarreCode();
+			p.setDescription(p.getDescription());
+			p.setNom(p.getNom());
+			p.setPrix(p.getPrix());
+			//prod.setSouscat(((validCategory(p.getCategory()));
+			return produitser.updateProduct(p, barCode);
+		}
 		
 		
 		

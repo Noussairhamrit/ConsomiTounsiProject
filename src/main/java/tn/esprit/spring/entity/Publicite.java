@@ -19,8 +19,10 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -47,9 +49,9 @@ public class Publicite implements Serializable {
 	@Column(name="DATE_End")
 	private Date dateEnd;
 	@Column(name = "Nbre_target")
-	private long target;
+	private int target=0;
 	@Column(name = "Nbre_view")
-	private long view;
+	private int view=0;
 	@Column(name = "Pub_Cost")
 	private long cost;
 	@Column(name = "image")
@@ -60,6 +62,12 @@ public class Publicite implements Serializable {
 	private Canal canal;
 	
 	
+	
+	@OneToMany(mappedBy="publicite",cascade=CascadeType.REMOVE)
+	@JsonIgnore
+	private List <UsersViews> tUsersViews;
+	
+	
 /////Actor
 	@JsonIgnore
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
@@ -68,7 +76,9 @@ public class Publicite implements Serializable {
 	@OneToMany(mappedBy="publicite")
 	private List<Cible> cibles;
 	
-	
+	@NotNull
+	@ManyToOne
+	private  Produit product;
 	
 	public int getIdPub() {
 		return idPub;
@@ -79,7 +89,7 @@ public class Publicite implements Serializable {
 	public long getTarget() {
 		return target;
 	}
-	public void setTarget(long target) {
+	public void setTarget(int target) {
 		this.target = target;
 	}
 	public StoreManger getGerant() {
@@ -122,8 +132,8 @@ public class Publicite implements Serializable {
 	public long getView() {
 		return view;
 	}
-	public void setView(long view) {
-		this.view = view;
+	public void setView() {
+		this.view =this.view+1;
 	}
 	public long getCost() {
 		return cost;
@@ -150,11 +160,13 @@ public class Publicite implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Publicite(String name,  Date dateStart, Date dateEnd, long target, long view, long cost,
-			String image, String vedio) {
+	
+	public Publicite(int idPub, String name, Date dateStart, Date dateEnd, int target, int view, long cost,
+			String image, String vedio, Canal canal, List<UsersViews> tUsersViews, StoreManger gerant,
+			List<Cible> cibles, @NotNull Produit product) {
 		super();
+		this.idPub = idPub;
 		this.name = name;
-		
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
 		this.target = target;
@@ -162,6 +174,11 @@ public class Publicite implements Serializable {
 		this.cost = cost;
 		this.image = image;
 		this.vedio = vedio;
+		this.canal = canal;
+		this.tUsersViews = tUsersViews;
+		this.gerant = gerant;
+		this.cibles = cibles;
+		this.product = product;
 	}
 	@Override
 	public String toString() {
