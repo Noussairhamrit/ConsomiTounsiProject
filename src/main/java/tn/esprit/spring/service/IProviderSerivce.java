@@ -7,7 +7,7 @@ import tn.esprit.spring.entity.Provider;
 
 public interface IProviderSerivce {
 	
-	public int ajouterProvider(Provider prov);
+	public Long ajouterProvider(Provider prov);
 	public void deleteProvider(int IdProvider);
 	public void UpdateProvider(int IdProvider,String pro_name,String Domain,String email, int gsm);
 	public List<Provider> ShowProvider();

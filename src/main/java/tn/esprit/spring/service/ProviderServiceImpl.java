@@ -15,9 +15,9 @@ public class ProviderServiceImpl implements IProviderSerivce{
 	ProviderRepository providerRepository;
 	
 	
-	public int ajouterProvider(Provider prov) {
+	public Long ajouterProvider(Provider prov) {
 		providerRepository.save(prov);
-		return prov.getIdProvider();
+		return prov.getUserId();
 	}
 
 	
@@ -29,10 +29,10 @@ public class ProviderServiceImpl implements IProviderSerivce{
 	@Override
 	public void UpdateProvider(int IdProvider,String pro_name,String Domain,String email, int gsm) {
 		Provider pro = providerRepository.findById(IdProvider).get();
-		pro.setPro_name(pro_name);
+		pro.setNom(pro_name);
 		pro.setDomain(Domain);
 		pro.setEmail(email);
-		pro.setGsm(gsm);
+		pro.setNum_tel(gsm);
 		
 		providerRepository.save(pro);
 	}
