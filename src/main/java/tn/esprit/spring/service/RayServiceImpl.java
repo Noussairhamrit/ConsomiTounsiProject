@@ -1,5 +1,7 @@
 package tn.esprit.spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,11 @@ public class RayServiceImpl implements IRaySerivce{
 		ray.setArranType(ArranType);
 		ray.setRayCapacity(RayCapacity);
 
+	}
+	
+	@Override
+	public List<Ray> ShowRay() {
+		return (List<Ray>) rayRepository.findAll();
 	}
 
 	
