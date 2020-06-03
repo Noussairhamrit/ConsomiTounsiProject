@@ -2,7 +2,10 @@ package tn.esprit.spring.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +22,7 @@ import tn.esprit.spring.service.ILivraisonService;
 
 @RestController
 public class LivraisonRestController {
+	private Logger logger= LoggerFactory.getLogger(LivraisonRestController.class);
 	@Autowired
 	ILivraisonService iLivraisonService;
 
@@ -52,12 +56,18 @@ public class LivraisonRestController {
 	// http://localhost:8081/SpringMVC/servlet/affecterLivraisonALivreur
 	   @PutMapping("/affecterLivraisonALivreur/{id_livra}/{userId}") 
 	   @ResponseBody
-		public void  affecterLivraisonALivreur(@PathVariable("id_livra")int id_livra, @PathVariable("userId")Long userId)
+		public String  affecterLivraisonALivreur(@PathVariable("id_livra")int id_livra, @PathVariable("userId")Long userId)
 		{
 		   
 		   iLivraisonService.affecterLivraisonALivreur(id_livra,userId);
+		
+	   try{
+		   iLivraisonService.Notificationlivreur();
+		  }catch(MailException e){
+			  logger.info("Error sending "+e.getMessage());
+		  }
+		  return "email envoyer";
 		}
-	   
 
 		// http://localhost:8081/SpringMVC/servlet/afficherleslivraison
 		@GetMapping("/afficherleslivraison/{userId}")

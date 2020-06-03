@@ -3,16 +3,28 @@ package tn.esprit.spring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
+
 import tn.esprit.spring.entity.Livreur;
+
 import tn.esprit.spring.repository.LivreurRepository;
+import javax.mail.MessagingException;
+
+
+import org.springframework.mail.javamail.JavaMailSender;
+
+import org.springframework.mail.MailException;
 
 @Service
 public class LivreurServiceImpl implements ILivreurService {
+	
 	@Autowired
 	LivreurRepository livreurRepository;
-
+	
+	
+	
 	@Override
 	public Long ajouterLivreur(Livreur livreur) {
 		livreurRepository.save(livreur);
@@ -55,17 +67,16 @@ public class LivreurServiceImpl implements ILivreurService {
 		return livreurRepository.findById(userId).orElse(null);
 		}
 	//chercher les livreurs disponible
-	/*@Override
+	@Override
 	public List<Livreur> GetLivreurDispo() {
-		List <Livreur> livreurs = livreurRepository.findAll();
-		for(Livre)
-		return livreurRepository.findById(userId).orElse(null);
-		}*/
+		return  livreurRepository.GetLivreurDispo() ;
+		
+		
+		}
 	
 	@Override
 	public List<Livreur> getAlllivreurs() {
-		return livreurRepository.getAlllivreurs();
+		return livreurRepository.findAll() ;
 	}
-	
 	
 }

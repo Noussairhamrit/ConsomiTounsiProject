@@ -74,7 +74,9 @@ public class Commandes implements Serializable {
 	@JsonIgnore
 	@ManyToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Client client;
-
+	@OneToOne(mappedBy="commandes")
+	private Livraison livraison;
+	
 	public Commandes() {
 		super();
 	}
@@ -188,5 +190,7 @@ public class Commandes implements Serializable {
 		return serialVersionUID;
 	}
 
-	
+	public void setLivraison(Livraison livraison) {
+		this.livraison= livraison;
+	}
 }

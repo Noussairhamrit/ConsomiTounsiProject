@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
+<h:head>
 
 <meta charset="utf-8" />
 
@@ -37,7 +37,7 @@
 
 <script src="https://www.google-analytics.com/analytics.js"></script>
 <script src="../../dist/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
+</h:head>
 
 <h:body>
 	<!--[if lt IE 8]>
@@ -273,9 +273,8 @@
 							<a href="#"><i class="ik ik-edit" /><span>Forms</span></a>
 
 							<div class="submenu-content">
-								<a href="form-components.html" class="menu-item active">Components</a>
-								<a href="form-addon.html" class="menu-item">Add-On</a> <a
-									href="form-advance.html" class="menu-item">Advance</a>
+								<a href="../../template/templateAdmin/ajouterLivreur.jsf" class="menu-item"> Add delivery man </a>
+								<a href="../../template/templateAdmin/LesLivreurs.jsf" class="menu-item"> All Delivery mans </a>
 							</div>
 						</div>
 
@@ -411,7 +410,7 @@
 
 									<div class="d-inline">
 
-										<h5>Ajouter un livreur</h5>
+										<h5>Add delivery man</h5>
 										
 									</div>
 								</div>
@@ -427,67 +426,74 @@
 
 							<div class="card">
 
-								<div class="card-header">
-									<h3>Default form</h3>
-								</div>
+							
 
 								<div class="card-body">
-									<form class="forms-sample">
+									<h:form class="forms-sample">
 
 										<div class="form-group">
-											<label for="exampleInputUsername1">First Name</label> <input
-												type="text" class="form-control" id="exampleInputUsername1"
-												placeholder="Username" />
+										
+											<h:outputText>First Name</h:outputText>
+											<h:inputText type="text" class="form-control" id="exampleInputUsername1" 
+											value="#{livreurController.prenom}" placeholder="first_name" />
+										
 										</div>
 
 										<div class="form-group">
-											<label for="exampleInputEmail1">Last Name</label> <input
-												type="email" class="form-control" id="exampleInputEmail1"
-												placeholder="Email" />
+											<label for="exampleInputEmail1">Last Name</label> 
+											<h:inputText type="email" class="form-control" id="exampleInputEmail1" value="#{livreurController.nom}"
+												placeholder="last_name" />
 										</div>
 										 
 
 										<div class="form-group">
-											<label for="exampleInputPassword1">Password</label> <input
+											<label for="exampleInputPassword1">Password</label> <h:inputSecret
 												type="password" class="form-control"
-												id="exampleInputPassword1" placeholder="Password" />
+												id="exampleInputPassword1" value="#{livreurController.encrytedPassword}" placeholder="Password" />
 										</div>
 
 										<div class="form-group">
 											<label for="exampleInputConfirmPassword1">Email address</label> 
-											<input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" />
+											<h:inputText class="form-control" value="#{livreurController.email}" placeholder="Email" />
 										</div>
                                        <div class="form-group">
 											<label for="exampleInputConfirmPassword1">National id card</label> 
-											<input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" />
+											<h:inputText  class="form-control" value="#{livreurController.cin}" placeholder="Cin" />
 										</div>
 										  <div class="form-group">
 											<label for="exampleInputConfirmPassword1">Telephone Number</label> 
-											<input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" />
+											<h:inputText class="form-control" value="#{livreurController.num_tel}" placeholder="telephone_number" />
 										</div>
 										  <div class="form-group">
 											<label for="exampleInputConfirmPassword1">address</label> 
-											<input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" />
+											<h:inputText class="form-control" value="#{livreurController.address}" placeholder="address" />
 										</div>
 										  <div class="form-group">
 											<label for="exampleInputConfirmPassword1">Means of transport</label> 
-											<input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" />
+											<h:inputText class="form-control" value="#{livreurController. moy_trans_liv}" placeholder="means_of_transport" />
 										</div>
 										 <div class="form-group">
 											<label for="exampleInputConfirmPassword1">salary</label> 
-											<input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" />
+											<h:inputText  class="form-control" value="#{livreurController.salaire_liv}" placeholder="salary" />
 										</div>
+					
+							            
+										 <div class="form-group row">
+										  
+											<label for="exampleInputConfirmPassword1" class="col-sm-3 col-form-label">Availability</label> 
+											
+											<h:selectBooleanCheckbox class="form-control" value="#{livreurController.dispo_liv}" placeholder="disponibility" />
+										
+										</div>
+										
 										 <div class="form-group">
-											<label for="exampleInputConfirmPassword1">Disponibility</label> 
-											<input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" />
+											<label for="exampleInputConfirmPassword1">Delivery number</label>
+											<h:inputText class="form-control" value="#{livreurController.chargeT_liv}"  placeholder="delivery_number" />
 										</div>
-										 <div class="form-group">
-											<label for="exampleInputConfirmPassword1">Delivery number</label> 
-											<input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" />
-										</div>
-										<button type="submit" class="btn btn-primary mr-2">Submit</button>
-										<button class="btn btn-light">Cancel</button>
-									</form>
+										<h:commandButton type="submit" class="btn btn-primary mr-2" value="Submit"
+										action="#{livreurController.addlivreur()}"/>
+										
+									</h:form>
 								</div>
 							</div>
 						</div>
@@ -828,4 +834,4 @@
 	</script>
 
 </h:body>
-</html>
+</ui:composition>

@@ -94,7 +94,7 @@ public class ClientServiceIMP {
 		//////////// mail
 		SimpleMailMessage mail = new SimpleMailMessage();
                                                          
-		//// *******************************/////
+		////*******************************/////
 		StringBuilder buf = new StringBuilder();
 		buf.append("\"<html>\n" + "  <head>\n" + "    <meta name=\"viewport\" content=\"width=device-width\" />\n"
 				+ "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n"
