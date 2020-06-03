@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
+import tn.esprit.spring.entity.Eventcommande;
 import tn.esprit.spring.entity.Factures;
 import tn.esprit.spring.entity.Panier;
 import tn.esprit.spring.repository.ClientRepository;
@@ -130,6 +131,9 @@ public class CommandesServiceIMP implements ICommandesService {
 
 		long r = Math.round(a / 10);
 		return r;
+	}
+	public List<Eventcommande> NumCommadeParMOIS2(){
+		return commandesrepository.NumCommadeParMOIS2();
 	}
 
 }

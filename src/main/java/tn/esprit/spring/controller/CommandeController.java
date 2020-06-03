@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entity.Commandes;
+import tn.esprit.spring.entity.Eventcommande;
 import tn.esprit.spring.entity.Factures;
 import tn.esprit.spring.service.CommandesServiceIMP;
 
@@ -83,6 +84,9 @@ public class CommandeController {
 	@GetMapping("pt_merci/{idCommande}")
 	public long pt_merci(@PathVariable(value ="idCommande")int idCommande){
 		return CommandesService.pt_merci(idCommande);
+	}@GetMapping("nbc")
+	public List<Eventcommande> NumCommadeParMOIS2(){
+		return CommandesService.NumCommadeParMOIS2();
 	}
 	
  }
