@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
+import tn.esprit.spring.entity.Etat_livra;
 import tn.esprit.spring.entity.Eventcommande;
 import tn.esprit.spring.entity.Factures;
+import tn.esprit.spring.entity.Livraison;
 import tn.esprit.spring.entity.Panier;
 import tn.esprit.spring.repository.ClientRepository;
 import tn.esprit.spring.repository.CommandesRepository;
@@ -27,6 +29,8 @@ public class CommandesServiceIMP implements ICommandesService {
 	PanierRepository panierrepository;
 	@Autowired
 	FacturesServiceIMP factureservice;
+	@Autowired
+	LivraisonSerciceImpl LivraisonSercice;
 	
 
 	@Override
@@ -116,6 +120,11 @@ public class CommandesServiceIMP implements ICommandesService {
 		facture.setDate_de_depart(new Date());
 		int id_facture=factureservice.ajouterFacture(facture);
 		factureservice.affecterCommande_A_Facture(id_facture, idCommande);
+		Livraison livraison=new Livraison(); 
+		livraison.setDest_livra(client.getAddress());
+		livraison.setEtat_livra(Etat_livra.en_cours);
+		livraison.setCommandes(c);
+		LivraisonSercice.ajouterLivraison(livraison);
 		return facture;
 		
 	}

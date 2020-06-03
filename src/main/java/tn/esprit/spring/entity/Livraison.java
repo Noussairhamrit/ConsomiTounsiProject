@@ -110,6 +110,14 @@ public class Livraison implements Serializable  {
 	public void setLivreur(Livreur livreur) {
 		this.livreur= livreur;
 	}
+
+	public Commandes getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(Commandes commandes) {
+		this.commandes = commandes;
+	}
 	
 
 }

@@ -112,6 +112,12 @@ public class Commandes implements Serializable {
 
 
 
+	public Livraison getLivraison() {
+		return livraison;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
