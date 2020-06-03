@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<!-- 	template="/template/template2.xhtml"> -->
+	<!-- Basic -->
+	<ui:param name="cart" value="Accueil" />
+	<ui:define name="cal">
+		<h:head>
+			
+
+
+			<!-- 			<h:outputStylesheet library="jscal" name="index.css" /> -->
+			<link rel="stylesheet" href="../../temp1/jscal/core/main.css" />
+			<link rel="stylesheet" href="../../temp1/jscal/core/indexx.css" />
+			<link rel="stylesheet" href="../../temp1/jscal/daygrid/main.css" />
+			<link rel="stylesheet" href="../../temp1/jscal/timegrid/main.css" />
+			<link rel="stylesheet" href="../../temp1/jscal/list/main.css" />
+		   
+		</h:head>
+		
+		<h:body>
+			<div id='calendar'></div>
+			<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var calendarEl = document.getElementById('calendar');
+				var calendar = new FullCalendar.Calendar(calendarEl, {
+					plugins : [ 'dayGrid', 'list' ],
+					header : {
+						center : 'title',
+						left : 'dayGridMonth,list'
+					},
+				events : 'http://localhost:8081/SpringMVC/servlet/nbc'
+				});
+				calendar.render();
+			});
+			console.log(event);
+		</script>
+			<script src="../../temp1/jscal/core/main.js"></script>
+			<script src="../../temp1/jscal/daygrid/main.js"></script>
+			<script src="../../temp1/jscal/list/main.js"></script>
+		</h:body>
+	</ui:define>
+</ui:composition>

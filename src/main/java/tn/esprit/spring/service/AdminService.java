@@ -11,9 +11,9 @@ public class AdminService {
 	@Autowired
 	AdminRepository adminrepository;
 
-	public Admin authenticate(String login, String password) {
-
-		return adminrepository.getAdminByUser_nameAndPassword(login, password);
+	public Admin authenticate(String login, String password,Boolean enabled) {
+	 enabled=true;
+		return adminrepository.getAdminByUser_nameAndPassword(login, password,enabled);
 	}
 
 }

@@ -32,9 +32,9 @@ public class ClientServiceIMP {
 	public ClientServiceIMP(JavaMailSender javaMailSender) {
 		this.javaMailSender = javaMailSender;
 	}
-	public Client authenticateClient(String login, String password) {
-
-		return clientrepository.getClientByUser_nameAndPassword(login, password);
+	public Client authenticateClient(String login, String password,Boolean enabled) {
+		 enabled=true;
+		return clientrepository.getClientByUser_nameAndPassword(login, password,enabled);
 	}
 
 	public List<Client> findOne() {

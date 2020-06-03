@@ -17,8 +17,8 @@ public interface ClientRepository extends JpaRepository<Client, Long > {
 	public List<String> findClient_pt_100(int nbpt);
 	@Query(value = "SELECT  l.prod_id FROM Produit l join sous_cat c on l.souscat_sous_cat_id=c.sous_cat_id join categories ca on c.categorie_cat_id=ca.cat_id   WHERE ca.cat_nom =?1 and l.prod_prix<500 ", nativeQuery = true)
 	public List<String> Produit_par_cat(String nom );
-	@Query("SELECT e FROM Client e WHERE e.userName=:user_name and e.encrytedPassword=:password")
-	public Client getClientByUser_nameAndPassword(@Param("user_name") String login, @Param("password") String password);
+	@Query("SELECT e FROM Client e WHERE e.userName=:user_name and e.encrytedPassword=:password and e.enabled=:enabled")
+	public Client getClientByUser_nameAndPassword(@Param("user_name") String login, @Param("password") String password, @Param("enabled") Boolean enabled);
 	
 }
 //SELECT  prod_id,prod_desc,barre_code,image,prod_nom,prod_poid,prod_prix,prix_achat,prix_vente,prod_qount,ray_ray_id,souscat_sous_cat_id,stock_id_stock 

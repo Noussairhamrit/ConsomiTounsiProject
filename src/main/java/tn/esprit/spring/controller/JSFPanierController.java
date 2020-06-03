@@ -1,6 +1,7 @@
 package tn.esprit.spring.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -20,6 +21,7 @@ import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
 import tn.esprit.spring.entity.Factures;
 import tn.esprit.spring.entity.Panier;
+import tn.esprit.spring.entity.Produit;
 import tn.esprit.spring.entity.lignecommandeproduit;
 import tn.esprit.spring.repository.CommandesRepository;
 import tn.esprit.spring.service.ClientServiceIMP;
@@ -39,11 +41,11 @@ public class JSFPanierController {
 	@Autowired
 	CommandesServiceIMP CommandesService;
 	@Autowired
-	CommandesRepository CommandesRepository; 
+	CommandesRepository CommandesRepository;
 	@Autowired
 	ClientServiceIMP clientservice;
 	@Autowired
-	StripeService  stripeService;
+	StripeService stripeService;
 	private Panier panier;
 	private Factures facture;
 	private int id_facture;
@@ -61,7 +63,7 @@ public class JSFPanierController {
 	private int expMonth;
 	private int expYear;
 	private String cvc;
-
+	private Produit produit;
 	private List<lignecommandeproduit> listpanier;
 
 	public List<lignecommandeproduit> panierParIdclient(long id) {
@@ -69,35 +71,62 @@ public class JSFPanierController {
 		listpanier = panierservice.panierParIdclient(id);
 		return listpanier;
 	}
-	
 
-	public void supprimerPanier(int id,long userId) {
-		panierservice.supprimerpanier(id,userId);
+	public void supprimerPanier(int id, long userId) {
+		panierservice.supprimerpanier(id, userId);
 	}
-	public void update_after_remove(int id,long userId){
-		panierservice.update_after_remove(id,userId);
+
+	public void update_after_remove(int id, long userId) {
+		panierservice.update_after_remove(id, userId);
 	}
-	public void updateLigne(int  id,int quantity,long userId){
-		panierservice.updateLigne(id, quantity,userId);
+
+	public void updateLigne(int id, int quantity, long userId) {
+		panierservice.updateLigne(id, quantity, userId);
 	}
-	 public int numProduitPanier(long userId)
-	 {
-		
-		 return panierservice.numProduitPanier(userId);
-	 }
-	 public String Pay(int idc, long id,String carta, int expMonth,int expYear,String cvc) throws AuthenticationException, InvalidRequestException, CardException, StripeException{
-		 String navigateTo = "null";
-		facture=	stripeService.Pay(idc,id,carta,expMonth,expYear,cvc);
-			navigateTo = "/template/facture.xhtml?faces-redirect=true";
-			return navigateTo;
-		}
-	 
-	 public void facturepdf (int id) {
-		
-		 FacturesService.facturepdf(id);
-	 }
-	
-	 
+
+	public int numProduitPanier(long userId) {
+
+		return panierservice.numProduitPanier(userId);
+	}
+
+	public String Pay(int idc, long id, String carta, int expMonth, int expYear, String cvc)
+			throws AuthenticationException, InvalidRequestException, CardException, StripeException {
+		String navigateTo = "null";
+		facture = stripeService.Pay(idc, id, carta, expMonth, expYear, cvc);
+		navigateTo = "/template/facture.xhtml?faces-redirect=true";
+		return navigateTo;
+	}
+	String a;
+
+	private String getCountryFromJSF(FacesContext context) {
+		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
+		return parameters.get("idc");
+	}
+
+	public int outcome() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		a = getCountryFromJSF(context);
+		System.out.println("((((((((((((((((("+a);
+		return Integer.parseInt(a);
+
+	}
+	public List<Panier> findPanier_par_commande(int idc) {
+		idc=outcome();
+		return panierservice.findPanier_par_commande(idc);
+	}
+
+	public String topanier(int idc) {
+		idc=outcome();
+		String navigateTo = "null";
+		findPanier_par_commande(idc);
+		return navigateTo = "/template/templateAdmin/affichepanier.xhtml?faces-redirect=true";
+	}
+
+	public void facturepdf(int id) {
+
+		FacturesService.facturepdf(id);
+	}
+
 	public Factures getFacture() {
 		return facture;
 	}
@@ -112,6 +141,14 @@ public class JSFPanierController {
 
 	public void setId_facture(int id_facture) {
 		this.id_facture = id_facture;
+	}
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
 
 	public int getIdc() {
