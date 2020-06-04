@@ -116,10 +116,10 @@ public class ProduitServiceImp implements ProduitService {
 
 
 	public void GerantAddProduit(long userId, int produitId) {
-		Produit produit = produitRepository.findById(produitId).get();
-		StoreManger user = userRep.findById(userId).get();
-		produit.setGerant(user);
-		produitRepository.save(produit);
+//		Produit produit = produitRepository.findById(produitId).get();
+//		StoreManger user = userRep.findById(userId).get();
+//		produit.setGerant(user);
+//		produitRepository.save(produit);
 		
 	}
 	
