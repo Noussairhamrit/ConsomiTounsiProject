@@ -2,7 +2,14 @@ package tn.esprit.spring.service;
 
 import java.util.List;
 
+
+import javax.transaction.Transactional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Etat_livra;
@@ -11,6 +18,7 @@ import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.repository.LivraisonRepository;
 import tn.esprit.spring.repository.LivreurRepository;
 @Service
+@Transactional
 public class LivraisonSerciceImpl implements ILivraisonService {
 	@Autowired
 	LivraisonRepository livraisonRepository;
@@ -61,7 +69,11 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 		}
 		else
 			//charge+= charge;
+
 			livreurManagedEntity.setChargeT_liv(livreurManagedEntity.getChargeT_liv()+1);
+
+		livreurManagedEntity.setChargeT_liv(livreurManagedEntity.getChargeT_liv()+1);
+		livraisonManagedEntity.setEtat_livra(Etat_livra.en_cours_de_livraison);
 		livreurManagedEntity.setDispo_liv(false);
 		livraisonManagedEntity.setLivreur(livreurManagedEntity);
 		
@@ -71,5 +83,17 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 	@Override
 	public List<Livraison> afficherleslivraison(Long userId) {
 		return livraisonRepository.afficherleslivraison(userId);
+	}
+
+	@Override
+	public void affecterCommandeALivraison(int id_livra, int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Notificationlivreur() throws MailException {
+		// TODO Auto-generated method stub
+		
 	}
 }

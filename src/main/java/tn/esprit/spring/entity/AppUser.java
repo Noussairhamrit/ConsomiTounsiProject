@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import lombok.Data;
+import tn.esprit.spring.entity.Ads.UsersViews;
  
 @Entity
 @Data

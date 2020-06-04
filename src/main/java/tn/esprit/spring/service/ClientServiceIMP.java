@@ -16,9 +16,10 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Admin;
 import tn.esprit.spring.entity.Client;
-import tn.esprit.spring.entity.Produit;
+import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.repository.ClientRepository;
-import tn.esprit.spring.repository.ProduitRepository;
+import tn.esprit.spring.repository.Product.ProduitRepository;
+
 
 @Service
 public class ClientServiceIMP {
@@ -32,9 +33,9 @@ public class ClientServiceIMP {
 	public ClientServiceIMP(JavaMailSender javaMailSender) {
 		this.javaMailSender = javaMailSender;
 	}
-	public Client authenticateClient(String login, String password) {
-
-		return clientrepository.getClientByUser_nameAndPassword(login, password);
+	public Client authenticateClient(String login, String password,Boolean enabled) {
+		 enabled=true;
+		return clientrepository.getClientByUser_nameAndPassword(login, password,enabled);
 	}
 
 	public List<Client> findOne() {
@@ -94,7 +95,7 @@ public class ClientServiceIMP {
 		//////////// mail
 		SimpleMailMessage mail = new SimpleMailMessage();
                                                          
-		//// *******************************/////
+		////*******************************/////
 		StringBuilder buf = new StringBuilder();
 		buf.append("\"<html>\n" + "  <head>\n" + "    <meta name=\"viewport\" content=\"width=device-width\" />\n"
 				+ "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n"

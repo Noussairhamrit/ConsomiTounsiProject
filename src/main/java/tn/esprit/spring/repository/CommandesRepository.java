@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import tn.esprit.spring.entity.Commandes;
+import tn.esprit.spring.entity.Eventcommande;
 
 public interface CommandesRepository extends JpaRepository<Commandes, Integer> {
 
@@ -40,5 +41,7 @@ public interface CommandesRepository extends JpaRepository<Commandes, Integer> {
 	
 	@Query(value = "SELECT * FROM commande WHERE client_user_id=?1 and status='en cours'", nativeQuery = true)
 	public Commandes CommandeencoursparClient(long iduser);
+	@Query(value = "SELECT NEW tn.esprit.spring.entity.Eventcommande (c.id,COUNT(*),c.date_commande,c.date_commande) FROM Commandes c GROUP BY c.date_commande")
+	public List<Eventcommande> NumCommadeParMOIS2();
 
 }

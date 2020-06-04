@@ -51,7 +51,7 @@ public class AdminController {
 	private Boolean loggedIn;
 	private String nom;
 	private String prenom;
-	
+	private Boolean enabled;
 	
 
 	public long getUserId() {
@@ -64,10 +64,10 @@ public class AdminController {
 
 	public String doLogin() {
 		String navigateTo = "null";
-		 authenticatedAdmin = AdminService.authenticate(login, password);
-		 authenticatedClient=clientservice.authenticateClient(login, password);
+		 authenticatedAdmin = AdminService.authenticate(login, password,enabled);
+		 authenticatedClient=clientservice.authenticateClient(login, password,enabled);
 		if (authenticatedAdmin != null ) {
-			navigateTo = "/template/indexTemp.xhtml?faces-redirect=true";
+			navigateTo = "/template/templateAdmin/index2.xhtml?faces-redirect=true";
 			loggedIn = true;
 		}
 		else if (authenticatedClient != null ) {
@@ -93,6 +93,18 @@ public class AdminController {
 
 	public void setAuthenticatedClient(Client authenticatedClient) {
 		this.authenticatedClient = authenticatedClient;
+	}
+	
+
+
+
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public String getNom() {

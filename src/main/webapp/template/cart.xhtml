@@ -4,8 +4,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" 
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ez="http://java.sun.com/jsf/composite/spinner"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	template="/template/template.xhtml">
 	<!-- Basic -->
 	<ui:param name="cart" value="Accueil" />
@@ -46,12 +47,17 @@
 		</head>
 
 		<h:body>
+			<!-- 		<c:if test="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).id==0}"> -->
+			<!-- 										        il n'ya pas une commande en cours -->
+			<!-- 										        	        </c:if> -->
+
+			<!--                                        <c:if test="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).id!=0}"> -->
 
 			<!-- Start Main Top -->
 
 			<!-- End Top Search -->
 			<!-- Start All Title Box -->
-
+		
 			<div class="all-title-box">
 
 				<div class="container">
@@ -74,6 +80,20 @@
 			</div>
 			<!-- End All Title Box -->
 			<!-- Start Cart  -->
+				<br></br>
+			<br></br>
+			<h:panelGroup
+				rendered="#{empty PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}">
+				<div class="container-fluid bg-white">
+					<div class="container py-5">
+						<div class="img-vide text-center">
+							<a href="../template/index.jsf"><img
+								src="https://www.ajipressing.ma/images/panier-vide.png" /></a>
+						</div>
+					</div>
+				</div>
+			</h:panelGroup>
+				<h:panelGroup rendered="#{not empty PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}">
 
 			<div class="cart-box-main">
 
@@ -86,160 +106,172 @@
 							<div class="table-main table-responsive">
 
 								<table class="table">
-								<h:form>
-									<h:dataTable class="table"
-										value="#{PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}"
-										var="panier" border="1">
-										<thead>
+									<h:form>
+										<h:dataTable class="table"
+											value="#{PanierController.panierParIdclient(AdminController.authenticatedClient.userId)}"
+											var="panier" border="1">
+											<thead>
 
-											<tr>
+												<tr>
 
-												<th>Images</th>
+													<th>Images</th>
 
-												<th>Product Name</th>
+													<th>Product Name</th>
 
-												<th>Price</th>
+													<th>Price</th>
 
-												<th>Quantity</th>
+													<th>Quantity</th>
 
-												<th>Total</th>
+													<th>Total</th>
 
-												<th>Remove</th>
-											</tr>
-										</thead>
+													<th>Remove</th>
+												</tr>
+											</thead>
 
-										<tbody>
+											<tbody>
 
-											<tr>
+												<tr>
 
-												<td class="thumbnail-img"><h:column>
-														<f:facet name="header">
-															<h:outputText value="Images" />
-														</f:facet>
-														<a href="#"> <h:outputText class="name-pr" />
+													<td class="thumbnail-img"><h:column>
+															<f:facet name="header">
+																<h:outputText value="Images" />
+															</f:facet>
+															<a href="#"> <h:outputText class="name-pr" />
 
-														</a>
-													</h:column></td>
+															</a>
+														</h:column></td>
 
-												<td class="name-pr"><h:column>
-														<f:facet name="header">
-															<h:outputText value="Product Name" />
-														</f:facet>
-														<a href="#"> <h:outputText class="name-pr"
-																value="#{panier.nomProduit}" />
+													<td class="name-pr"><h:column>
+															<f:facet name="header">
+																<h:outputText value="Product Name" />
+															</f:facet>
+															<a href="#"> <h:outputText class="name-pr"
+																	value="#{panier.nomProduit}" />
 
-														</a>
-													</h:column></td>
+															</a>
+														</h:column></td>
 
-												<td class="price-pr">
+													<td class="price-pr">
 
-													<p>
+														<p>
+															<h:column>
+																<f:facet name="header">
+																	<h:outputText value="Price" />
+																</f:facet>
+																<h:outputText value="#{panier.price}" class="price-pr" />
+															</h:column>
+														</p>
+													</td>
+
+													<td class="quantity-box"><input type="number" size="4"
+														value="1" min="0" step="1" class="c-input-text qty text" />
 														<h:column>
 															<f:facet name="header">
-																<h:outputText value="Price" />
+																<h:outputText value="Quantity" />
 															</f:facet>
-															<h:outputText value="#{panier.price}" class="price-pr" />
-														</h:column>
-													</p>
-												</td>
+															<h:inputText id="aa" type="number"
+																class="c-input-text qty text" value="#{panier.quantity}" />
+															<!-- 															<p:spinner id="minMax" value="#{panier.quantity}" min="0" -->
+															<!-- 																max="100" -->
+															<!-- 																class="ui-spinner-input ui-inputfield ui-state-default ui-corner-all ui-state-filled" /> -->
+														</h:column></td>
+													<td class="total-pr">
 
-												<td class="quantity-box"><input type="number" size="4"
-													value="1" min="0" step="1" class="c-input-text qty text" />
-													<h:column>
-														<f:facet name="header">
-															<h:outputText value="Quantity" />
-														</f:facet>
-														<!-- 															<h:outputText type="number" class="c-input-text qty text"  value="#{panier.quantity}"   /> -->
-														<p:spinner  id="minMax" value="#{panier.quantity}"  min="0" max="100"
-															class="ui-spinner-input ui-inputfield ui-state-default ui-corner-all ui-state-filled"
-															 />
-													</h:column></td>
-												<td class="total-pr">
+														<p>
+															<h:column>
+																<f:facet name="header">
+																	<h:outputText value="Total" />
+																</f:facet>
+																<h:outputText value="#{panier.total}" class="price-pr" />
+															</h:column>
+														</p>
+													</td>
 
-													<p>
-														<h:column>
-															<f:facet name="header">
-																<h:outputText value="Total" />
-															</f:facet>
-															<h:outputText value="#{panier.total}" class="price-pr" />
-														</h:column>
-													</p>
-												</td>	
-												
-												<td class="remove-pr">
-											
-													<h:column>
-															<f:facet name="header">
-																<h:outputText value="Remove" />
-															</f:facet>
-															<h:commandButton
-																action="#{PanierController.supprimerPanier(panier.id)}"
-																value="X" />
-														</h:column>
-															
-												
-												</td>
-											
-											</tr>
+													<td class="remove-pr"><h:column>
+															<div class="update-box">
+																<f:facet name="header">
+																	<h:outputText value="Remove" />
+																</f:facet>
+																<h:commandButton class="btn btn-theme"
+																	action="#{PanierController.update_after_remove(panier.id,AdminController.authenticatedClient.userId)}"
+																	value="X" />
+															</div>
+														</h:column></td>
 
-											<tr>
+													<td class="remove-pr"><h:column>
+															<div class="update-box">
+																<f:facet name="header">
+																	<h:outputText value="Update" />
+																</f:facet>
 
-												<td class="thumbnail-img"><a href="#"> <img
-														class="img-fluid" src="../temp1/images/img-pro-02.jpg"
-														alt="" />
-												</a></td>
 
-												<td class="name-pr"><a href="#"> Lorem ipsum dolor
-														sit amet </a></td>
+																<h:commandButton class="btn btn-theme"
+																	action="#{PanierController.updateLigne(panier.id,panier.quantity,AdminController.authenticatedClient.userId)}"
+																	value="update" />
+															</div>
+														</h:column></td>
 
-												<td class="price-pr">
 
-													<p>$ 60.0</p>
-												</td>
+												</tr>
 
-												<td class="quantity-box"><input type="number" size="4"
-													value="1" min="0" step="1" class="c-input-text qty text" /></td>
+												<tr>
 
-												<td class="total-pr">
+													<td class="thumbnail-img"><a href="#"> <img
+															class="img-fluid" src="../temp1/images/img-pro-02.jpg"
+															alt="" />
+													</a></td>
 
-													<p>$ 80.0</p>
-												</td>
+													<td class="name-pr"><a href="#"> Lorem ipsum dolor
+															sit amet </a></td>
 
-												<td class="remove-pr"><a href="#"> <i
-														class="fas fa-times" />
-												</a></td>
-											</tr>
+													<td class="price-pr">
 
-											<tr>
+														<p>$ 60.0</p>
+													</td>
 
-												<td class="thumbnail-img"><a href="#"> <img
-														class="img-fluid" src="../temp1/images/img-pro-03.jpg"
-														alt="" />
-												</a></td>
+													<td class="quantity-box"><input type="number" size="4"
+														value="1" min="0" step="1" class="c-input-text qty text" /></td>
 
-												<td class="name-pr"><a href="#"> Lorem ipsum dolor
-														sit amet </a></td>
+													<td class="total-pr">
 
-												<td class="price-pr">
+														<p>$ 80.0</p>
+													</td>
 
-													<p>$ 30.0</p>
-												</td>
+													<td class="remove-pr"><a href="#"> <i
+															class="fas fa-times" />
+													</a></td>
+												</tr>
 
-												<td class="quantity-box"><input type="number" size="4"
-													value="1" min="0" step="1" class="c-input-text qty text" /></td>
+												<tr>
 
-												<td class="total-pr">
+													<td class="thumbnail-img"><a href="#"> <img
+															class="img-fluid" src="../temp1/images/img-pro-03.jpg"
+															alt="" />
+													</a></td>
 
-													<p>$ 80.0</p>
-												</td>
+													<td class="name-pr"><a href="#"> Lorem ipsum dolor
+															sit amet </a></td>
 
-												<td class="remove-pr"><a href="#"> <i
-														class="fas fa-times" />
-												</a></td>
-											</tr>
-										</tbody>
-									</h:dataTable>
-										</h:form>
+													<td class="price-pr">
+
+														<p>$ 30.0</p>
+													</td>
+
+													<td class="quantity-box"><input type="number" size="4"
+														value="1" min="0" step="1" class="c-input-text qty text" /></td>
+
+													<td class="total-pr">
+
+														<p>$ 80.0</p>
+													</td>
+
+													<td class="remove-pr"><a href="#"> <i
+															class="fas fa-times" />
+													</a></td>
+												</tr>
+											</tbody>
+										</h:dataTable>
+									</h:form>
 								</table>
 							</div>
 						</div>
@@ -267,50 +299,76 @@
 						<div class="col-lg-6 col-sm-6">
 
 							<div class="update-box">
-								<input value="Update Cart" type="submit" />
+								<!-- 								<input value="Update Cart" type="submit" /> -->
+
+								<h:commandButton class="btn btn-theme"
+									action="#{PanierController.updateLigne(panier.id,panier.quantity,AdminController.authenticatedClient.userId)}"
+									value="update" />
+
 							</div>
 						</div>
 					</div>
+					<h:form>
+						<!-- 					<f:metadata   > -->
+						<!-- 							  <f:viewParam id="id" value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId)}" -->
+						<!-- 							var="cmd"  /> -->
+						<!-- 						<h:dataTable -->
+						<!-- 							value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId)}" -->
+						<!-- 							var="commande"  > -->
+						<div class="row my-5">
 
-					<div class="row my-5">
+							<div class="col-lg-8 col-sm-12" />
 
-						<div class="col-lg-8 col-sm-12" />
+							<div class="col-lg-4 col-sm-12">
 
-						<div class="col-lg-4 col-sm-12">
+								<div class="order-box">
 
-							<div class="order-box">
+									<h3>Order summary</h3>
 
-								<h3>Order summary</h3>
+									<div class="d-flex">
 
-								<div class="d-flex">
+										<h4>Sub Total</h4>
 
-									<h4>Sub Total</h4>
 
-									<div class="ml-auto font-weight-bold">$ 130</div>
-								</div>
 
-								<div class="d-flex">
+										<div class="ml-auto font-weight-bold">
 
-									<h4>Discount</h4>
 
-									<div class="ml-auto font-weight-bold">$ 40</div>
+											<h:outputText
+												value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).prixtotale} DT" />
+										</div>
+									</div>
+
+									<div class="d-flex">
+
+										<h4>Discount</h4>
+
+										<div class="ml-auto font-weight-bold">
+											<h:outputText
+												value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).poucentage}" />
+										</div>
+									</div>
 								</div>
 
 								<hr class="my-1" />
 
 								<div class="d-flex">
 
-									<h4>Coupon Discount</h4>
+									<h4>Accumulated Point</h4>
 
-									<div class="ml-auto font-weight-bold">$ 10</div>
+									<div class="ml-auto font-weight-bold">
+
+										<h:outputText
+											value="#{CommandeController.pt_merci(CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).id)}" />
+									</div>
 								</div>
 
-								<div class="d-flex">
+								<!-- 								<div class="d-flex"> -->
 
-									<h4>Tax</h4>
+								<!-- 									<h4>Tax</h4> -->
 
-									<div class="ml-auto font-weight-bold">$ 2</div>
-								</div>
+								<!-- 									<div class="ml-auto font-weight-bold">$ 2</div> -->
+								<!-- 								</div> -->
 
 								<div class="d-flex">
 
@@ -325,20 +383,31 @@
 
 									<h5>Grand Total</h5>
 
-									<div class="ml-auto h5">$ 388</div>
+									<div class="ml-auto h5">
+										<h:outputText
+											value="#{CommandeController.commande_en_cour_Idclient(AdminController.authenticatedClient.userId).prix_after_remise} DT" />
+
+									</div>
 								</div>
 
 								<hr />
+
+								<div class="shipping -mrxxl -mbm">Frais de livraison non
+									inclus pour le moment</div>
+
 							</div>
 						</div>
-
-						<div class="col-12 d-flex shopping-box">
-							<a href="../template/checkout.xhtml"
-								class="ml-auto btn hvr-hover">Checkout</a>
-						</div>
+						<!-- 						</h:dataTable> -->
+						<!-- 						</f:metadata> -->
+					</h:form>
+					<div class="col-12 d-flex shopping-box">
+						<a href="../template/shop.jsf" class="ml-auto btn hvr-hover">Poursuivre
+							vos achats</a> <a href="../template/checkout.jsf"
+							class="ml-auto btn hvr-hover">Finaliser votre commande</a>
 					</div>
 				</div>
 			</div>
+
 			<!-- End Cart -->
 			<!-- Start Instagram Feed  -->
 
@@ -499,6 +568,8 @@
 			<script src="../temp1/js/jquery.nicescroll.min.js"></script>
 
 			<script src="../temp1/js/custom.js"></script>
+			<!-- 			 </c:if> -->
+			</h:panelGroup>
 		</h:body>
 	</ui:define>
 </ui:composition>

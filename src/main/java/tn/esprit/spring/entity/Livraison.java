@@ -1,6 +1,7 @@
 package tn.esprit.spring.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -25,6 +28,9 @@ public class Livraison implements Serializable  {
 
 	@ManyToOne
 	private Livreur livreur;
+	
+	@OneToOne
+	private Commandes commandes;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -103,6 +109,14 @@ public class Livraison implements Serializable  {
 	
 	public void setLivreur(Livreur livreur) {
 		this.livreur= livreur;
+	}
+
+	public Commandes getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(Commandes commandes) {
+		this.commandes = commandes;
 	}
 	
 

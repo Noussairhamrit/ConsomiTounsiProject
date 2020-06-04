@@ -82,7 +82,25 @@ public class Livreur extends AppUser implements Serializable {
 	public void setLivraison(List<Livraison> livraisons) {
 		this.livraisons = livraisons;
 	}
-	public Livreur(Long userId, String userName, String encrytedPassword, boolean enabled, String nom, String prenom,
+	public Livreur( String prenom,String nom,String encrytedPassword, String email ,long cin,long num_tel,String address, 
+			  String moy_trans_liv,boolean dispo_liv,int salaire_liv , int chargeT_liv) {
+		super();
+		
+		this.prenom = prenom;
+		this.nom = nom;
+		this.encrytedPassword = encrytedPassword;
+		this.email = email;
+		this.cin = cin;
+		this.num_tel = num_tel;
+		this.address = address;
+		this.moy_trans_liv = moy_trans_liv;
+		this.dispo_liv = dispo_liv;
+		this.salaire_liv = salaire_liv;
+		this.chargeT_liv = chargeT_liv;
+	}
+	
+	public Livreur(Long userId, String userName, String encrytedPassword,boolean enabled,
+    String nom, String prenom,
 			long cin, String address, long num_tel, String email) {
 		super();
 		this.userId = userId;
@@ -96,5 +114,6 @@ public class Livreur extends AppUser implements Serializable {
 		this.num_tel = num_tel;
 		this.email = email;
 	}
+	
 }
 

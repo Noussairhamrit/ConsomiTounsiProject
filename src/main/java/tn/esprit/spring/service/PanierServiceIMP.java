@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
 import tn.esprit.spring.entity.Panier;
-import tn.esprit.spring.entity.Produit;
+
 import tn.esprit.spring.entity.lignecommandeproduit;
+import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.repository.ClientRepository;
 import tn.esprit.spring.repository.CommandesRepository;
 import tn.esprit.spring.repository.PanierRepository;
-import tn.esprit.spring.repository.ProduitRepository;
+import tn.esprit.spring.repository.Product.ProduitRepository;
+
 
 @Service
 public class PanierServiceIMP implements IPanierService {
@@ -182,25 +184,37 @@ public class PanierServiceIMP implements IPanierService {
 		return panierRepository.findPanier_par_commande(idCommande);
 	}	 
 	@Transactional
-	public void supprimerpanier(int panierId){
+	public void supprimerpanier(int panierId,long iduser ){
 
 	    panierRepository.deleteById(panierId);
-	
-		 	}
+	}
 	@Transactional
-	public void update_after_remove(int panierId){
-			Panier lc = panierRepository.getOne(panierId);
-		System.out.println("mm   "+lc);
-		Commandes c=commandesRepository.findById(lc.getCommande().getId()).get();
-		System.out.println("kk   "+c);
-	
-		double a=c.getPrixtotale()-(lc.getQuantite()*lc.getPrix());
-		c.setPrixtotale(a);
+	public void update_after_remove(int panierId,long iduser){
+
+		 supprimerpanier(panierId,iduser);
+		remise(iduser);
+		 Commandes c = commandesRepository.CommandeencoursparClient(iduser);
+		    if(c.getPrix_after_remise()<=0)
+			{
+				commandesRepository.delete(c);
+			}
 		
-		commandesRepository.save(c);
-		remise(c.getClient().getUserId());
-		supprimerpanier(panierId);
+			 	
+	   
 		
 	} 
+	@Transactional
+	 public void updateLigne(int  idL,int quantite,long iduser)
+	 {
+			Panier lc = panierRepository.getOne(idL);
+			lc.setQuantite(quantite);
+			panierRepository.save(lc);
+			remise(iduser);
+	 }
+	@Transactional
+	 public int numProduitPanier(Long iduser)
+	 {
+		return  panierRepository.numProduitPanier(iduser) ;
+	 }
 
 }

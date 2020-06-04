@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import tn.esprit.spring.entity.Product.Produit;
+
+
+
 @Entity
 @Table(name="Stock")
 
@@ -34,6 +38,9 @@ public class Stock implements Serializable{
 	
 	@OneToMany(mappedBy="stock")
 	private List<Produit> produit;
+	
+	@OneToMany(mappedBy="stockP")
+	private List<Provider> provider;
 
 	public int getIdStock() {
 		return IdStock;

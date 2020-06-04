@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,6 +34,7 @@ public class Commandes implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_commande")
 	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date date_commande;
 	private double prixtotale;
 	private String status;
@@ -74,7 +77,9 @@ public class Commandes implements Serializable {
 	@JsonIgnore
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private Client client;
-
+	@OneToOne(mappedBy="commandes")
+	private Livraison livraison;
+	
 	public Commandes() {
 		super();
 	}
@@ -103,6 +108,12 @@ public class Commandes implements Serializable {
 		this.prixtotale = prixtotale;
 		this.status = status;
 		
+	}
+
+
+
+	public Livraison getLivraison() {
+		return livraison;
 	}
 
 
@@ -188,5 +199,7 @@ public class Commandes implements Serializable {
 		return serialVersionUID;
 	}
 
-	
+	public void setLivraison(Livraison livraison) {
+		this.livraison= livraison;
+	}
 }

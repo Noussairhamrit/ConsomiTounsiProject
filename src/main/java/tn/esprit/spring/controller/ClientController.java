@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import tn.esprit.spring.entity.Client;
-import tn.esprit.spring.entity.Produit;
+import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.service.ClientServiceIMP;
 
 @RestController
@@ -54,12 +54,12 @@ public class ClientController {
 		  return client_service.Produit_par_cat(nom);
 		  
 	  }
-	  @GetMapping(value = "produit_gangant/{nbpt}")
-	  public Produit produit_gangant(@PathVariable ("nbpt")int nbpt) throws MailException, MessagingException{
-	
-			return  client_service.produit_gangant(nbpt);
-	
-	  }
+//	  @GetMapping(value = "produit_gangant/{nbpt}")
+//	  public Produit produit_gangant(@PathVariable ("nbpt")int nbpt) throws MailException, MessagingException{
+//	
+//			return  client_service.produit_gangant(nbpt);
+//	
+//	  }
 	  @RequestMapping("/sendmail")
 	  public String sendmail(){
 		  try{
