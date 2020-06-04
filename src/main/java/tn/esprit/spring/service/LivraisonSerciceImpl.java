@@ -2,6 +2,8 @@ package tn.esprit.spring.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import tn.esprit.spring.repository.CommandesRepository;
 import tn.esprit.spring.repository.LivraisonRepository;
 import tn.esprit.spring.repository.LivreurRepository;
 @Service
+@Transactional
 public class LivraisonSerciceImpl implements ILivraisonService {
 	private Logger logger= LoggerFactory.getLogger(LivraisonSerciceImpl.class);
 	@Autowired
@@ -90,7 +93,7 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 		else {
 			//charge+= charge;
 		livreurManagedEntity.setChargeT_liv(livreurManagedEntity.getChargeT_liv()+1);
-		livraisonManagedEntity.setEtat_livra(Etat_livra.en_cours);
+		livraisonManagedEntity.setEtat_livra(Etat_livra.en_cours_de_livraison);
 		livreurManagedEntity.setDispo_liv(false);
 		
 		Notificationlivreur();

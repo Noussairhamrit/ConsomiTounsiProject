@@ -1,6 +1,9 @@
 package tn.esprit.spring.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
 
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +12,10 @@ import org.springframework.stereotype.Controller;
 
 
 import tn.esprit.spring.entity.Livreur;
+import tn.esprit.spring.repository.LivraisonRepository;
 import tn.esprit.spring.repository.LivreurRepository;
 import tn.esprit.spring.service.ILivreurService;
+import tn.esprit.spring.service.LivraisonSerciceImpl;
 
 @Scope(value = "session")
 @Controller(value = "livreurController")
@@ -20,10 +25,13 @@ public class JsfLivreurController {
 	ILivreurService iLivreurService;
 	@Autowired
 	LivreurRepository livreurRepository;
+	@Autowired
+	LivraisonSerciceImpl LivraisonSercice;
 
 	private Long userId;
 	private String nom;
 	private String prenom;
+	private int idc;
 	private long cin;
 	private String address;
 	private long num_tel;
@@ -43,6 +51,66 @@ public class JsfLivreurController {
 
 	public void setLivreurIdToBeUpdated(Long livreurIdToBeUpdated) {
 		this.livreurIdToBeUpdated = livreurIdToBeUpdated;
+	}
+	
+	
+	public List<Livreur> GetLivreurDispo(){
+		return iLivreurService.GetLivreurDispo();
+	}
+	String a;
+
+	private String getCountryFromJSF(FacesContext context) {
+		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
+		return parameters.get("idc");
+	}
+
+	public int outcome() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		a = getCountryFromJSF(context);
+		System.out.println("((((((((((((((((("+a);
+		return Integer.parseInt(a);
+
+	}
+	public void affecterLivraisonALivreur(int idc,Long userId){
+		idc=outcome();
+		LivraisonSercice.affecterLivraisonALivreur(idc, userId);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public int getIdc() {
+		return idc;
+	}
+
+	public void setIdc(int idc) {
+		this.idc = idc;
+	}
+
+	public Livreur getLivreur() {
+		return livreur;
+	}
+
+	public void setLivreur(Livreur livreur) {
+		this.livreur = livreur;
 	}
 
 	public Long getUserId() {
