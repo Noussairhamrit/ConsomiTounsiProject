@@ -105,6 +105,13 @@ public class JSFPanierController {
 		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
 		return parameters.get("idcc");
 	}
+	public int outcome() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		a = getCountryFromJSF(context);
+		System.out.println("((((((((((((((((("+a);
+		return Integer.parseInt(a);
+
+	} 
 //	private String getProduitFromJSF(FacesContext context) {
 //		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
 //		return parameters.get("idprod");
@@ -116,13 +123,7 @@ public class JSFPanierController {
 //		return Integer.parseInt(b);
 //
 //	}
-	public int outcome() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		a = getCountryFromJSF(context);
-		System.out.println("((((((((((((((((("+a);
-		return Integer.parseInt(a);
-
-	}
+	
 	
 	public List<Panier> findPanier_par_commande(int idcc) {
 		idcc=outcome();
