@@ -7,10 +7,10 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ez="http://java.sun.com/jsf/composite/spinner"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-	template="/template/template2.xhtml">
+	template="/template/template.xhtml">
 	<!-- Basic -->
 	<ui:param name="cart" value="Accueil" />
-	<ui:define name="affichecommande">
+	<ui:define name="commandeUser">
 		<head>
 
 <meta charset="utf-8" />
@@ -31,32 +31,32 @@
 	rel="stylesheet" />
 
 <link rel="stylesheet"
-	href="../../plugins/bootstrap/dist/css/bootstrap.min.css" />
+	href="../plugins/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet"
-	href="../../plugins/fontawesome-free/css/all.min.css" />
+	href="../plugins/fontawesome-free/css/all.min.css" />
 <link rel="stylesheet"
-	href="../../plugins/icon-kit/dist/css/iconkit.min.css" />
+	href="../plugins/icon-kit/dist/css/iconkit.min.css" />
 <link rel="stylesheet"
-	href="../../plugins/ionicons/dist/css/ionicons.min.css" />
+	href="../plugins/ionicons/dist/css/ionicons.min.css" />
 <link rel="stylesheet"
-	href="../../plugins/perfect-scrollbar/css/perfect-scrollbar.css" />
+	href="../plugins/perfect-scrollbar/css/perfect-scrollbar.css" />
 <link rel="stylesheet"
-	href="../../plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
+	href="../plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
 <link rel="stylesheet"
-	href="../../plugins/jvectormap/jquery-jvectormap.css" />
+	href="../plugins/jvectormap/jquery-jvectormap.css" />
 <link rel="stylesheet"
-	href="../../plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css" />
+	href="../plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css" />
 <link rel="stylesheet"
-	href="../../plugins/weather-icons/css/weather-icons.min.css" />
+	href="../plugins/weather-icons/css/weather-icons.min.css" />
 <link rel="stylesheet" href="../../plugins/c3/c3.min.css" />
 <link rel="stylesheet"
-	href="../../plugins/owl.carousel/dist/assets/owl.carousel.min.css" />
+	href="../plugins/owl.carousel/dist/assets/owl.carousel.min.css" />
 <link rel="stylesheet"
-	href="../../plugins/owl.carousel/dist/assets/owl.theme.default.min.css" />
-<link rel="stylesheet" href="../../dist/css/theme.min.css" />
+	href="../plugins/owl.carousel/dist/assets/owl.theme.default.min.css" />
+<link rel="stylesheet" href="../dist/css/theme.min.css" />
 
 <script src="https://www.google-analytics.com/analytics.js"></script>
-<script src="../../dist/js/vendor/modernizr-2.8.3.min.js"></script>
+<script src="../dist/js/vendor/modernizr-2.8.3.min.js"></script>
 		</head>
 
 		<h:body>
@@ -199,7 +199,7 @@
 
 									<div class="card-body">
 
-										<h:dataTable value="#{CommandeController.get_all_commandes()}"
+										<h:dataTable value="#{CommandeController.CommandeparClient(AdminController.authenticatedClient.userId)}"
 											var="listecommande" id="advanced_table" class="table">
 											<table id="advanced_table" class="table">
 												<thead>
@@ -248,7 +248,7 @@
 																	<h:outputText value="ID" />
 																</f:facet>
 																<a href="#"> <h:form>
-																<h:link   value="#{listecommande.id}" outcome="affichepanier.jsf">
+																<h:link   value="#{listecommande.id}" outcome="PanierUser.jsf">
 														<f:param name="idcc" value="#{listecommande.id}"/>
 																		</h:link>
 																	</h:form>
@@ -671,52 +671,52 @@
 
 			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-			<script src="../../js/vendor/jquery-3.3.1.min.js">
+			<script src="../js/vendor/jquery-3.3.1.min.js">
 				
 			</script>
 
-			<script src="../../plugins/popper.js/dist/umd/popper.min.js"></script>
+			<script src="../plugins/popper.js/dist/umd/popper.min.js"></script>
 
-			<script src="../../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-
-			<script
-				src="../../plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
-
-			<script src="../../plugins/screenfull/dist/screenfull.js"></script>
+			<script src="../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
 
 			<script
-				src="../../plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+				src="../plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+
+			<script src="../plugins/screenfull/dist/screenfull.js"></script>
 
 			<script
-				src="../../plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+				src="../plugins/datatables.net/js/jquery.dataTables.min.js"></script>
 
 			<script
-				src="../../plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+				src="../plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
 			<script
-				src="../../plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
-			<script src="../../plugins/jvectormap/jquery-jvectormap.min.js"></script>
+				src="../plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 
 			<script
-				src="../../plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
+				src="../plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-			<script src="../../plugins/moment/moment.js"></script>
+			<script src="../plugins/jvectormap/jquery-jvectormap.min.js"></script>
 
 			<script
-				src="../../plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
+				src="../plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
 
-			<script src="../../plugins/d3/dist/d3.min.js"></script>
+			<script src="../plugins/moment/moment.js"></script>
 
-			<script src="../../plugins/c3/c3.min.js"></script>
+			<script
+				src="../plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
 
-			<script src="../../js/tables.js"></script>
+			<script src="../plugins/d3/dist/d3.min.js"></script>
 
-			<script src="../../js/widgets.js"></script>
+			<script src="../plugins/c3/c3.min.js"></script>
 
-			<script src="../../js/charts.js"></script>
+			<script src="../js/tables.js"></script>
 
-			<script src="../../dist/js/theme.min.js"></script>
+			<script src="../js/widgets.js"></script>
+
+			<script src="../js/charts.js"></script>
+
+			<script src="../dist/js/theme.min.js"></script>
 			<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
 			<script>

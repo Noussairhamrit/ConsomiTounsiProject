@@ -55,7 +55,9 @@ public class JSFcommandeController {
 	public long pt_merci(int idCommande){
 		return commandeservice.pt_merci(idCommande);
 	}
-	
+	public List<Commandes> CommandeparClient(int id_client){
+		return commandeservice.CommandeparClient(id_client);
+	}
 	
 	
 	

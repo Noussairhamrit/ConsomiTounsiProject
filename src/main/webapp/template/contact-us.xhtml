@@ -133,9 +133,11 @@
 								<div class="col-md-12">
 
 									<div class="form-group">
-										<input type="text" class="form-control" id="name" name="name"
-											placeholder="Your Name" required=""
-											data-error="Please enter your name" />
+				<h:inputText value="#{AdminController.authenticatedClient.nom}"  placeholder="Your Name" required=""
+											data-error="Please enter your name" class="form-control" name="name" 
+											></h:inputText>
+
+											
 
 										<div class="help-block with-errors" />
 									</div>
@@ -144,9 +146,9 @@
 								<div class="col-md-12">
 
 									<div class="form-group">
-										<input type="text" placeholder="Your Email" id="email"
+										<h:inputText value="#{AdminController.authenticatedClient.email}" placeholder="Your Email" id="email"
 											class="form-control" name="name" required=""
-											data-error="Please enter your email" />
+											data-error="Please enter your email" ></h:inputText>  
 
 										<div class="help-block with-errors" />
 									</div>
@@ -155,9 +157,9 @@
 								<div class="col-md-12">
 
 									<div class="form-group">
-										<input type="text" class="form-control" id="subject"
+										<h:inputText value="Produit N°#{idprod}" type="text" class="form-control" id="subject"
 											name="name" placeholder="Subject" required=""
-											data-error="Please enter your Subject" />
+											data-error="Please enter your Subject" ></h:inputText> 
 
 										<div class="help-block with-errors" />
 									</div>
