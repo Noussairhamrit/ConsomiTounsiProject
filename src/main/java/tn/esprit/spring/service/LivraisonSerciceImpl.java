@@ -97,7 +97,7 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 		livraisonManagedEntity.setLivreur(livreurManagedEntity);
 		
 		
-		livraisonRepository.save(livraisonManagedEntity );
+		//livraisonRepository.save(livraisonManagedEntity );
 	}
 		}
 	
