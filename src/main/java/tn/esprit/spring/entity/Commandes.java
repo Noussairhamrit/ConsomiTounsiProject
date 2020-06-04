@@ -25,6 +25,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Commandes implements Serializable {
 
+	public Reclamation getReclamation() {
+		return reclamation;
+	}
+
+
+
+	public void setReclamation(Reclamation reclamation) {
+		this.reclamation = reclamation;
+	}
+
+
+
 	/**
 	 * 
 	 */
@@ -79,6 +91,8 @@ public class Commandes implements Serializable {
 	private Client client;
 	@OneToOne(mappedBy="commandes")
 	private Livraison livraison;
+	@OneToOne(mappedBy="commandes")
+	private Reclamation reclamation ;
 	
 	public Commandes() {
 		super();

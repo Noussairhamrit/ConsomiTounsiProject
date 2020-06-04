@@ -14,10 +14,33 @@ import javax.persistence.Table;
 @Table(name = "Reclamation")
 public class Reclamation  implements Serializable  {
 	
+	public Decision getDecision() {
+		return decision;
+	}
+	public void setDecision(Decision decision) {
+		this.decision = decision;
+	}
+	public Commandes getCommandes() {
+		return commandes;
+	}
+	public void setCommandes(Commandes commandes) {
+		this.commandes = commandes;
+	}
+	public Produit getProduit() {
+		return produit;
+	}
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	@OneToOne(mappedBy="reclamation")
 	private Decision decision;
+	@OneToOne
+	private Commandes commandes;
+	@OneToOne
+	private Produit produit;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,19 +49,13 @@ public class Reclamation  implements Serializable  {
 	
 	@Column(name = "description_Recl")
 	private String description_Recl;
-	
-	
+
 	public int getId_recl() {
 		return id_recl;
 	}
-
 	public void setId_recl(int id_recl) {
 		this.id_recl = id_recl;
 	}
-
-	
-	
-	
 
 	public String getDescription_Recl() {
 		return description_Recl;

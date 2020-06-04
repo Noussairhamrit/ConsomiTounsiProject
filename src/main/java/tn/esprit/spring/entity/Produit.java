@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -99,7 +100,7 @@ public class Produit implements Serializable{
 		super();
 	}
 
-
+	
 	public Set<ImageProduit> getImages() {
 		return Images;
 	}
@@ -355,7 +356,18 @@ public class Produit implements Serializable{
 
 
 	
-	
+
+	@OneToOne(mappedBy="produit")
+	private Reclamation reclamation;
+
+	public Reclamation getReclamation() {
+		return reclamation;
+	}
+
+
+	public void setReclamation(Reclamation reclamation) {
+		this.reclamation = reclamation;
+	}
 	
 	
 	

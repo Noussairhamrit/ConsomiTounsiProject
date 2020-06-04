@@ -13,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.controller.LivraisonRestController;
+import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
 import tn.esprit.spring.entity.Etat_livra;
 import tn.esprit.spring.entity.Livraison;
@@ -24,6 +25,9 @@ import tn.esprit.spring.repository.LivreurRepository;
 @Transactional
 public class LivraisonSerciceImpl implements ILivraisonService {
 	private Logger logger= LoggerFactory.getLogger(LivraisonSerciceImpl.class);
+	private Livreur L;
+	private Commandes c;
+	private Client cl;
 	@Autowired
 	LivraisonRepository livraisonRepository;
 	@Autowired
@@ -72,12 +76,12 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 	public void Notificationlivreur() throws MailException{
 		
 		SimpleMailMessage mail = new SimpleMailMessage();
-		//mail.setTo(L.getEmail());
-		mail.setTo("youssef.rts55@gmail.com");
+		mail.setTo(L.getEmail());
+		
 		mail.setFrom("consommi.toounsi.619@gmail.com");
 		mail.setSubject("Delivery");
-		//mail.setText("You have a delivery to " + L.getAddress());
-		mail.setText("You have a delivery to BK " );
+		mail.setText("You have a delivery to " +cl.getAddress() );
+		//mail.setText("You have a delivery to ");
 		javaMailSender.send(mail);
 	}
 	@Override
@@ -85,18 +89,26 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 		
 		Livreur livreurManagedEntity = livreurRepository.findById(userId).get();
 		Livraison livraisonManagedEntity = livraisonRepository.findById(id_livra).get();
-		//int charge = livreurManagedEntity.getChargeT_liv();
+		
 		
 		if( livreurManagedEntity.isDispo_liv()== false){
 			logger.info("Ce livreur est non disponible pour le momment");
 		}
 		else {
-			//charge+= charge;
+			
 		livreurManagedEntity.setChargeT_liv(livreurManagedEntity.getChargeT_liv()+1);
 		livraisonManagedEntity.setEtat_livra(Etat_livra.en_cours_de_livraison);
 		livreurManagedEntity.setDispo_liv(false);
 		
-		Notificationlivreur();
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(livreurManagedEntity.getEmail());
+		
+		mail.setFrom("consommi.toounsi.619@gmail.com");
+		mail.setSubject("Delivery");
+		//mail.setText("You have a delivery to " +cl.getAddress() );
+		mail.setText("You have a delivery to ");
+		javaMailSender.send(mail);
+		
 		livraisonManagedEntity.setLivreur(livreurManagedEntity);
 		
 		

@@ -76,26 +76,6 @@ public class JsfLivreurController {
 		LivraisonSercice.affecterLivraisonALivreur(idc, userId);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public int getIdc() {
 		return idc;
