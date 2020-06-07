@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <!-- Mirrored from demo.themefisher.com/themefisher/aviato/forget-password.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2019 17:40:16 GMT -->
 <h:head>
@@ -50,13 +51,19 @@
           </a>
           <h2 class="text-center">Welcome Back</h2>
           <form class="text-left clearfix">
+          <h:form>
             <p>Please enter the email address for your account. A verification code will be sent to you. Once you have received the verification code, you will be able to choose a new password for your account.</p>
             <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Account email address"/>
+            							<h:inputText class="form-control" value="#{ClientController.email}" a:placeholder="Account email address"></h:inputText>
+            
+<!--               <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Account email address"/> -->
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-main text-center">Request password reset</button>
+            <h:commandButton class="btn btn-main text-center"  value="Sign In"
+								action="#{ClientController.getPassword(ClientController.email)}" />
+<!--               <button type="submit" class="btn btn-main text-center">Request password reset</button> -->
             </div>
+            </h:form>
           </form>
           <p class="mt-20"><a href="cnx.jsf">Back to log in</a></p>
         </div>

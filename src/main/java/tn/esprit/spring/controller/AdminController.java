@@ -72,7 +72,7 @@ public class AdminController {
 			loggedIn = true;
 		}
 		else if (authenticatedClient != null ) {
-			navigateTo = "/template/index.jsf?faces-redirect=true";
+			navigateTo = "index.xhtml?faces-redirect=true";
 			loggedIn = true;
 		}
 		else {

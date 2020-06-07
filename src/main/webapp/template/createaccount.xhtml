@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -57,29 +58,53 @@
 						src="../temp1/images/logo1.png" alt="" />
 					</a>
 					<h2 class="text-center">Create Your Account</h2>
-					<form class="text-left clearfix"
-						action="http://demo.themefisher.com/themefisher/aviato/index.html">
+					
+					<form class="text-left clearfix">
+						<h:form>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="First Name" />
+						
+						<h:inputText class="form-control" value="#{ClientController.userName}" a:placeholder="UserName"></h:inputText>
+<!-- 							<input type="text" class="form-control" placeholder="First Name" /> -->
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Last Name" />
+								
+						<h:inputSecret class="form-control" value="#{ClientController.encrytedPassword}" a:placeholder="Password" ></h:inputSecret>
+<!-- 							<input type="text" class="form-control" placeholder="Last Name" /> -->
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Username" />
+						<h:inputText class="form-control" value="#{ClientController.nom}" a:placeholder="Frist Name"></h:inputText>
+<!-- 							<input type="text" class="form-control" placeholder="Username" /> -->
 						</div>
 						<div class="form-group">
-							<input type="email" class="form-control" placeholder="Email" />
+							<h:inputText class="form-control" value="#{ClientController.prenom}" a:placeholder="Last Name"></h:inputText>
+<!-- 							<input type="email" class="form-control" placeholder="Email" /> -->
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control"
-								placeholder="Password" />
+							<h:inputText class="form-control" value="#{ClientController.address}" a:placeholder="Your Adresse"></h:inputText>
+<!-- 							<input type="email" class="form-control" placeholder="Email" /> -->
+						</div>
+						<div class="form-group">
+							<h:inputText class="form-control" value="#{ClientController.email}" a:placeholder="Email"></h:inputText>
+<!-- 							<input type="email" class="form-control" placeholder="Email" /> -->
+						</div>
+						<div class="form-group">
+							<h:inputText class="form-control" value="#{ClientController.cin}" a:placeholder="CIN"></h:inputText>
+<!-- 							<input type="email" class="form-control" placeholder="Email" /> -->
+						</div>
+						<div class="form-group">
+						<h:inputText class="form-control" value="#{ClientController.num_tel}" a:placeholder="Number Phone"></h:inputText>
+<!-- 							<input type="password" class="form-control" -->
+<!-- 								placeholder="Password" /> -->
 						</div>
 						<div class="text-center">
-							<button type="submit" class="btn btn-main text-center">Sign
-								In</button>
+						<h:commandButton class="btn btn-main text-center"  value="Sign In"
+								action="#{ClientController.addClient()}" />
+<!-- 							<button type="submit" class="btn btn-main text-center">Sign -->
+<!-- 								In</button> -->
 						</div>
+						</h:form>
 						</form>
+						
 					
 						
 					<p class="mt-20">

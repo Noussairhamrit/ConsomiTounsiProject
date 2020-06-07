@@ -19,7 +19,8 @@ public interface ClientRepository extends JpaRepository<Client, Long > {
 	public List<String> Produit_par_cat(String nom );
 	@Query("SELECT e FROM Client e WHERE e.userName=:user_name and e.encrytedPassword=:password and e.enabled=:enabled")
 	public Client getClientByUser_nameAndPassword(@Param("user_name") String login, @Param("password") String password, @Param("enabled") Boolean enabled);
-	
+	@Query("SELECT e FROM Client e WHERE e.email=:email")
+	public Client getPassword(@Param("email") String email);
 }
 //SELECT  prod_id,prod_desc,barre_code,image,prod_nom,prod_poid,prod_prix,prix_achat,prix_vente,prod_qount,ray_ray_id,souscat_sous_cat_id,stock_id_stock 
 //l.prod_id,l.prod_desc,l.barre_code,l.image,l.prod_nom,l.prod_poid,l.prod_prix,l.prix_achat,l.prix_vente,l.prod_qount,l.souscat_sous_cat_id
