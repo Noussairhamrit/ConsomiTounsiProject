@@ -57,6 +57,20 @@ public class AppUser {
 	}
 	
 
+	public AppUser(String userName, String encrytedPassword, String nom, String prenom, long cin, String address,
+			long num_tel, String email) {
+		super();
+		this.userName = userName;
+		this.encrytedPassword = encrytedPassword;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.address = address;
+		this.num_tel = num_tel;
+		this.email = email;
+	}
+
+
 	public AppUser(Long userId, String userName, String encrytedPassword, boolean enabled, String nom, String prenom,
 			long cin, String address, long num_tel, String email) {
 		super();
