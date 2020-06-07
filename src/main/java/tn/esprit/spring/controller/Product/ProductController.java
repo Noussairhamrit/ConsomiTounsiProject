@@ -68,7 +68,7 @@ public class ProductController {
 	
 	
 	public String addProduit() {
-		produitser.addProduitWithImage(new Produit( nom,  prix,  description,  poid,  barreCode,  prixAchat),files);
+		produitser.addProduitWithImage(new Produit( nom,  prix,  description,  barreCode, poid,  prixAchat),files);
 		return "null";
 	}
 	

@@ -11,6 +11,7 @@ import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,12 +55,12 @@ public class ClientController {
 		  return client_service.Produit_par_cat(nom);
 		  
 	  }
-//	  @GetMapping(value = "produit_gangant/{nbpt}")
-//	  public Produit produit_gangant(@PathVariable ("nbpt")int nbpt) throws MailException, MessagingException{
-//	
-//			return  client_service.produit_gangant(nbpt);
-//	
-//	  }
+	  @GetMapping(value = "produit_gangant/{nbpt}")
+	  public Produit produit_gangant(@PathVariable ("nbpt")int nbpt) throws MailException, MessagingException{
+	
+			return  client_service.produit_gangant(nbpt);
+	
+	  }
 	  @RequestMapping("/sendmail")
 	  public String sendmail(){
 		  try{
@@ -69,5 +70,13 @@ public class ClientController {
 		  }
 		  return "mail envoyer";
 	  }
+	  @GetMapping(value = "pass/{email}")
+	  public Client getPassword(@PathVariable("email")String email)throws MailException, MessagingException{
+		  return client_service.getPassword(email);
+	  }
+	  @PutMapping(value = "block/{id}")
+	  public void block(@PathVariable("id")long id){
+		  client_service.block(id);
+			}
 	  
 }

@@ -114,6 +114,12 @@ public class Livreur extends AppUser implements Serializable {
 		this.num_tel = num_tel;
 		this.email = email;
 	}
+	public List<Livraison> getLivraisons() {
+		return livraisons;
+	}
+	public void setLivraisons(List<Livraison> livraisons) {
+		this.livraisons = livraisons;
+	}
 	
 }
 
