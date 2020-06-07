@@ -33,6 +33,9 @@ public class JSFProduitController {
 		return listprod;
 }
 	
+	
+	
+	
 	public void deleteProduitById(int produitId)
 
 	{

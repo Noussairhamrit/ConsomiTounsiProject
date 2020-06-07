@@ -1,42 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/template.xhtml">
+	<ui:param name="produit" value="Accueil" />
 	<ui:define name="produit">
 	<h:head>
-<meta charset="utf-8" />
-
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<!-- Mobile Metas -->
-
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!-- Site Metas -->
-
-	<title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
-
-	<meta name="keywords" content="" />
-
-	<meta name="description" content="" />
-
-	<meta name="author" content="" />
-	<!-- Site Icons -->
-	<link rel="shortcut icon" href="../temp1/images/favicon.ico" type="/image/x-icon" />
-	<link rel="apple-touch-icon" href="../temp1/images/apple-touch-icon.png" />
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="../temp1/css/bootstrap.min.css" />
-	<!-- Site CSS -->
-	<link rel="stylesheet" href="../temp1/css/style.css" />
-	<!-- Responsive CSS -->
-	<link rel="stylesheet" href="../temp1/css/responsive.css" />
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="../temp1/css/custom.css" />
-	<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="description" content="OneTech shop project"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<h:outputStylesheet library="acceuil" name="styles/bootstrap4/bootstrap.min.css" />
+	<h:outputStylesheet library="acceuil" name="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" />
+	<h:outputStylesheet library="acceuil" name="plugins/OwlCarousel2-2.2.1/owl.carousel.css" />
+	<h:outputStylesheet library="acceuil" name="plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />
+	<h:outputStylesheet library="acceuil" name="plugins/OwlCarousel2-2.2.1/animate.css" />
+	<h:outputStylesheet library="acceuil" name="styles/product_styles.css" />
+	<h:outputStylesheet library="acceuil" name="styles/product_responsive.css" />
 
 	</h:head>
 	<h:body>
@@ -66,9 +48,9 @@
 				<div class="col-lg-5 order-3">
 					<div class="product_description">
 						<div class="product_category">Laptops</div>
-						<div class="product_name"><h:outputText value="#{Produit.nom}"/></div>
+						<div class="product_name"><h:outputText value="#{produit.nom}"/></div>
 						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-						<div class="product_text"><p><h:outputText value="#{Produit.description}"/></p></div>
+						<div class="product_text"><p><h:outputText value="#{produit.description}"/></p></div>
 						<div class="order_info d-flex flex-row">
 							<h:form id="myform">
 								<div class="clearfix" style="z-index: 1000;">
@@ -100,7 +82,7 @@
 
 								</div>
 
-								<div class="product_price"><h:outputText  value="#{Produit.prix}"/></div>
+								<div class="product_price"><h:outputText  value="#{produit.prix}"/></div>
 								<div class="button_container">
 <!-- 								type="button" class="button cart_button" -->
 									
@@ -295,40 +277,17 @@
 			</div>
 		</div>
 	</div>
-	<script src="../temp1/js/jquery-3.2.1.min.js"></script>
-
-	<script src="../temp1/js/popper.min.js"></script>
-
-	<script src="../temp1/js/bootstrap.min.js"></script>
-	<!-- ALL PLUGINS -->
-
-	<script src="../temp1/js/jquery.superslides.min.js"></script>
-
-	<script src="../temp1/js/bootstrap-select.js"></script>
-
-	<script src="../temp1/js/inewsticker.js"></script>
-
-	<script src="../temp1/js/bootsnav.js."></script>
-
-	<script src="../temp1/js/images-loded.min.js"></script>
-
-	<script src="../temp1/js/isotope.min.js"></script>
-
-	<script src="../temp1/js/owl.carousel.min.js"></script>
-
-	<script src="../temp1/js/baguetteBox.min.js"></script>
-
-	<script src="../temp1/js/jquery-ui.js"></script>
-
-	<script src="../temp1/js/jquery.nicescroll.min.js"></script>
-
-	<script src="../temp1/js/form-validator.min.js"></script>
-
-	<script src="../temp1/js/contact-form-script.js"></script>
-		<script src="../temp1/js/jquery-ui.js"></script>
-    <script src="../temp1/js/jquery.nicescroll.min.js"></script>
-
-	<script src="../temp1/js/custom.js"></script>
+	<script src="acceuil/js/jquery-3.3.1.min.js"></script>
+	<script src="acceuil/styles/bootstrap4/popper.js"></script>
+	<script src="acceuil/styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="acceuil/plugins/greensock/TweenMax.min.js"></script>
+	<script src="acceuil/plugins/greensock/TimelineMax.min.js"></script>
+	<script src="acceuil/plugins/scrollmagic/ScrollMagic.min.js"></script>
+	<script src="acceuil/plugins/greensock/animation.gsap.min.js"></script>
+	<script src="acceuil/plugins/greensock/ScrollToPlugin.min.js"></script>
+	<script src="acceuil/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="acceuil/plugins/easing/easing.js"></script>
+	<script src="acceuil/js/product_custom.js"></script>
 	</h:body>
 	</ui:define>
 	</ui:composition>

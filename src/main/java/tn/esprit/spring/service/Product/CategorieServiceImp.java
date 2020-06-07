@@ -108,6 +108,14 @@ public class CategorieServiceImp implements CategorieService {
 		return sousCatRep.findAll();
 	}
 	
+	public List<Categorie> findAllCategorie() {
+		return categorieRep.findAll();
+	}
+	
+	public List<SousCategories> findSCategorieByCategorie(Long id) {
+		return  sousCatRep.findByIdCategories(id);
+	}
+	
 	
 
 }

@@ -252,6 +252,28 @@ public class ProduitServiceImp implements ProduitService {
 	}
 
 
+	public void addProduitWithImage(Produit p, UploadedFiles files) {
+		SousCategories Scat = sousCatRep.findSousCategorieByName(controllersouscat.getNomSCategorie());
+		p.setSouscat(Scat);
+		produitRepository.save(p);
+		for (UploadedFile f : files.getFiles()) {
+         	String newFileName = fileStorageServiceImpl.UploadImages(f);
+         	String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path(AppConstants.DOWNLOAD_PATH).path(newFileName).toUriString();
+			ImageProduit image = new ImageProduit();
+			image.setImage(fileDownloadUri);
+			image.setIdproduit(p);
+			imageser.save(image);
+		}
+	}
+
+
+	
+	public Produit updateProd(Produit user) {
+       return produitRepository.save(user);
+		
+	
+	}
+
 	
 	
 

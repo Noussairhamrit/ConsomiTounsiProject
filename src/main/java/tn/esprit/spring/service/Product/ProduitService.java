@@ -30,11 +30,12 @@ public interface ProduitService {
 	public Produit getOne(int id);
 	public Long getProductBybarCode(int idprod);
 	public boolean existsById(int id);
-	public void addProdImage(Produit p, UploadedFiles files);
+	public void addProduitWithImage(Produit p, UploadedFiles files);
 	public String delete(int id);
 	public String save();
 	public void loadData();
 	public List<Produit> getProducts();
 	public List<Produit> findProdCat(Long idCategorie);
+	public  Produit updateProd(Produit user);
 
 }

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import org.primefaces.model.file.UploadedFiles;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import tn.esprit.spring.entity.Product.Produit;
@@ -24,7 +25,7 @@ import tn.esprit.spring.service.Product.ProduitService;
 
 @Component(value = "ProductController")
 @ELBeanName(value = "ProductController")
-@Join(path = "/addproduct", to = "/checkout.jsf")
+@Join(path = "/addproduct", to = "/template/templateAdmin/AcceuilGerantProd.jsf")
 public class ProductController {
 	
 	@Autowired
@@ -37,17 +38,43 @@ public class ProductController {
 	private String nom;
 	private long prix;
 	private String description;
-	private Long barcode;
+	private long barreCode;
 	private long poid;
 	private long prixAchat;
 	private UploadedFiles files;
+	private Produit produit;
 	
 	
-	public void addProduit() {
-		produitser.addProdImage(new Produit( nom,  prix,  description,  barcode,  poid,  prixAchat),files);
+	
+	
+	public String updateProd(int id)
+	{
+		String navigateTo = "null";
+		produit = new Produit();
+		System.out.println(id);
+		produit=produitRepository.findById(id).get();
+		produit.setNom(produit.getNom());
+		produit.setDescription(produit.getDescription());
+		produit.setBarreCode(produit.getBarreCode());
+		produit.setPrix(produit.getPrix());
+		produit.setPrixAchat(produit.getPrixAchat());
+		produitRepository.save(produit);
+		navigateTo="ShowProduct.xhtml?faces-redirect=true";
+		FacesMessage facesMessage =
+				new FacesMessage("updated successfully !");
+				FacesContext.getCurrentInstance().addMessage("form:btn",facesMessage);
+		return navigateTo;
+}
+	
+	
+	public String addProduit() {
+		produitser.addProduitWithImage(new Produit( nom,  prix,  description,  poid,  barreCode,  prixAchat),files);
+		return "null";
 	}
-	public void ajouterProduit(Produit produit) {
+	
+	public Produit ajouterProduit(Produit produit) {
 		produitser.ajouterProduit(produit);
+		return produit;
 		
 	}
 	
@@ -119,12 +146,22 @@ public class ProductController {
 		this.description = description;
 	}
 
-	public Long getBarcode() {
-		return barcode;
+	
+
+	public ProduitRepository getProduitRepository() {
+		return produitRepository;
 	}
 
-	public void setBarcode(Long barcode) {
-		this.barcode = barcode;
+	public void setProduitRepository(ProduitRepository produitRepository) {
+		this.produitRepository = produitRepository;
+	}
+
+	public long getBarreCode() {
+		return barreCode;
+	}
+
+	public void setBarreCode(long barreCode) {
+		this.barreCode = barreCode;
 	}
 
 	public long getPoid() {

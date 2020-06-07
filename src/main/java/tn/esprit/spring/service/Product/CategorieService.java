@@ -2,6 +2,7 @@ package tn.esprit.spring.service.Product;
 
 import java.util.List;
 
+
 import tn.esprit.spring.entity.Product.Categorie;
 import tn.esprit.spring.entity.Product.SousCategories;
 
@@ -18,6 +19,8 @@ public interface CategorieService {
 	public SousCategories findOne(long scatId);
 	public Categorie findUn(long catId);
 	public List<SousCategories> findAll();
+	public List<Categorie> findAllCategorie();
+	public List<SousCategories> findSCategorieByCategorie(Long id);
 	
 
 

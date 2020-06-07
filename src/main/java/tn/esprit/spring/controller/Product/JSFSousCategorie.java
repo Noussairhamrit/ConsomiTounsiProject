@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 
 import lombok.Getter;
 import lombok.Setter;
+import tn.esprit.spring.repository.Product.CategorieRepository;
 import tn.esprit.spring.entity.Product.Categorie;
 import tn.esprit.spring.entity.Product.SousCategories;
 import tn.esprit.spring.service.Product.CategorieService;
@@ -21,24 +22,64 @@ import tn.esprit.spring.service.Product.CategorieService;
 public class JSFSousCategorie {
 	@Autowired
 	CategorieService catservice;
+	@Autowired
+	CategorieRepository CategorieRepository;
 	
 	private Long id;
-	private String Snom;
+	private String nomCategorie;
+	private String nomSCategorie;
 	private Categorie categorie;
+	private SousCategories ssCategorie;
+	private List <String> listNomScateg;
 	
-	public List<String> getAllSsousCategorie(){
-		List<String> nomSouscategorie=new ArrayList<>();
+	
+	public List<String> getAllSCategorie(){
+		List<String> nomSCategorie=new ArrayList<>();
 		for (SousCategories ssc:catservice.findAll()){
-			nomSouscategorie.add(ssc.getSnom());
+			nomSCategorie.add(ssc.getSnom());
 		}
-		return nomSouscategorie;
+		return nomSCategorie;
 		
 	}
 
-	public List<SousCategories> findAll() {
+	public List<SousCategories> getAllSCategories() {
 		return catservice.findAll();
 	}
 	
+	public List<String> getAllCategorieName(){
+		List<String> nomCategorie=new ArrayList<>();
+		for (Categorie c:catservice.findAllCategorie()){
+			nomCategorie.add(c.getNom());
+		}
+		return nomCategorie;
+	}
+	
+	 public void onCountryChange() {
+	        if(nomCategorie !=null && !nomCategorie.equals(""))
+	        	listNomScateg = getAllSCategorieName();
+	        else
+	        	listNomScateg = new ArrayList<String>(); ;
+	        	
+	        
+	    }
+	
+	 public List<String> getAllSCategorieName(){
+			List<String> nomSCategorie=new ArrayList<>();
+			Categorie categorie=CategorieRepository.findCategorieByName(nomCategorie);	
+				for (SousCategories sc:catservice.findSCategorieByCategorie(categorie.getIdCat())){
+				nomSCategorie.add(sc.getSnom());
+			}
+			return nomSCategorie;
+		}
+	
+	public List<String> getListNomScateg() {
+		return listNomScateg;
+	}
+
+	public void setListNomScateg(List<String> listNomScateg) {
+		this.listNomScateg = listNomScateg;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -47,12 +88,31 @@ public class JSFSousCategorie {
 		this.id = id;
 	}
 
-	public String getSnom() {
-		return Snom;
+	
+
+	public CategorieService getCatservice() {
+		return catservice;
 	}
 
-	public void setSnom(String snom) {
-		Snom = snom;
+	public void setCatservice(CategorieService catservice) {
+		this.catservice = catservice;
+	}
+
+	
+	public String getNomSCategorie() {
+		return nomSCategorie;
+	}
+
+	public void setNomSCategorie(String nomSCategorie) {
+		this.nomSCategorie = nomSCategorie;
+	}
+
+	public SousCategories getSsCategorie() {
+		return ssCategorie;
+	}
+
+	public void setSsCategorie(SousCategories ssCategorie) {
+		this.ssCategorie = ssCategorie;
 	}
 
 	public Categorie getCategorie() {
@@ -61,6 +121,14 @@ public class JSFSousCategorie {
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+
+	public String getNomCategorie() {
+		return nomCategorie;
+	}
+
+	public void setNomCategorie(String nomCategorie) {
+		this.nomCategorie = nomCategorie;
 	}
 	
 	
