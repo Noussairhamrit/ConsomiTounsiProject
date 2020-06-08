@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import lombok.Getter;
 import lombok.Setter;
 import tn.esprit.spring.repository.Product.CategorieRepository;
+import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.entity.Product.Categorie;
 import tn.esprit.spring.entity.Product.SousCategories;
 import tn.esprit.spring.service.Product.CategorieService;
@@ -27,10 +28,26 @@ public class JSFSousCategorie {
 	
 	private Long id;
 	private String nomCategorie;
+	private String descriptionCat;
 	private String nomSCategorie;
+	private String descriptionSousCat;
 	private Categorie categorie;
 	private SousCategories ssCategorie;
 	private List <String> listNomScateg;
+	
+	
+	public String addCat() {
+		catservice.addCategorie(new Categorie(nomCategorie,descriptionCat));
+		return "null";
+	}
+	
+	
+	public String addSCat() {
+		catservice.addSousCat(new SousCategories(nomSCategorie,descriptionSousCat));
+		return "null";
+	}
+	
+	
 	
 	
 	public List<String> getAllSCategorie(){
@@ -129,6 +146,44 @@ public class JSFSousCategorie {
 
 	public void setNomCategorie(String nomCategorie) {
 		this.nomCategorie = nomCategorie;
+	}
+
+
+
+
+	public CategorieRepository getCategorieRepository() {
+		return CategorieRepository;
+	}
+
+
+
+
+	public void setCategorieRepository(CategorieRepository categorieRepository) {
+		CategorieRepository = categorieRepository;
+	}
+
+
+
+
+	public String getDescriptionCat() {
+		return descriptionCat;
+	}
+
+
+
+
+	public void setDescriptionCat(String descriptionCat) {
+		this.descriptionCat = descriptionCat;
+	}
+
+
+	public String getDescriptionSousCat() {
+		return descriptionSousCat;
+	}
+
+
+	public void setDescriptionSousCat(String descriptionSousCat) {
+		this.descriptionSousCat = descriptionSousCat;
 	}
 	
 	

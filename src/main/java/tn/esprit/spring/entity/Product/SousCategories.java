@@ -109,6 +109,11 @@ public class SousCategories implements Serializable{
 		this.produit = produit;
 		this.categorie = categorie;
 	}
+	public SousCategories(String snom, String sdescription) {
+		super();
+		Snom = snom;
+		Sdescription = sdescription;
+	}
 	
 	
 
