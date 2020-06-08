@@ -63,6 +63,10 @@ public class JSFSousCategorie {
 		return catservice.findAll();
 	}
 	
+	public List<Categorie> findAllCat() {
+		return catservice.findAllCategorie();
+	}
+	
 	public List<String> getAllCategorieName(){
 		List<String> nomCategorie=new ArrayList<>();
 		for (Categorie c:catservice.findAllCategorie()){
