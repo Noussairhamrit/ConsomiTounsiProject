@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tn.esprit.spring.controller.Product.JSFSousCategorie;
 import tn.esprit.spring.entity.Product.Categorie;
 import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.entity.Product.SousCategories;
@@ -26,6 +27,9 @@ public class CategorieServiceImp implements CategorieService {
 	@Autowired
 	SousCategoriesRepository sousCatRep;
 	
+	@Autowired
+	JSFSousCategorie controllersouscat;
+	
 	
 	
 	public SousCategories findOne(long scatId) {
@@ -37,6 +41,7 @@ public class CategorieServiceImp implements CategorieService {
 
 	
 	public long addCategorie(Categorie categorie) {
+		
 		categorieRep.save(categorie);
 		return categorie.getIdCat();
 	}
@@ -44,6 +49,8 @@ public class CategorieServiceImp implements CategorieService {
 
 	
 	public long addSousCat(SousCategories souscategories) {
+		Categorie cat = categorieRep.findCategorieByName(controllersouscat.getNomCategorie());
+		souscategories.setCategorie(cat);
 		sousCatRep.save(souscategories);
 		return souscategories.getIdSousCat();
 
