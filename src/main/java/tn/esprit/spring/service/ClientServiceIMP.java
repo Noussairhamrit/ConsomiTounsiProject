@@ -17,6 +17,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Admin;
+import tn.esprit.spring.entity.CategorieStat;
 import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.repository.ClientRepository;
@@ -35,6 +36,10 @@ public class ClientServiceIMP {
 	public ClientServiceIMP(JavaMailSender javaMailSender) {
 		this.javaMailSender = javaMailSender;
 	}
+	public List<CategorieStat>  NumCategorie2(){
+		return clientrepository.NumCategorie2();
+	}
+
 	public Client authenticateClient(String login, String password,Boolean enabled) {
 		 enabled=true;
 		return clientrepository.getClientByUser_nameAndPassword(login, password,enabled);
@@ -274,7 +279,7 @@ public class ClientServiceIMP {
 		System.out.println("r "+r);
 		String name = motcommentaire[r];
 		System.out.println("name "+name);
-		List<String> pp = clientrepository.Produit_par_cat(name);
+		List<String> pp = clientrepository.Produit_par_cat(nbpt,name);
 		System.out.println("list produit "+pp);
 		String delim2 = ",";
 		String res2 = String.join(delim2, pp);
@@ -438,7 +443,7 @@ public class ClientServiceIMP {
 				+ "                        </table>\n" + "                        <p>Vous souvenez-vous ?</p>\n"
 				+ "                        <p>Vous aussi, vous avez participé à notre grand jeu. Et vous avez bien fait !</p>\n"
 				+ "                        <p>Nous avons maintenant le plaisir et l'honneur de vous annoncer que vous avez gagné le grand cadeau qui est, "
-				+ p1.getNom() + " d'une valeur de " + p1.getPrix() + " dinar tunisien</p>\n"
+				+ p1.getNom() + " d'une valeur de " + p1.getPrixAchat() + " dinar tunisien</p>\n"
 				+ "                        <p>Vous pourrez retirer votre cadeau au magasin à l'aide du bon ci-joint.</p>\n"
 				+ "                      <h5>Nom Prénom " + a.getNom() +"  "+a.getPrenom()+"</h5>"
 				+ "                        <p>Cordialement.</p>\n"
@@ -505,8 +510,8 @@ public class ClientServiceIMP {
 		return name;
 	}
 
-	public List<String> Produit_par_cat(String nom) {
-		return clientrepository.Produit_par_cat(nom);
+	public List<String> Produit_par_cat(int prix,String nom) {
+		return clientrepository.Produit_par_cat(prix,nom);
 	}
 
 	public void sendmail() throws MailException {

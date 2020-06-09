@@ -36,4 +36,7 @@ public interface ProduitRepository extends JpaRepository<Produit,Integer>{
 	    
 	    @Query(value = "SELECT * FROM Produit l join sous_cat c on l.souscat_sous_cat_id=c.sous_cat_id join categories ca on c.categorie_cat_id=ca.cat_id WHERE ca.cat_id=?1", nativeQuery = true)
 		public List<Produit> findProdCat(Long idCategorie);
+	    @Query(value = "SELECT image FROM image_produit  WHERE idproduit_prod_id =?1", nativeQuery = true)
+		public String findProdimg(int idProd);
+	    
 }

@@ -46,7 +46,10 @@ public class ProductController {
 	
 	
 	
-	
+
+	public String findProdimg(int idProd){
+		return produitser.findProdimg(idProd);
+	}
 	public String updateProd(int id)
 	{
 		String navigateTo = "null";
@@ -68,7 +71,7 @@ public class ProductController {
 	
 	
 	public String addProduit() {
-		produitser.addProduitWithImage(new Produit( nom,  prix,  description,  barreCode, poid,  prixAchat),files);
+		produitser.addProduitWithImage(new Produit( nom,  prix,  description, poid ,barreCode ,  prixAchat),files);
 		return "null";
 	}
 	

@@ -12,7 +12,7 @@ import tn.esprit.spring.entity.lignecommandeproduit;
 @Repository
 public interface PanierRepository extends JpaRepository<Panier , Integer> {
 	
-	@Query(value = "SELECT  NEW tn.esprit.spring.entity.lignecommandeproduit(l.id,p.nom,l.quantite,p.prix,l.quantite*p.prix) FROM Panier l join l.commande c  join l.produit p   WHERE c.client.id=:idc and c.status='en cours'")
+	@Query(value = "SELECT  NEW tn.esprit.spring.entity.lignecommandeproduit(l.id,p.id,p.nom,l.quantite,p.prix,l.quantite*p.prix) FROM Panier l join l.commande c  join l.produit p   WHERE c.client.id=:idc and c.status='en cours'")
 	public List<lignecommandeproduit> panier_en_cour_ParIdclient(@Param("idc")long i);
 	@Query(value = "SELECT  NEW tn.esprit.spring.entity.lignecommandeproduit(p.nom,l.quantite,p.prix,l.quantite*p.prix) FROM Panier l join l.commande c  join l.produit p   WHERE c.client.id=:idc and c.status='Comfirmer'")
 	public List<lignecommandeproduit> panier_confirmer_ParIdclient(@Param("idc")long i);
@@ -28,5 +28,5 @@ public interface PanierRepository extends JpaRepository<Panier , Integer> {
 	public int numProduitPanier(Long iduser);
 	@Query(value = "SELECT  NEW tn.esprit.spring.entity.lignecommandeproduit(p.nom,l.quantite,p.prix,l.quantite*p.prix) FROM Panier l join l.commande c  join l.produit p   WHERE c.client.id=:idc and c.id=:idf and c.status='Comfirmer'")
 	public List<lignecommandeproduit> panier_confirmer1_ParIdclient(@Param("idc")long i,@Param("idf")int j);
-
+	
 }

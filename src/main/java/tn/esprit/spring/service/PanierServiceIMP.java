@@ -31,7 +31,7 @@ public class PanierServiceIMP implements IPanierService {
 	ProduitRepository produitRepository;
 	@Autowired
 	ClientRepository clientRepository;
-
+@Transactional
 	public List<lignecommandeproduit> AjouterAuPanier(int idprod, long iduser, Panier lc) {
 		List<lignecommandeproduit> List = panierRepository.panier_en_cour_ParIdclient(iduser);
 		System.out.println("//////////////////////////////////////////////////////////" + List);

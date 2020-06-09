@@ -173,22 +173,26 @@
 							<a class="dropdown-toggle" href="#" id="userDropdown"
 								role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false"><img class="avatar"
-								src="../resources/img/user.jpg" alt="" /></a>
+								src="http://localhost:8081/resources/img/user.jpg" alt="" /></a>
+							<h:form>
+								<div class="dropdown-menu dropdown-menu-right"
+									aria-labelledby="userDropdown">
+									<a class="dropdown-item" href="profile.html"><i
+										class="ik ik-user dropdown-icon" /> Profile</a> <a
+										class="dropdown-item" href="#"><i
+										class="ik ik-settings dropdown-icon" /> Settings</a> <a
+										class="dropdown-item" href="#"><span class="float-right"><span
+											class="badge badge-primary">6</span></span><i
+										class="ik ik-mail dropdown-icon" /> Inbox</a> <a
+										class="dropdown-item" href="#"><i
+										class="ik ik-navigation dropdown-icon" /> Message</a> <a
+										class="dropdown-item" href="#"><i
+										class="ik ik-power dropdown-icon" /> <h:commandLink
+											value="Logout" action="#{AdminController.doLogout()}"></h:commandLink>
+									</a>
 
-							<div class="dropdown-menu dropdown-menu-right"
-								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="profile.html"><i
-									class="ik ik-user dropdown-icon" /> Profile</a> <a
-									class="dropdown-item" href="#"><i
-									class="ik ik-settings dropdown-icon" /> Settings</a> <a
-									class="dropdown-item" href="#"><span class="float-right"><span
-										class="badge badge-primary">6</span></span><i
-									class="ik ik-mail dropdown-icon" /> Inbox</a> <a
-									class="dropdown-item" href="#"><i
-									class="ik ik-navigation dropdown-icon" /> Message</a> <a
-									class="dropdown-item" href="login.html"><i
-									class="ik ik-power dropdown-icon" /> Logout</a>
-							</div>
+								</div>
+							</h:form>
 						</div>
 					</div>
 				</div>
@@ -257,9 +261,9 @@
 
 									<div class="submenu-content">
 										<a href="affichecommande.jsf" class="menu-item">Commandes</a>
-										<a href="affichefacture.jsf" class="menu-item">Factures</a>
-											<a href="cal.jsf" class="menu-item">Statistique </a>
-
+										<a href="affichefacture.jsf" class="menu-item">Factures</a> <a
+											href="cal.jsf" class="menu-item">Statistique </a> <a
+											href="stat_vent_cat.jsf" class="menu-item">Statistique cat</a>
 									</div>
 								</div>
 								<div class="nav-item has-sub">
@@ -279,16 +283,16 @@
 											Product</span></a>
 
 									<div class="submenu-content">
-										<a href="AcceuilGerantProd.jsf" class="menu-item">AddProduct</a> <a
-									href="ShowProduct.jsf" class="menu-item">ProductShow</a> <a
-									href="ShowCategories.jsf" class="menu-item">Categories</a> <a
-									href="AjoutCategorie.jsf" class="menu-item">AddCategorie</a>
+										<a href="AcceuilGerantProd.jsf" class="menu-item">AddProduct</a>
+										<a href="ShowProduct.jsf" class="menu-item">ProductShow</a> <a
+											href="ShowCategories.jsf" class="menu-item">Categories</a> <a
+											href="AjoutCategorie.jsf" class="menu-item">AddCategorie</a>
 									</div>
 								</div>
 
 								<div class="nav-item has-sub">
-									<a href="#"><i class="ik ik-gitlab" /><span>Gestion Categories</span>
-										<span class="badge badge-success">New</span></a>
+									<a href="#"><i class="ik ik-gitlab" /><span>Gestion
+											Categories</span> <span class="badge badge-success">New</span></a>
 
 									<div class="submenu-content">
 										<a href="pages/ui/modals.html" class="menu-item">Modals</a> <a
@@ -574,66 +578,77 @@
 		</div>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-	 <script src="../../js/vendor/jquery-3.3.1.min.js">
-	</script>
+<!-- 		<script src="../../js/vendor/jquery-3.3.1.min.js"> -->
+			
+<!-- 		</script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/popper.js/dist/umd/popper.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/SpringMVC/plugins/popper.js/dist/umd/popper.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/bootstrap/dist/js/bootstrap.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/screenfull/dist/screenfull.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/screenfull/dist/screenfull.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/datatables.net/js/jquery.dataTables.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/jvectormap/jquery-jvectormap.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/jvectormap/jquery-jvectormap.min.js"></script> -->
 
-<!-- 	<script src="../../plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script> -->
+	<!-- 	<script src="../../plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script> --> 
 
-	<script src="http://localhost:8081/SpringMVC/plugins/moment/moment.js"></script>
+<!-- 		<script src="http://localhost:8081/SpringMVC/plugins/moment/moment.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/d3/dist/d3.min.js"></script>
+<!-- 		<script -->
+<!-- 			src="http://localhost:8081/SpringMVC/plugins/d3/dist/d3.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/c3/c3.min.js"></script>
+<!-- 		<script src="http://localhost:8081/SpringMVC/plugins/c3/c3.min.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/js/tables.js"></script>
+<!-- 		<script src="http://localhost:8081/SpringMVC/js/tables.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/js/widgets.js"></script>
+<!-- 		<script src="http://localhost:8081/SpringMVC/js/widgets.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/js/charts.js"></script>
+<!-- 		<script src="http://localhost:8081/SpringMVC/js/charts.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/dist/js/theme.min.js"></script>
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<!-- 		<script src="http://localhost:8081/SpringMVC/dist/js/theme.min.js"></script> -->
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
-	<script>
-		(
-								function(b, o, i, l, e, r) {
-									b.GoogleAnalyticsObject = l;
-									b[l] || (b[l] = function() {
-										(b[l].q = b[l].q || []).push(arguments)
-									});
-									b[l].l = +new Date;
-									e = o.createElement(i);
-									r = o.getElementsByTagName(i)[0];
-									e.src = 'https://www.google-analytics.com/analytics.js';
-									r.parentNode.insertBefore(e, r)
-								}(window, document, 'script', 'ga'));
-		ga('create', 'UA-XXXXX-X', 'auto');
-		ga('send', 'pageview');
-	</script>
-	
-	
-		</h:body>
-	
+		<script>
+			(function(b, o, i, l, e, r) {
+				b.GoogleAnalyticsObject = l;
+				b[l] || (b[l] = function() {
+					(b[l].q = b[l].q || []).push(arguments)
+				});
+				b[l].l = +new Date;
+				e = o.createElement(i);
+				r = o.getElementsByTagName(i)[0];
+				e.src = 'https://www.google-analytics.com/analytics.js';
+				r.parentNode.insertBefore(e, r)
+			}(window, document, 'script', 'ga'));
+			ga('create', 'UA-XXXXX-X', 'auto');
+			ga('send', 'pageview');
+		</script>
+
+
+	</h:body>
+
 </ui:composition>

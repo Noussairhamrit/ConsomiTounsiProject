@@ -82,7 +82,10 @@ public class AdminController {
 		}
 		return navigateTo;
 	}
-	
+	public String doLogout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/template/cnx.xhtml?faces-redirect=true";
+	}
 	public List<Commandes> getAllCommande() {
 		return CommandesService.get_all_commandes();
 		

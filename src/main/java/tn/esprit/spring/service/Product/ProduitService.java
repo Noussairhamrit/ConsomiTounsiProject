@@ -37,5 +37,5 @@ public interface ProduitService {
 	public List<Produit> getProducts();
 	public List<Produit> findProdCat(Long idCategorie);
 	public  Produit updateProd(Produit user);
-
+	public String findProdimg(int idProd);
 }

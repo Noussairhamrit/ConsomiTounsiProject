@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.transaction.Transactional;
 
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +67,16 @@ public class JSFPanierController {
 	private int expYear;
 	private String cvc;
 	private Produit produit;
+	private int quantite=1;
+	
 	private List<lignecommandeproduit> listpanier;
+	
+	
+	@Transactional
+	public List<lignecommandeproduit> AjouterAuPanier(int idprod, long iduser) {
+		System.out.println("qnt"+quantite);
+		return panierservice.AjouterAuPanier(idprod, iduser, new Panier(quantite));
+	}
 
 	public List<lignecommandeproduit> panierParIdclient(long id) {
 
@@ -311,6 +321,15 @@ public class JSFPanierController {
 	public void setIdcc(int idcc) {
 		this.idcc = idcc;
 	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+	
 	
 
 }

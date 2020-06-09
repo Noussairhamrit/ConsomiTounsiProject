@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:hf="http://highfaces.org"
+xmlns:b="http://primefaces.org/ui"
+	template="/template/template2.xhtml"
+
+xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:define name="statistiqueCa">
+<h:head>
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet"/>
+
+<script src="http://localhost:8081/vendor/bootstrap/js/popper.js"></script>
+<script src="http://localhost:8081/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js">
+</script>   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>   
+<script src="http://code.highcharts.com/highcharts.js"></script>
+</h:head>
+<h:body>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<center>
+
+<div ><h1>#{Statistique.cat()}</h1></div>
+<h1><hf:chart type="pie" title="Top Catégorie Vendu" alpha3d="45" beta3d="0">
+<hf:chartSerie name="Number Vente of Categorie" value="#{Statistique.cs}" var="point" point="#{point.n}" tickLabel="#{point.nomCategorie}"/>
+</hf:chart></h1>
+
+</center>
+
+</h:body>
+</ui:define>
+</ui:composition>

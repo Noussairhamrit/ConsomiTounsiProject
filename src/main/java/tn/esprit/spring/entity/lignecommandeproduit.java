@@ -9,6 +9,7 @@ public class lignecommandeproduit implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
+	private int idp;
 	private String nomProduit;
 	private int quantity;
 	private long price;
@@ -17,6 +18,12 @@ private String name ;
 	private LocalDate date;
 	private float montant;
 
+	public int getIdp() {
+		return idp;
+	}
+	public void setIdp(int idp) {
+		this.idp = idp;
+	}
 	public int getId() {
 		return id;
 	}
@@ -83,6 +90,18 @@ private String name ;
 		this.id = id;
 		
 	}
+	public lignecommandeproduit(int id,int idp, String nomProduit,int quantity, long price,long total) {
+		super();
+		this.nomProduit = nomProduit;
+		this.quantity = quantity;
+		this.price = price;
+		this.total = total;
+		this.id = id;
+		this.idp = idp;
+		
+	}
+
+
 	
 	
 

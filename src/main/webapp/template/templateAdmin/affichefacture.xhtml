@@ -198,322 +198,322 @@
 									</div>
 
 									<div class="card-body">
-										<table id="advanced_table" class="table">
-											
-												<h:dataTable value="#{FactureController.getAllfactures()}"
-													var="listefacture" id="advanced_table" class="table">
 
-													<thead>
+										<h:dataTable value="#{FactureController.getAllfactures()}"
+											var="listefacture" id="advanced_table" class="table">
+											<table class="table">
+												<thead>
 
-														<tr>
+													<tr>
 
-															<th class="nosort" width="10"><label
-																class="custom-control custom-checkbox m-0"> <input
-																	type="checkbox" class="custom-control-input"
-																	id="selectall" name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></th>
+														<th class="nosort" width="10"><label
+															class="custom-control custom-checkbox m-0"> <input
+																type="checkbox" class="custom-control-input"
+																id="selectall" name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></th>
 
-															<th class="nosort">Avatar</th>
+														<th class="nosort">Avatar</th>
 
-															<th>Name</th>
+														<th>Name</th>
 
-															<th>Position</th>
+														<th>Position</th>
 
-															<th>Office</th>
+														<th>Office</th>
 
-															<th>Age</th>
+														<th>Age</th>
 
-															<th>Start date</th>
+														<th>Start date</th>
 
-															<th>Salary</th>
-														</tr>
-													</thead>
+														<th>Salary</th>
+													</tr>
+												</thead>
 
-													<tbody>
+												<tbody>
 
-														<tr>
+													<tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td><img src="../resources/img/users/1.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><img src="../resources/img/users/1.jpg"
+															class="table-user-thumb" alt="" /></td>
 
-															<td><h:column>
-																	<f:facet name="header">
-																		<h:outputText value="ID" />
-																	</f:facet>
-																	<a href="#"> <h:outputText class="name-pr"
-																			value="#{listefacture.id}" />
+														<td><h:column>
+																<f:facet name="header">
+																	<h:outputText value="ID" />
+																</f:facet>
+																<a href="#"> <h:outputText class="name-pr"
+																		value="#{listefacture.id}" />
 
-																	</a>
-																</h:column></td>
-
-
-
-															<td><h:column>
-																	<f:facet name="header">
-																		<h:outputText value="date_de_depart" />
-																	</f:facet>
-																	<a href="#"> <h:outputText class="name-pr"
-																			value="#{listefacture.date_de_depart}" />
-
-																	</a>
-																</h:column></td>
+																</a>
+															</h:column></td>
 
 
 
-															<td><h:column>
-																	<f:facet name="header">
-																		<h:outputText value="montant" />
-																	</f:facet>
-																	<a href="#"> <h:outputText class="name-pr"
-																			value="#{listefacture.montant}" />
+														<td><h:column>
+																<f:facet name="header">
+																	<h:outputText value="date_de_depart" />
+																</f:facet>
+																<a href="#"> <h:outputText class="name-pr"
+																		value="#{listefacture.date_de_depart}" />
 
-																	</a>
-																</h:column></td>
+																</a>
+															</h:column></td>
 
-															<td><h:column>
-																	<f:facet name="header">
-																		<h:outputText value="Commande " />
-																	</f:facet>
-																	<a href="#"> <h:outputText class="name-pr"
-																			value="#{listefacture.commande.id}" />
 
-																	</a>
-																</h:column></td>
 
-															<td><h:column>
-																	<f:facet name="header">
-																		<h:outputText value="download " />
-																	</f:facet>
-																<h:form>																	<h:commandButton class="btn btn-theme"
+														<td><h:column>
+																<f:facet name="header">
+																	<h:outputText value="montant" />
+																</f:facet>
+																<a href="#"> <h:outputText class="name-pr"
+																		value="#{listefacture.montant}" />
+
+																</a>
+															</h:column></td>
+
+														<td><h:column>
+																<f:facet name="header">
+																	<h:outputText value="Commande " />
+																</f:facet>
+																<a href="#"> <h:outputText class="name-pr"
+																		value="#{listefacture.commande.id}" />
+
+																</a>
+															</h:column></td>
+
+														<td><h:column>
+																<f:facet name="header">
+																	<h:outputText value="download " />
+																</f:facet>
+																<h:form>
+																	<h:commandLink class="btn btn-primary pull-right"
 																		action="#{FactureController.facturepdf(listefacture.id)}"
-																		value="download " />
-																		</h:form>
-																		
-																</h:column></td>
-<!-- 															<td><h:column> -->
-<!-- 																	<f:facet name="header"> -->
-<!-- 																		<h:outputText value="Commande " /> -->
-<!-- 																	</f:facet> -->
-<!-- 																	<a href="#"> <h:outputText class="name-pr" -->
-<!-- 																			value="#{listefacture.commande.id}" /> -->
+																		value="download " >
+																		<i class="fa fa-download"></i>
+																		</h:commandLink>
+																</h:form>
 
-<!-- 																	</a> -->
-<!-- 																</h:column></td> -->
-														</tr>
+															</h:column></td>
+														<td><h:column>
+																<f:facet name="header">
+																	<h:outputText value="Commande " />
+																</f:facet>
+																<a href="#"> <h:outputText class="name-pr"
+																		value="#{listefacture.commande.id}" />
 
-														<tr>
+																</a>
+															</h:column></td>
+													</tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+													<tr>
 
-															<td><img src="../resources/img/users/2.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td>Garrett Winters</td>
+														<td><img src="../resources/img/users/2.jpg"
+															class="table-user-thumb" alt="" /></td>
 
+														<td>Garrett Winters</td>
 
 
 
-															<td>Tokyo</td>
 
-															<td>63</td>
+														<td>Tokyo</td>
 
-															<td>2011/07/25</td>
+														<td>63</td>
 
-															<td>$170,750</td>
-														</tr>
+														<td>2011/07/25</td>
 
-														<tr>
+														<td>$170,750</td>
+													</tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+													<tr>
 
-															<td><img src="../resources/img/users/3.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td>Ashton Cox</td>
+														<td><img src="../resources/img/users/3.jpg"
+															class="table-user-thumb" alt="" /></td>
 
-															<td>Junior Technical Author</td>
+														<td>Ashton Cox</td>
 
-															<td>San Francisco</td>
+														<td>Junior Technical Author</td>
 
-															<td>66</td>
+														<td>San Francisco</td>
 
-															<td>2009/01/12</td>
+														<td>66</td>
 
-															<td>$86,000</td>
-														</tr>
+														<td>2009/01/12</td>
 
-														<tr>
+														<td>$86,000</td>
+													</tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+													<tr>
 
-															<td><img src="../resources/img/users/4.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td>Cedric Kelly</td>
+														<td><img src="../resources/img/users/4.jpg"
+															class="table-user-thumb" alt="" /></td>
 
-															<td>Senior Javascript Developer</td>
+														<td>Cedric Kelly</td>
 
-															<td>Edinburgh</td>
+														<td>Senior Javascript Developer</td>
 
-															<td>22</td>
+														<td>Edinburgh</td>
 
-															<td>2012/03/29</td>
+														<td>22</td>
 
-															<td>$433,060</td>
-														</tr>
+														<td>2012/03/29</td>
 
-														<tr>
+														<td>$433,060</td>
+													</tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+													<tr>
 
-															<td><img src="../resources/img/users/5.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td>Airi Satou</td>
+														<td><img src="../resources/img/users/5.jpg"
+															class="table-user-thumb" alt="" /></td>
 
-															<td>Accountant</td>
+														<td>Airi Satou</td>
 
-															<td>Tokyo</td>
+														<td>Accountant</td>
 
-															<td>33</td>
+														<td>Tokyo</td>
 
-															<td>2008/11/28</td>
+														<td>33</td>
 
-															<td>$162,700</td>
-														</tr>
+														<td>2008/11/28</td>
 
-														<tr>
+														<td>$162,700</td>
+													</tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+													<tr>
 
-															<td><img src="../resources/img/users/1.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td>Brielle Williamson</td>
+														<td><img src="../resources/img/users/1.jpg"
+															class="table-user-thumb" alt="" /></td>
 
-															<td>Integration Specialist</td>
+														<td>Brielle Williamson</td>
 
-															<td>New York</td>
+														<td>Integration Specialist</td>
 
-															<td>61</td>
+														<td>New York</td>
 
-															<td>2012/12/02</td>
+														<td>61</td>
 
-															<td>$372,000</td>
-														</tr>
+														<td>2012/12/02</td>
 
-														<tr>
+														<td>$372,000</td>
+													</tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+													<tr>
 
-															<td><img src="../resources/img/users/2.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td>Herrod Chandler</td>
+														<td><img src="../resources/img/users/2.jpg"
+															class="table-user-thumb" alt="" /></td>
 
-															<td>Sales Assistant</td>
+														<td>Herrod Chandler</td>
 
-															<td>San Francisco</td>
+														<td>Sales Assistant</td>
 
-															<td>59</td>
+														<td>San Francisco</td>
 
-															<td>2012/08/06</td>
+														<td>59</td>
 
-															<td>$137,500</td>
-														</tr>
+														<td>2012/08/06</td>
 
-														<tr>
+														<td>$137,500</td>
+													</tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+													<tr>
 
-															<td><img src="../resources/img/users/3.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td>Rhona Davidson</td>
+														<td><img src="../resources/img/users/3.jpg"
+															class="table-user-thumb" alt="" /></td>
 
-															<td>Integration Specialist</td>
+														<td>Rhona Davidson</td>
 
-															<td>Tokyo</td>
+														<td>Integration Specialist</td>
 
-															<td>55</td>
+														<td>Tokyo</td>
 
-															<td>2010/10/14</td>
+														<td>55</td>
 
-															<td>$327,900</td>
-														</tr>
+														<td>2010/10/14</td>
 
-														<tr>
+														<td>$327,900</td>
+													</tr>
 
-															<td><label class="custom-control custom-checkbox">
-																	<input type="checkbox"
-																	class="custom-control-input select_all_child" id=""
-																	name="" value="option2" /> <span
-																	class="custom-control-label">&nbsp;</span>
-															</label></td>
+													<tr>
 
-															<td><img src="../resources/img/users/4.jpg"
-																class="table-user-thumb" alt="" /></td>
+														<td><label class="custom-control custom-checkbox">
+																<input type="checkbox"
+																class="custom-control-input select_all_child" id=""
+																name="" value="option2" /> <span
+																class="custom-control-label">&nbsp;</span>
+														</label></td>
 
-															<td>Colleen Hurst</td>
+														<td><img src="../resources/img/users/4.jpg"
+															class="table-user-thumb" alt="" /></td>
 
-															<td>Javascript Developer</td>
+														<td>Colleen Hurst</td>
 
-															<td>San Francisco</td>
+														<td>Javascript Developer</td>
 
-															<td>39</td>
+														<td>San Francisco</td>
 
-															<td>2009/09/15</td>
+														<td>39</td>
 
-															<td>$205,500</td>
-														</tr>
-													</tbody>
+														<td>2009/09/15</td>
 
-												</h:dataTable>
-											
-										</table>
+														<td>$205,500</td>
+													</tr>
+												</tbody>
+											</table>
+										</h:dataTable>
 									</div>
 								</div>
 							</div>
@@ -653,62 +653,72 @@
 
 			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-	 <script src="../../js/vendor/jquery-3.3.1.min.js">
-	</script>
+			<script src="../../js/vendor/jquery-3.3.1.min.js">
+				
+			</script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/popper.js/dist/umd/popper.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/popper.js/dist/umd/popper.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/screenfull/dist/screenfull.js"></script>
+			<script
+				src="http://localhost:8081/plugins/screenfull/dist/screenfull.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/jvectormap/jquery-jvectormap.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/jvectormap/jquery-jvectormap.min.js"></script>
 
-<!-- 	<script src="../../plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script> -->
+			<!-- 	<script src="../../plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script> -->
 
-	<script src="http://localhost:8081/SpringMVC/plugins/moment/moment.js"></script>
+			<script src="http://localhost:8081/plugins/moment/moment.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
+			<script
+				src="http://localhost:8081/plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/d3/dist/d3.min.js"></script>
+			<script src="http://localhost:8081/plugins/d3/dist/d3.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/plugins/c3/c3.min.js"></script>
+			<script src="http://localhost:8081/plugins/c3/c3.min.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/js/tables.js"></script>
+			<script src="http://localhost:8081/js/tables.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/js/widgets.js"></script>
+			<script src="http://localhost:8081/js/widgets.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/js/charts.js"></script>
+			<script src="http://localhost:8081/js/charts.js"></script>
 
-	<script src="http://localhost:8081/SpringMVC/dist/js/theme.min.js"></script>
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+			<script src="http://localhost:8081/dist/js/theme.min.js"></script>
+			<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
-	<script>
-		(
-								function(b, o, i, l, e, r) {
-									b.GoogleAnalyticsObject = l;
-									b[l] || (b[l] = function() {
-										(b[l].q = b[l].q || []).push(arguments)
-									});
-									b[l].l = +new Date;
-									e = o.createElement(i);
-									r = o.getElementsByTagName(i)[0];
-									e.src = 'https://www.google-analytics.com/analytics.js';
-									r.parentNode.insertBefore(e, r)
-								}(window, document, 'script', 'ga'));
-		ga('create', 'UA-XXXXX-X', 'auto');
-		ga('send', 'pageview');
-	</script>
+			<script>
+				(function(b, o, i, l, e, r) {
+					b.GoogleAnalyticsObject = l;
+					b[l] || (b[l] = function() {
+						(b[l].q = b[l].q || []).push(arguments)
+					});
+					b[l].l = +new Date;
+					e = o.createElement(i);
+					r = o.getElementsByTagName(i)[0];
+					e.src = 'https://www.google-analytics.com/analytics.js';
+					r.parentNode.insertBefore(e, r)
+				}(window, document, 'script', 'ga'));
+				ga('create', 'UA-XXXXX-X', 'auto');
+				ga('send', 'pageview');
+			</script>
 		</h:body>
 	</ui:define>
 </ui:composition>

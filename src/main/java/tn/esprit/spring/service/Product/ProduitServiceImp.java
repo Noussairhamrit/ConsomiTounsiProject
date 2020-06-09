@@ -153,7 +153,10 @@ public class ProduitServiceImp implements ProduitService {
 		return prod;
 	}
 	
-	
+	public String findProdimg(int idProd){
+		return produitRepository.findProdimg(idProd);
+	}
+
 	
 	
 	public void setServletContext(ServletContext servletContext) {

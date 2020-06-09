@@ -343,7 +343,7 @@
 												
 
 				
-													<img src="#{produit.img}" class="img-fluid"
+													<img src="#{ProductController.findProdimg(produit.id)}" class="img-fluid"
 														style="width: 30%; height: 40%" alt="Image" />
 												<div class="why-text full-width">
 												
@@ -360,7 +360,10 @@
 													</h5>
 
 													<p><h:outputText value="#{produit.description}" /></p>
-													<a class="btn hvr-hover" href="#">Add to Cart</a>
+													
+<!-- 														<p><h:inputText pattern="[1-9]*" value="#{PanierController.quantite}" /></p> -->
+													<a class="btn hvr-hover" href="#">	
+		<h:commandButton class="btn hvr-hover" value="Add to Cart" action="#{PanierController. AjouterAuPanier(produit.id,AdminController.authenticatedClient.userId)}"/></a>
 												</div>
 											</div>
 										</div>
@@ -515,7 +518,7 @@
 
 	<script src="../temp1/js/inewsticker.js"></script>
 
-	<script src="../temp1/js/bootsnav.js."></script>
+	<script src="../temp1/js/bootsnav.js"></script>
 
 	<script src="../temp1/js/images-loded.min.js"></script>
 
