@@ -1,5 +1,6 @@
 package tn.esprit.spring.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,14 +9,21 @@ import javax.faces.context.FacesContext;
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.repository.LivraisonRepository;
 import tn.esprit.spring.repository.LivreurRepository;
 import tn.esprit.spring.service.ILivreurService;
 import tn.esprit.spring.service.LivraisonSerciceImpl;
+import tn.esprit.spring.service.LivreurServiceImpl;
+
 
 @Scope(value = "session")
 @Controller(value = "livreurController")
@@ -27,6 +35,9 @@ public class JsfLivreurController {
 	LivreurRepository livreurRepository;
 	@Autowired
 	LivraisonSerciceImpl LivraisonSercice;
+	@Autowired
+	LivreurServiceImpl LivreurSercice;
+
 
 	private Long userId;
 	private String nom;
@@ -40,11 +51,13 @@ public class JsfLivreurController {
 	private String userName;
 	private String moy_trans_liv;
 	private boolean dispo_liv;
-	private int chargeT_liv;
+	private Integer chargeT_liv;
 	private int salaire_liv;
 	private Livreur livreur;
 	private Long livreurIdToBeUpdated;
 	private List<Livreur> livreurs;
+	private JavaMailSender javaMailSender;
+
 	public Long getLivreurIdToBeUpdated() {
 		return livreurIdToBeUpdated;
 	}
@@ -52,11 +65,11 @@ public class JsfLivreurController {
 	public void setLivreurIdToBeUpdated(Long livreurIdToBeUpdated) {
 		this.livreurIdToBeUpdated = livreurIdToBeUpdated;
 	}
-	
-	
-	public List<Livreur> GetLivreurDispo(){
+
+	public List<Livreur> GetLivreurDispo() {
 		return iLivreurService.GetLivreurDispo();
 	}
+
 	String a;
 
 	private String getCountryFromJSF(FacesContext context) {
@@ -67,15 +80,15 @@ public class JsfLivreurController {
 	public int outcome() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		a = getCountryFromJSF(context);
-		System.out.println("((((((((((((((((("+a);
+		System.out.println("(((((((((((((((((" + a);
 		return Integer.parseInt(a);
 
 	}
-	public void affecterLivraisonALivreur(int idc,Long userId){
-		idc=outcome();
+
+	public void affecterLivraisonALivreur(int idc, Long userId) {
+		idc = outcome();
 		LivraisonSercice.affecterLivraisonALivreur(idc, userId);
 	}
-	
 
 	public int getIdc() {
 		return idc;
@@ -133,11 +146,11 @@ public class JsfLivreurController {
 		this.dispo_liv = dispo_liv;
 	}
 
-	public int getChargeT_liv() {
+	public Integer getChargeT_liv() {
 		return chargeT_liv;
 	}
 
-	public void setChargeT_liv(int chargeT_liv) {
+	public void setChargeT_liv(Integer chargeT_liv) {
 		this.chargeT_liv = chargeT_liv;
 	}
 
@@ -212,7 +225,8 @@ public class JsfLivreurController {
 	}
 
 	public String addlivreur() {
-		iLivreurService.ajouterLivreur(new Livreur(prenom,nom,encrytedPassword,email ,cin,num_tel,address,moy_trans_liv, dispo_liv, salaire_liv, chargeT_liv));
+		iLivreurService.ajouterLivreur(new Livreur(prenom, nom, userName, encrytedPassword, email, cin, num_tel,
+				address, moy_trans_liv, dispo_liv, salaire_liv, chargeT_liv));
 		return "null";
 	}
 
@@ -224,7 +238,7 @@ public class JsfLivreurController {
 		iLivreurService.mettreAjourLivreurBydispo(userId, dispo_liv);
 	}
 
-	public void mettreAjourLivreurBycharge(Long userId, int chargeT_liv) {
+	public void mettreAjourLivreurBycharge(Long userId, Integer chargeT_liv) {
 		iLivreurService.mettreAjourLivreurBycharge(userId, chargeT_liv);
 	}
 
@@ -236,22 +250,7 @@ public class JsfLivreurController {
 		livreurs = iLivreurService.getAlllivreurs();
 		return livreurs;
 	}
-	/*public String displayLivreur(Livreur liv){
 	
-		this.setPrenom(liv.getPrenom());
-		this.setNom(liv.getNom());
-		this.setCin(liv.getCin());
-		this.setEmail(liv.getEmail());
-		this.setNum_tel(liv.getNum_tel());
-		this.setAddress(liv.getAddress());
-		this.setMoy_trans_liv(liv.getMoy_trans_liv());
-		this.setSalaire_liv(liv.getSalaire_liv());
-		this.setDispo_liv(liv.isDispo_liv());
-		this.setChargeT_liv(liv.getChargeT_liv());
-		this.setLivreurIdToBeUpdated(liv.getUserId());
-		
-		return "null";
-	}*/
 
 	public List<Livreur> getLivreurs() {
 		return livreurs;
@@ -260,4 +259,45 @@ public class JsfLivreurController {
 	public void setLivreurs(List<Livreur> livreurs) {
 		this.livreurs = livreurs;
 	}
+
+	@RequestMapping("/piechartdata")
+	public ResponseEntity<?> getDataForPiechart() {
+		List<Livreur> livreurs = livreurRepository.findAll();
+		return new ResponseEntity<>(livreurs, HttpStatus.OK);
+	}
+	
+	public void Prime() {
+		LivreurSercice.Prime();
+	}
+	
+	
+	
+	
+	
+//	@Scheduled(cron="*/10*****")
+//	public void Prime() {
+//		Livreur Delivery = new Livreur();
+//		Long n;
+//		
+//		n = livreurRepository.BestLivreur();
+//		Delivery = livreurRepository.findById(n).get();
+//		
+//		SimpleMailMessage mail = new SimpleMailMessage();
+//		mail.setTo(Delivery.getEmail());
+//		
+//		mail.setFrom("consommi.toounsi.619@gmail.com");
+//		mail.setSubject("Delivery");
+//		mail.setText("You have a delivery to " );
+//		
+//		javaMailSender.send(mail);
+//		
+//		
+//		List<Livreur> ListeLiv = new ArrayList<>();
+//		ListeLiv=iLivreurService.getAlllivreurs();
+//		for(Livreur i :ListeLiv){
+//			i.setChargeT_liv(0);
+//		}
+//		
+//
+//	}
 }

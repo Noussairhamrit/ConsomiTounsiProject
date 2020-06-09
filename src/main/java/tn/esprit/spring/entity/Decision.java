@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Decision implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@OneToOne
+	@OneToOne(mappedBy="decision")
 	private Reclamation reclamation;
 
 	@Id

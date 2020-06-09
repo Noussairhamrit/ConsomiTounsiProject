@@ -11,7 +11,7 @@
 	<!-- Basic -->
 	<ui:param name="cart" value="Accueil" />
 	<ui:define name="addlivreur">
-<head>
+		<head>
 
 <meta charset="utf-8" />
 
@@ -123,6 +123,14 @@
 													<h:inputText type="email" class="form-control"
 														id="exampleInputEmail1" value="#{livreurController.nom}"
 														placeholder="last_name" />
+												</div>
+												
+												<div class="form-group">
+													<label for="exampleInputEmail1">User Name</label>
+													<h:inputText type="email" class="form-control"
+														value="#{livreurController.userName}"
+														placeholder="user_name" />
+														
 												</div>
 
 

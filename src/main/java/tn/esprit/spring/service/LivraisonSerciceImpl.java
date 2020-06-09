@@ -61,7 +61,9 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 			livraison.setLivreur(livreurManagedEntity);
 			
 		
-		}livraisonRepository.save(livraison);
+		}
+		livraisonRepository.save(livraison);
+		
 	}
 	@Override
 	public List<Livraison> retrieveAllLivraisons(){
@@ -80,7 +82,7 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 		
 		mail.setFrom("consommi.toounsi.619@gmail.com");
 		mail.setSubject("Delivery");
-		mail.setText("You have a delivery to " +cl.getAddress() );
+		mail.setText("You have a delivery to " +c.getClient().getAddress());
 		//mail.setText("You have a delivery to ");
 		javaMailSender.send(mail);
 	}
@@ -105,8 +107,8 @@ public class LivraisonSerciceImpl implements ILivraisonService {
 		
 		mail.setFrom("consommi.toounsi.619@gmail.com");
 		mail.setSubject("Delivery");
-		//mail.setText("You have a delivery to " +cl.getAddress() );
-		mail.setText("You have a delivery to ");
+		mail.setText("You have a delivery to " +livraisonManagedEntity.getCommandes().getClient().getAddress());
+		
 		javaMailSender.send(mail);
 		
 		livraisonManagedEntity.setLivreur(livreurManagedEntity);

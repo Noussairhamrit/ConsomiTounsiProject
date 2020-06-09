@@ -221,24 +221,40 @@
 															</a>
 															</h:column>
 															</td>
-															<td>
-															<h:column>
+<!-- 															<td> -->
+<!-- 															<h:column> -->
+<!-- 															<f:facet name="header"> -->
+<!-- 																<h:outputText value="Number of Delivery" /> -->
+<!-- 															</f:facet> -->
+<!-- 															<a href="#"> <h:outputText class="name-pr" value="#{livreur.chargeT_liv}" /> -->
+<!-- 															</a> -->
+<!-- 															</h:column> -->
+<!-- 															</td> -->
+									
+									
+									<td >
+														<h:column>
 															<f:facet name="header">
 																<h:outputText value="Number of Delivery" />
 															</f:facet>
-															<a href="#"> <h:outputText class="name-pr" value="#{livreur.chargeT_liv}" />
-															</a>
-															</h:column>
-															</td>
+															<p:inputNumber  
+																class="c-input-text qty text" value="#{livreur.chargeT_liv}" />
+															
+														</h:column></td>
+									
 									
 														<td>
 														<h:column>
+														
 														<f:facet name="header">
 																<h:outputText value="Actions" />
 															</f:facet>
-														<a href="#!"><h:outputText class="ik ik-edit f-16 mr-15 text-green" /></a>
+															<h:form>
 														
-														<h:form>
+														
+														<h:commandLink action="#{livreurController.mettreAjourLivreurBycharge(livreur.userId,livreur.chargeT_liv)}" class="ik ik-edit f-16 mr-15 text-green" />
+														
+														
 														
 														<h:commandLink action="#{livreurController.deleteLivreur(livreur.userId)}" class="ik ik-trash-2 f-16 text-red"/>
 															
@@ -259,6 +275,7 @@
 
 						</div>
 					</div>
+					
 				</div>
 
 

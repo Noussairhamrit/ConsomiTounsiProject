@@ -82,12 +82,13 @@ public class Livreur extends AppUser implements Serializable {
 	public void setLivraison(List<Livraison> livraisons) {
 		this.livraisons = livraisons;
 	}
-	public Livreur( String prenom,String nom,String encrytedPassword, String email ,long cin,long num_tel,String address, 
+	public Livreur( String prenom,String nom,String userName,String encrytedPassword, String email ,long cin,long num_tel,String address, 
 			  String moy_trans_liv,boolean dispo_liv,int salaire_liv , int chargeT_liv) {
 		super();
 		
 		this.prenom = prenom;
 		this.nom = nom;
+		this.userName = userName;
 		this.encrytedPassword = encrytedPassword;
 		this.email = email;
 		this.cin = cin;

@@ -14,6 +14,87 @@ import javax.persistence.Table;
 @Table(name = "Reclamation")
 public class Reclamation  implements Serializable  {
 	
+	
+	private static final long serialVersionUID = 1L;
+	
+	
+	@OneToOne
+	private Decision decision;
+	@OneToOne
+	private Commandes commandes;
+	@OneToOne
+	private Produit produit;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_Recl")
+	private Integer id_recl;
+	
+	public void setId_recl(Integer id_recl) {
+		this.id_recl = id_recl;
+	}
+
+	@Column(name = "description_Recl")
+	private String descrip;
+
+	
+	
+	public Integer getId_recl() {
+		return id_recl;
+	}
+	
+
+	public String getDescrip() {
+		return descrip;
+	}
+	public void setDescrip(String descrip) {
+		this.descrip = descrip;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Reclamation() {
+		super();
+	}
+
+	public Reclamation(int id_recl, String descrip) {
+		super();
+		this.id_recl = id_recl;
+		this.descrip = descrip;
+		
+	}
+
+	public Reclamation(Commandes commandes, Produit produit, Integer id_recl, String descrip) {
+		super();
+		this.commandes = commandes;
+		this.produit = produit;
+		this.id_recl = id_recl;
+		this.descrip = descrip;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Reclamation [id_recl=" + id_recl + ", descrip=" + descrip + "]";
+	}
+
+	public Reclamation(String descrip) {
+		super();
+		this.descrip = descrip;
+	}
+	
+	
+
+
+	public Reclamation(String descrip, Produit produit, Commandes commandes) {
+		super();
+		this.commandes = commandes;
+		this.produit = produit;
+		this.descrip = descrip;
+	}
+
+
 	public Decision getDecision() {
 		return decision;
 	}
@@ -32,63 +113,5 @@ public class Reclamation  implements Serializable  {
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
-
-	private static final long serialVersionUID = 1L;
-	
-	@OneToOne(mappedBy="reclamation")
-	private Decision decision;
-	@OneToOne
-	private Commandes commandes;
-	@OneToOne
-	private Produit produit;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Recl")
-	private int id_recl;
-	
-	@Column(name = "description_Recl")
-	private String description_Recl;
-
-	public int getId_recl() {
-		return id_recl;
-	}
-	public void setId_recl(int id_recl) {
-		this.id_recl = id_recl;
-	}
-
-	public String getDescription_Recl() {
-		return description_Recl;
-	}
-
-	public void setDescription_Recl(String description_Recl) {
-		this.description_Recl = description_Recl;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public Reclamation() {
-		super();
-	}
-
-	public Reclamation(int id_recl, String description_Recl) {
-		super();
-		this.id_recl = id_recl;
-		this.description_Recl = description_Recl;
-		
-	}
-
-	@Override
-	public String toString() {
-		return "Reclamation [id_recl=" + id_recl + ", description_Recl=" + description_Recl + "]";
-	}
-
-	public Reclamation(String description_Recl) {
-		super();
-		this.description_Recl = description_Recl;
-	}
-	
 
 }

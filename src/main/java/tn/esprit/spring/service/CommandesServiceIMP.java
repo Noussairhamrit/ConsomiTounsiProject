@@ -123,6 +123,7 @@ public class CommandesServiceIMP implements ICommandesService {
 		Livraison livraison=new Livraison(); 
 		livraison.setDest_livra(client.getAddress());
 		livraison.setEtat_livra(Etat_livra.en_cours);
+		livraison.setFrais_livra(10);
 		livraison.setCommandes(c);
 		LivraisonSercice.ajouterLivraison(livraison);
 		return facture;
