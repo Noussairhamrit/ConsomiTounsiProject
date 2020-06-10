@@ -5,12 +5,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
-	xmlns:pe="http://primefaces.org/ui/extensions">
-<!-- 	template="/template/template2.xhtml"> -->
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/template/template2.xhtml">
 	<!-- Basic -->
 	<ui:param name="cart" value="Accueil" />
 	<ui:define name="cal">
-		<h:head>
+		<head>
 			
 
 
@@ -20,12 +20,20 @@
 			<link rel="stylesheet" href="../../temp1/jscal/daygrid/main.css" />
 			<link rel="stylesheet" href="../../temp1/jscal/timegrid/main.css" />
 			<link rel="stylesheet" href="../../temp1/jscal/list/main.css" />
+			
+			</head>
+		
+			
 		   
-		</h:head>
+		
 		
 		<h:body>
+		<br/><br/> <br/> <br/>
 			<div id='calendar'></div>
-			<script>
+			<script src="../../temp1/jscal/core/main.js"></script>
+			<script src="../../temp1/jscal/daygrid/main.js"></script>
+			<script src="../../temp1/jscal/list/main.js"></script>
+				<script>
 			document.addEventListener('DOMContentLoaded', function() {
 				var calendarEl = document.getElementById('calendar');
 				var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -34,15 +42,12 @@
 						center : 'title',
 						left : 'dayGridMonth,list'
 					},
-				events : 'http://localhost:8081/SpringMVC/servlet/nbc'
+				events : 'http://localhost:8081/nbc'
 				});
 				calendar.render();
 			});
-			console.log(event);
+			//console.log(event);
 		</script>
-			<script src="../../temp1/jscal/core/main.js"></script>
-			<script src="../../temp1/jscal/daygrid/main.js"></script>
-			<script src="../../temp1/jscal/list/main.js"></script>
 		</h:body>
 	</ui:define>
 </ui:composition>

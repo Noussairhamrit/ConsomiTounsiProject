@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
 import tn.esprit.spring.entity.Panier;
-import tn.esprit.spring.entity.Produit;
+
 import tn.esprit.spring.entity.lignecommandeproduit;
+import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.repository.ClientRepository;
 import tn.esprit.spring.repository.CommandesRepository;
 import tn.esprit.spring.repository.PanierRepository;
-import tn.esprit.spring.repository.ProduitRepository;
+import tn.esprit.spring.repository.Product.ProduitRepository;
+
 
 @Service
 public class PanierServiceIMP implements IPanierService {
@@ -29,7 +31,7 @@ public class PanierServiceIMP implements IPanierService {
 	ProduitRepository produitRepository;
 	@Autowired
 	ClientRepository clientRepository;
-
+@Transactional
 	public List<lignecommandeproduit> AjouterAuPanier(int idprod, long iduser, Panier lc) {
 		List<lignecommandeproduit> List = panierRepository.panier_en_cour_ParIdclient(iduser);
 		System.out.println("//////////////////////////////////////////////////////////" + List);

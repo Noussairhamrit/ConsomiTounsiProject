@@ -1,31 +1,33 @@
 package tn.esprit.spring.controller;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
 
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
-import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.entity.Panier;
-import tn.esprit.spring.entity.Produit;
 import tn.esprit.spring.entity.Reclamation;
+import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.repository.CommandesRepository;
-import tn.esprit.spring.repository.ProduitRepository;
 import tn.esprit.spring.repository.ReclamationRepository;
+import tn.esprit.spring.repository.Product.ProduitRepository;
 import tn.esprit.spring.service.CommandesServiceIMP;
 import tn.esprit.spring.service.IReclamationService;
-import tn.esprit.spring.service.ProduitServiceImp;
+import tn.esprit.spring.service.Product.ProduitServiceImp;
 
 @Scope(value = "session")
 @Controller(value = "reclamationController")
 @ELBeanName(value = "reclamationController")
 public class JsfReclamation {
+	@Autowired
+	JSFPanierController jsfpanier;
 	@Autowired
 	ReclamationRepository reclamationRepository;
 	@Autowired
@@ -100,11 +102,29 @@ public class JsfReclamation {
 		iReclamationService.ajouterReclamation(reclamation);
 		return reclamation;
 	}
+	String a1;
+	//String b;
+	private String getCountryFromJSF(FacesContext context) {
+		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
+		return parameters.get("idprod");
+	}
+	public int outcome() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		a1 = getCountryFromJSF(context);
+		System.out.println("((((((((((((((((("+a1);
+		return Integer.parseInt(a1);
+	}
+
 
 	public String addReclamation(int idp,int idc) {
-		
+		idp=outcome();
+		String h=jsfpanier.a;
+		System.out.println("hhhhhhhhhhh"+h);
+
+		idc=Integer.parseInt(h);
+		System.out.println("namiiiiiiiiii"+idc);
 			Commandes cmd=commandesRepository.findById(idc).get();
-			Produit pro=produitRepository.findById(idp).get();
+		    Produit pro=produitRepository.findById(idp).get();
 		
 		//description_Recl = "M";
 		System.out.println(a);

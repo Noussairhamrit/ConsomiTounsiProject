@@ -18,7 +18,7 @@ import tn.esprit.spring.entity.Panier;
 import tn.esprit.spring.repository.ClientRepository;
 import tn.esprit.spring.repository.CommandesRepository;
 import tn.esprit.spring.repository.PanierRepository;
-import tn.esprit.spring.repository.ProduitRepository;
+
 @Service
 public class CommandesServiceIMP implements ICommandesService {
 	@Autowired

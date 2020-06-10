@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
+import tn.esprit.spring.entity.Product.Produit;
 
 @Entity
 @Data
@@ -73,6 +74,11 @@ public class Panier implements Serializable {
 	
 
 
+
+	public Panier(int quantite) {
+		super();
+		this.quantite = quantite;
+	}
 
 	public Panier(int id, int quantite, double prix, String status, Commandes commande, Produit produit) {
 		super();

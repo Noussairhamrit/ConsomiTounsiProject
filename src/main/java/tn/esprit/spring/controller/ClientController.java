@@ -11,14 +11,15 @@ import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import tn.esprit.spring.entity.CategorieStat;
 import tn.esprit.spring.entity.Client;
-import tn.esprit.spring.entity.Produit;
+import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.service.ClientServiceIMP;
 
 @RestController
@@ -49,9 +50,9 @@ public class ClientController {
 	  public Client client_gangant(@PathVariable ("nbpt")int nbpt) {
 		  return client_service.client_gangant(nbpt);
 	  }
-	  @GetMapping(value = "Produit_par_cat1/{nom}")
-	  public List <String> Produit_par_cat(@PathVariable("nom") String nom ){
-		  return client_service.Produit_par_cat(nom);
+	  @GetMapping(value = "Produit_par_cat1/{prix}/{nom}")
+	  public List <String> Produit_par_cat(@PathVariable("prix") int prix ,@PathVariable("nom") String nom ){
+		  return client_service.Produit_par_cat(prix,nom);
 		  
 	  }
 	  @GetMapping(value = "produit_gangant/{nbpt}")
@@ -69,5 +70,17 @@ public class ClientController {
 		  }
 		  return "mail envoyer";
 	  }
+	  @GetMapping(value = "pass/{email}")
+	  public Client getPassword(@PathVariable("email")String email)throws MailException, MessagingException{
+		  return client_service.getPassword(email);
+	  }
+	  @PutMapping(value = "block/{id}")
+	  public void block(@PathVariable("id")long id){
+		  client_service.block(id);
+			}
+	  @GetMapping(value = "state")
+		public List<CategorieStat>  NumCategorie2(){
+		return client_service.NumCategorie2();
+				}
 	  
 }

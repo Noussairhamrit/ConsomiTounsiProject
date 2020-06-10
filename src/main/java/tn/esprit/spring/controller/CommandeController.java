@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entity.Commandes;
+
 import tn.esprit.spring.entity.Eventcommande;
 import tn.esprit.spring.entity.Factures;
+
 import tn.esprit.spring.service.CommandesServiceIMP;
 
 @CrossOrigin("*")
@@ -25,7 +27,7 @@ import tn.esprit.spring.service.CommandesServiceIMP;
 public class CommandeController {
 
 	@Autowired
-	 CommandesServiceIMP CommandesService;
+	private CommandesServiceIMP CommandesService;
 	
 	@PostMapping("/ajouter")
 	public Commandes AjouterCommande(@Valid @RequestBody Commandes c) {
@@ -72,21 +74,19 @@ public class CommandeController {
 		CommandesService.PayerPorteaPorte(idCommande);
 	}
 	@PostMapping("/confirmer/{idCommande}/{iduser}")
-	public Factures confirmer_commande(@PathVariable(value ="idCommande")int idCommande,@PathVariable(value ="iduser")long iduser){
-		Factures f=CommandesService.confirmer_commande(idCommande, iduser);
-		return f;
-	}
-	@GetMapping("commande_encour/{iduser}")
-	public Commandes commande_en_cour_Idclient(@PathVariable(value ="iduser")long idclient){
-		return CommandesService.commande_en_cour_Idclient(idclient);
+	public void confirmer_commande(@PathVariable(value ="idCommande")int idCommande,@PathVariable(value ="iduser")long iduser){
+		CommandesService.confirmer_commande(idCommande, iduser);
 	}
 	
-	@GetMapping("pt_merci/{idCommande}")
-	public long pt_merci(@PathVariable(value ="idCommande")int idCommande){
-		return CommandesService.pt_merci(idCommande);
-	}@GetMapping("nbc")
+
+//	@GetMapping("pt_merci/{idCommande}")
+//	public long pt_merci(@PathVariable(value ="idCommande")int idCommande){
+//		return CommandesService.pt_merci(idCommande);
+//	}
+	@GetMapping("nbc")
 	public List<Eventcommande> NumCommadeParMOIS2(){
 		return CommandesService.NumCommadeParMOIS2();
 	}
 	
  }
+

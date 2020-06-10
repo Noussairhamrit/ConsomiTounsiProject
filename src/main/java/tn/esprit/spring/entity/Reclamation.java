@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import tn.esprit.spring.entity.Product.Produit;
+
 
 @Entity 
 @Table(name = "Reclamation")

@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 
 import tn.esprit.spring.entity.Commandes;
-import tn.esprit.spring.entity.Produit;
+import tn.esprit.spring.entity.Product.Produit;
 
 public interface ICommandesService {
 	public Commandes ajoutercommande(Commandes commande);

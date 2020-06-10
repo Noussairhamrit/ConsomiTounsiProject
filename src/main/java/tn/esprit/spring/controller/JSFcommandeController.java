@@ -1,6 +1,6 @@
 package tn.esprit.spring.controller;
 
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
+
 
 import java.util.Date;
 import java.util.List;
@@ -55,7 +55,9 @@ public class JSFcommandeController {
 	public long pt_merci(int idCommande){
 		return commandeservice.pt_merci(idCommande);
 	}
-	
+	public List<Commandes> CommandeparClient(int id_client){
+		return commandeservice.CommandeparClient(id_client);
+	}
 	
 	
 	

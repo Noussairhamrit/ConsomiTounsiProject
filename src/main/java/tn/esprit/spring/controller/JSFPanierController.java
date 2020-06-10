@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.transaction.Transactional;
 
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,9 @@ import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Commandes;
 import tn.esprit.spring.entity.Factures;
 import tn.esprit.spring.entity.Panier;
-import tn.esprit.spring.entity.Produit;
+
 import tn.esprit.spring.entity.lignecommandeproduit;
+import tn.esprit.spring.entity.Product.Produit;
 import tn.esprit.spring.repository.CommandesRepository;
 import tn.esprit.spring.service.ClientServiceIMP;
 import tn.esprit.spring.service.CommandesServiceIMP;
@@ -48,9 +50,10 @@ public class JSFPanierController {
 	StripeService stripeService;
 	private Panier panier;
 	private Factures facture;
+	private int idprod;
 	private int id_facture;
 	private int id;
-	private int idc;
+	private int idcc;
 	private Commandes commande;
 	private Client client;
 	private int quantity;
@@ -64,7 +67,16 @@ public class JSFPanierController {
 	private int expYear;
 	private String cvc;
 	private Produit produit;
+	private int quantite=1;
+	
 	private List<lignecommandeproduit> listpanier;
+	
+	
+	@Transactional
+	public List<lignecommandeproduit> AjouterAuPanier(int idprod, long iduser) {
+		System.out.println("qnt"+quantite);
+		return panierservice.AjouterAuPanier(idprod, iduser, new Panier(quantite));
+	}
 
 	public List<lignecommandeproduit> panierParIdclient(long id) {
 
@@ -96,30 +108,52 @@ public class JSFPanierController {
 		navigateTo = "/template/facture.xhtml?faces-redirect=true";
 		return navigateTo;
 	}
-	String a;
+	static String a;
+	
+	//String b;
 
-	private String getCountryFromJSF(FacesContext context) {
+	private static String getCountryFromJSF(FacesContext context) {
 		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
-		return parameters.get("idc");
+		return parameters.get("idcc");
 	}
-
-	public int outcome() {
+	public static int outcome() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		a = getCountryFromJSF(context);
 		System.out.println("((((((((((((((((("+a);
 		return Integer.parseInt(a);
 
-	}
-	public List<Panier> findPanier_par_commande(int idc) {
-		idc=outcome();
-		return panierservice.findPanier_par_commande(idc);
+	} 
+	
+
+//	private String getProduitFromJSF(FacesContext context) {
+//		Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
+//		return parameters.get("idprod");
+//	}
+//	public int outcome2() {
+//		FacesContext context = FacesContext.getCurrentInstance();
+//		b = getProduitFromJSF(context);
+//		System.out.println("((()))))"+b);
+//		return Integer.parseInt(b);
+//
+//	}
+	
+	
+	public List<Panier> findPanier_par_commande(int idcc) {
+		idcc=outcome();
+		return panierservice.findPanier_par_commande(idcc);
 	}
 
-	public String topanier(int idc) {
-		idc=outcome();
+	public String topanier(int idcc) {
+		idcc=outcome();
 		String navigateTo = "null";
-		findPanier_par_commande(idc);
+		findPanier_par_commande(idcc);
 		return navigateTo = "/template/templateAdmin/affichepanier.xhtml?faces-redirect=true";
+	}
+	public String toreclamation() {
+		//idprod=outcome2();
+		String navigateTo = "null";
+		
+		return navigateTo = "/template/contact-us.xhtml?faces-redirect=true";
 	}
 
 	public void facturepdf(int id) {
@@ -151,12 +185,12 @@ public class JSFPanierController {
 		this.produit = produit;
 	}
 
-	public int getIdc() {
-		return idc;
+	public int getIdcc() {
+		return idcc;
 	}
 
-	public void setIdc(int idc) {
-		this.idc = idc;
+	public void setIdc(int idcc) {
+		this.idcc = idcc;
 	}
 
 	public String getCarta() {
@@ -278,5 +312,27 @@ public class JSFPanierController {
 	public void setListpanier(List<lignecommandeproduit> listpanier) {
 		this.listpanier = listpanier;
 	}
+
+	public int getIdprod() {
+		return idprod;
+	}
+
+	public void setIdprod(int idprod) {
+		this.idprod = idprod;
+	}
+
+	public void setIdcc(int idcc) {
+		this.idcc = idcc;
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+	
+	
 
 }

@@ -22,7 +22,7 @@ import tn.esprit.spring.service.CommandesServiceIMP;
 @Scope(value = "session")
 @Controller(value = "AdminController")
 @ELBeanName(value = "AdminController")
-@Join(path = "/log", to = "/cnx.jsf")
+//@Join(path = "/log", to = "/cnx.jsf")
 
 public class AdminController {
 	@Autowired
@@ -44,6 +44,7 @@ public class AdminController {
 	private Admin authenticatedAdmin;
 	private Client authenticatedClient;
 	private long userId;
+	private String email;
 				  
 	//private Client c;
 	private String login;
@@ -71,7 +72,7 @@ public class AdminController {
 			loggedIn = true;
 		}
 		else if (authenticatedClient != null ) {
-			navigateTo = "/template/index.jsf?faces-redirect=true";
+			navigateTo = "index.xhtml?faces-redirect=true";
 			loggedIn = true;
 		}
 		else {
@@ -81,7 +82,10 @@ public class AdminController {
 		}
 		return navigateTo;
 	}
-	
+	public String doLogout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/template/cnx.xhtml?faces-redirect=true";
+	}
 	public List<Commandes> getAllCommande() {
 		return CommandesService.get_all_commandes();
 		
@@ -212,6 +216,14 @@ public class AdminController {
 
 	public void setCommandes(List<Commandes> commandes) {
 		this.commandes = commandes;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	

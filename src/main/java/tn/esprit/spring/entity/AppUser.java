@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import lombok.Data;
+import tn.esprit.spring.entity.Ads.UsersViews;
  
 @Entity
 @Data
@@ -55,6 +56,20 @@ public class AppUser {
 		// TODO Auto-generated constructor stub
 	}
 	
+
+	public AppUser(String userName, String encrytedPassword, String nom, String prenom, long cin, String address,
+			long num_tel, String email) {
+		super();
+		this.userName = userName;
+		this.encrytedPassword = encrytedPassword;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.address = address;
+		this.num_tel = num_tel;
+		this.email = email;
+	}
+
 
 	public AppUser(Long userId, String userName, String encrytedPassword, boolean enabled, String nom, String prenom,
 			long cin, String address, long num_tel, String email) {

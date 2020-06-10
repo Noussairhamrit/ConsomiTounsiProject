@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import tn.esprit.spring.entity.Product.Produit;
+import tn.esprit.spring.entity.Product.SousCategories;
+
 @Entity
 @Table(name="Ray")
 

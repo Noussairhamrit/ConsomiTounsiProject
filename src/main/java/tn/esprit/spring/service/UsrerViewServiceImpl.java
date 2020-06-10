@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.AppUser;
-import tn.esprit.spring.entity.Publicite;
-import tn.esprit.spring.entity.UsersViews;
-import tn.esprit.spring.repository.UserViewsRepository;
+
 
 //@Service
 //public class UsrerViewServiceImpl implements UserViewsService {
